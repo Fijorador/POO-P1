@@ -1,9 +1,7 @@
- //Nome: mateus Moreira Fonseca - RA: 1426885
-
- public class ContaPoupanca extends Conta implements Autenticavel {
+public class ContaPoupanca extends Conta implements Autenticavel {
     private float juros;
 
-    public ContaPoupanca(String numero, String agencia, String senha, float saldo,float juros) {
+    public ContaPoupanca(String numero, String agencia, String senha, float saldo, float juros) {
         super(numero, agencia, senha, saldo);
         this.juros = juros;
     }
@@ -13,7 +11,7 @@
     }
 
     public void setJuros(float juros) {
-        this.juros = juros;
+        this.juros = juros/100;
     }
 
     public float calcularRendimento() {
@@ -25,4 +23,3 @@
         return this.getSenha().equals(senha);
     }
 }
-
