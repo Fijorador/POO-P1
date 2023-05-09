@@ -1,3 +1,5 @@
+
+//Nome: mateus Moreira Fonseca - RA: 1426885
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -25,6 +27,7 @@ public class Leitura {
         } while (!validarNumeroConta(numero));
 
         System.out.print("Senha: ");
+
         String senha = sc.nextLine();
         do {
             System.out.print("Agência: ");
@@ -35,11 +38,11 @@ public class Leitura {
         } while (!validarAgencia(agencia));
 
         System.out.print("Saldo inicial: ");
-        float saldo = lerValorFloat();
+        double saldo = lerValorDouble();
         System.out.print("Limite: ");
-        float limite = lerValorFloat();
+        double limite = lerValorDouble();
 
-        conta = new ContaCorrente(numero, agencia, senha, saldo, limite);
+        conta = new ContaCorrente(numero, agencia, senha, saldo, limite, limite);
         return conta;
     }
 
@@ -57,6 +60,7 @@ public class Leitura {
         } while (!validarNumeroConta(numero));
 
         System.out.print("Senha: ");
+
         String senha = sc.nextLine();
         do {
             System.out.print("Agência: ");
@@ -66,10 +70,10 @@ public class Leitura {
             }
         } while (!validarAgencia(agencia));
 
-        System.out.print("Saldo inicial: ");
-        float saldo = lerValorFloat();
-        System.out.print("Juros da conta poupança mensal: ");
-        float juros = lerValorFloat();
+        System.out.print("Saldo inicial:R$ ");
+        double saldo = lerValorDouble();
+        System.out.print("(1%-100%)Juros da conta poupança mensal: ");
+        double juros = lerValorDouble();
 
         conta = new ContaPoupanca(numero, agencia, senha, saldo, juros);
         return conta;
@@ -78,67 +82,36 @@ public class Leitura {
     public void executarOperacao(Conta conta) {
         String opcao;
         do {
-            System.out.println("Escolha uma opção:");
+            System.out.println("\nEscolha uma opção:");
             System.out.println("1 - Sacar");
             System.out.println("2 - Depositar");
-            System.out.println("3 - Transferir");
-
             if (conta instanceof ContaCorrente) {
+                System.out.println("3 - Transferir");
                 System.out.println("4 - Ver Limite");
             } else if (conta instanceof ContaPoupanca) {
                 System.out.println("4 - Calcular rendimento mensal");
             }
-
             System.out.println("0 - Sair");
-            System.out.print("Opção: ");
+            System.out.print("Opção:\n ");
             opcao = sc.nextLine();
 
             switch (opcao) {
                 case "1":
-                    System.out.println("Saldo atual: " + conta.getSaldo());
-                    System.out.print("Informe o valor a ser sacado: ");
-                    float valorSaque = lerValorFloat();
-                    if (conta.sacar(valorSaque)) {
-
-                        System.out.println("Saque realizado com sucesso!");
-                        System.out.println("Saldo atual: " + conta.getSaldo());
-                    } else {
-                        System.out.println("Saldo insuficiente!");
-                    }
+                    consultarSaldo(conta);
+                    realizarSaque(conta);
+                    consultarSaldo(conta);
                     break;
                 case "2":
-                    System.out.print("Informe o valor a ser depositado: ");
-                    float valorDeposito = lerValorFloat();
-                    conta.depositar(valorDeposito);
-                    System.out.println("Depósito realizado com sucesso!");
-                    System.out.println("Saldo atual: " + conta.getSaldo());
+                    realizarDeposito(conta);
+                    consultarSaldo(conta);
                     break;
                 case "3":
-                    System.out.print("Informe o número da conta de destino: ");
-                    String numeroDestinoTransferencia = sc.nextLine();
-                    Conta destinoTransferencia = Conta.encontrarConta(numeroDestinoTransferencia);
-                    if (destinoTransferencia != null) {
-                        System.out.print("Informe o valor a ser transferido: ");
-                        float valorTransferencia = lerValorFloat();
-                        if (conta.transferir(destinoTransferencia, valorTransferencia)) {
-                            System.out.println("Transferência realizada com sucesso!");
-                            System.out.println("Saldo atual: " + conta.getSaldo());
-                        } else {
-                            System.out.println("Saldo insuficiente para realizar a transferência!");
-                        }
-                    } else {
-                        System.out.println("Conta de destino não encontrada!");
-                    }
+                    realizarTransferencia(conta);
+                    consultarSaldo(conta);
                     break;
 
                 case "4":
-                    if (conta instanceof ContaCorrente) {
-                        ContaCorrente contaCorrente = (ContaCorrente) conta;
-                        System.out.println("Limite da conta corrente: " + contaCorrente.getLimite());
-                    } else if (conta instanceof ContaPoupanca) {
-                        ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
-                        System.out.println("Rendimento da conta poupança: " + contaPoupanca.calcularRendimento());
-                    }
+                    metodosUnicos(conta);
                     break;
                 case "0":
                     System.out.println("Saindo...");
@@ -149,15 +122,96 @@ public class Leitura {
         } while (!opcao.equals("0"));
     }
 
-    private float lerValorFloat() {
+    public void realizarSaque(Conta conta) {
+        System.out.print("\nInforme o valor a ser sacado: ");
+        double valorSaque = lerValorDouble();
+
+        double saldoDisponivel = conta.getSaldo();
+
+        if (conta instanceof ContaCorrente) {
+            ContaCorrente contaCorrente = (ContaCorrente) conta;
+            saldoDisponivel += contaCorrente.getLimite();
+        }
+
+        if (valorSaque <= saldoDisponivel) {
+            if (conta.sacar(valorSaque)) {
+                System.out.println("Saque realizado com sucesso!");
+            } else {
+                System.out.println("Saldo insuficiente! Operação não realizada!");
+            }
+        } else {
+            System.out.println("Valor de saque excede o saldo disponível!");
+        }
+    }
+
+    public void realizarDeposito(Conta conta) {
+        System.out.print("\nInforme o valor a ser depositado:R$ ");
+        double valorDeposito = lerValorDouble();
+        conta.depositar(valorDeposito);
+        System.out.println("Depósito realizado com sucesso!");
+        System.out.println("Saldo atual:R$ " + conta.getSaldo());
+
+    }
+
+    public void metodosUnicos(Conta conta) {
+        if (conta instanceof ContaCorrente) {
+            System.out.println("\nO limite Disponível é:R$ " + ((ContaCorrente) conta).getLimiteDisponivel());
+        } else if (conta instanceof ContaPoupanca) {
+            ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
+            consultarSaldo(contaPoupanca);
+            System.out.println("\nRendimento da conta poupança:R$ " + contaPoupanca.calcularRendimento());
+        }
+    }
+
+    public void realizarTransferencia(Conta conta) {
+        if (conta instanceof ContaPoupanca) {
+            System.out.println("Operação não permitida para Conta Poupança.");
+        } else {
+            System.out.print("\nInforme o número da conta de destino: ");
+            String numeroDestinoTransferencia = sc.nextLine();
+            Conta destinoTransferencia = Conta.encontrarConta(numeroDestinoTransferencia);
+            if (destinoTransferencia != null) {
+                System.out.print("Informe o valor a ser transferido:R$ ");
+                double valorTransferencia = lerValorDouble();
+                if (((ContaCorrente) conta).transferir(destinoTransferencia, valorTransferencia)) {
+                    System.out.println("Transferência realizada com sucesso!");
+                    System.out.println("Saldo atual:R$ " + conta.getSaldo());
+                } else {
+                    System.out.println("Saldo insuficiente para realizar a transferência!");
+                }
+            } else {
+                System.out.println("Conta de destino não encontrada!");
+            }
+        }
+    }
+
+    public void consultarSaldo(Conta conta) {
+        if (conta instanceof ContaCorrente) {
+
+            System.out.println("\nSaldo atual (Conta Corrente - Saldo em Conta): " + conta.getSaldo());
+            System.out
+                    .println("Saldo atual (Conta Corrente - Limite): " + ((ContaCorrente) conta).getLimiteDisponivel());
+            System.out.println(
+                    "Saldo atual (Conta Corrente - Total): "
+                            + (conta.getSaldo() + ((ContaCorrente) conta).getLimiteDisponivel()) + "\n");
+        } else if (conta instanceof ContaPoupanca) {
+
+            System.out.println("Saldo atual (Conta Poupança): " + conta.getSaldo());
+        } else {
+
+            System.out.println("Tipo de conta inválido.");
+        }
+    }
+
+    private double lerValorDouble() {
         while (true) {
             try {
-                float valor = sc.nextFloat();
+                double valor = sc.nextDouble();
                 sc.nextLine();
 
-                if (valor <= 0) {
-                    System.out.println("Valor inválido! Digite um número positivo.");
-                    continue; // Volta para o início do loop para pedir um novo valor
+                if (valor < 0) {
+                    System.out.println("Valor inválido!Não pode ser negativo");
+                    continue;
                 }
 
                 return valor;

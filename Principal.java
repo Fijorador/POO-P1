@@ -1,3 +1,5 @@
+
+//Nome: mateus Moreira Fonseca - RA: 1426885
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +19,7 @@ public class Principal {
             System.out.println("1 - Cadastrar Conta");
             System.out.println("2 - Listar todas as contas existentes");
             System.out.println("0 - Sair");
-            System.out.print("Opção: ");
+            System.out.print("Opção:\n ");
             String opcao = sc.nextLine();
 
             if (opcao.equals("1")) {
