@@ -1,8 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
 
-import javax.sql.rowset.spi.SyncResolver;
-
 import java.util.InputMismatchException;
 
 public class Leitura {
@@ -101,8 +99,9 @@ public class Leitura {
                     System.out.print("Informe o valor a ser sacado: ");
                     float valorSaque = lerValorFloat();
                     if (conta.sacar(valorSaque)) {
-                        System.out.println("Saldo atual: " + conta.getSaldo());
+
                         System.out.println("Saque realizado com sucesso!");
+                        System.out.println("Saldo atual: " + conta.getSaldo());
                     } else {
                         System.out.println("Saldo insuficiente!");
                     }
@@ -112,19 +111,26 @@ public class Leitura {
                     float valorDeposito = lerValorFloat();
                     conta.depositar(valorDeposito);
                     System.out.println("Depósito realizado com sucesso!");
+                    System.out.println("Saldo atual: " + conta.getSaldo());
                     break;
                 case "3":
-                    System.out.print("Número da conta de destino: ");
-                    String numeroDestino = sc.nextLine();
-                    Conta destino = new ContaCorrente(numeroDestino);
-                    System.out.print("Informe o valor a ser transferido: ");
-                    float valorTransferencia = lerValorFloat();
-                    if (conta.transferir(destino, valorTransferencia)) {
-                        System.out.println("Transferência realizada com sucesso!");
+                    System.out.print("Informe o número da conta de destino: ");
+                    String numeroDestinoTransferencia = sc.nextLine();
+                    Conta destinoTransferencia = Conta.encontrarConta(numeroDestinoTransferencia);
+                    if (destinoTransferencia != null) {
+                        System.out.print("Informe o valor a ser transferido: ");
+                        float valorTransferencia = lerValorFloat();
+                        if (conta.transferir(destinoTransferencia, valorTransferencia)) {
+                            System.out.println("Transferência realizada com sucesso!");
+                            System.out.println("Saldo atual: " + conta.getSaldo());
+                        } else {
+                            System.out.println("Saldo insuficiente para realizar a transferência!");
+                        }
                     } else {
-                        System.out.println("Saldo insuficiente!");
+                        System.out.println("Conta de destino não encontrada!");
                     }
                     break;
+
                 case "4":
                     if (conta instanceof ContaCorrente) {
                         ContaCorrente contaCorrente = (ContaCorrente) conta;
