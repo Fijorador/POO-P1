@@ -26,7 +26,7 @@ public class ContaCorrente extends Conta {
     public void setLimiteDisponivel(double limite) {
         this.limiteDisponivel = limite;
     }
-    //Sobrescreita
+    //Sobrescrita
     @Override
     public void depositar(double valor) {
         double limiteDisponivel = getLimiteDisponivel();
@@ -42,9 +42,9 @@ public class ContaCorrente extends Conta {
     
     //Sobrescrita
     @Override
-    public boolean sacar(double valor) {
+    public boolean sacar(double valor){
         double saldoDisponivel = getSaldo() + getLimiteDisponivel();
-
+    
         if (valor <= saldoDisponivel) {
             if (valor <= getSaldo()) {
                 setSaldo(getSaldo() - valor);
@@ -52,13 +52,14 @@ public class ContaCorrente extends Conta {
                 double limiteUtilizado = valor - getSaldo();
                 setSaldo(0);
                 setLimiteDisponivel(getLimiteDisponivel() - limiteUtilizado);
-
             }
             return true;
         } else {
+            System.out.printf("Saldo insuficiente para realizar o saque.", saldoDisponivel);
             return false;
         }
     }
+    
     //Sobrescrita
     @Override
     public void consultarSaldo() {
@@ -70,7 +71,7 @@ public class ContaCorrente extends Conta {
         System.out.println("Saldo atual (Conta Corrente - Total):R$ " + saldoTotal);
     }
 
-    public boolean transferir(Conta contaDestino, double valor) {
+    public boolean transferir(Conta contaDestino, double valor){
         double saldo = getSaldo();
         if (valor <= saldo) {
             sacar(valor);

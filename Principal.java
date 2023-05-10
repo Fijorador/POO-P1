@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Principal {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SaldoInsuficienteException {
         Leitura leitura = new Leitura();
 
         ArrayList<Conta> contas = new ArrayList<>();
@@ -43,12 +43,13 @@ public class Principal {
                     continue;
                 }
 
-                contas.add(conta);                
+                contas.add(conta);
                 leitura.executarOperacao(conta);
             } else if (opcao.equals("2")) {
                 Conta.listarContas(contas);
             } else if (opcao.equals("3")) {
-                Conta.depositar();
+                
+                leitura.realizarDeposito(contas);
             } else if (opcao.equals("0")) {
                 System.out.println("Saindo...");
                 break;

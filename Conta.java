@@ -14,9 +14,7 @@ public abstract class Conta implements OperacoesBancarias{
         this.numero = numero;
         this.agencia = agencia;
         this.senha = senha;
-        this.saldo = saldo;
-
-        contas.add(this);
+        this.saldo = saldo;        
     }
 
     public String getNumero() {
@@ -52,6 +50,16 @@ public abstract class Conta implements OperacoesBancarias{
         return null;
     }
 
+    public static Conta encontrarConta(String numero, ArrayList<Conta> contas) {
+        for (Conta conta : contas) {
+            if (conta.getNumero().equals(numero)) {
+                return conta;
+            }
+        }
+        return null;
+    }
+    
+
     public static void listarContas(ArrayList<Conta> contas) {
         if (contas.isEmpty()) {
             System.out.println("Não há contas cadastradas.");
@@ -68,9 +76,12 @@ public abstract class Conta implements OperacoesBancarias{
                     tipoConta = "Desconhecido";
                 }
                 System.out.println("Índice: " + i + " | Conta: " + conta.getNumero() + " | Agência: " + conta.getAgencia() + " | Tipo: " + tipoConta);
+                System.out.println(getContas());
             }
         }
     }
+
+    
     
     
 

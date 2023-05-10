@@ -1,6 +1,8 @@
 
 //Nome: mateus Moreira Fonseca - RA: 1426885
 
+
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,18 +20,21 @@ public class Leitura {
     public String lerString() {
         return leitor.nextLine();
     }
-
-    public double lerDouble() {
+    private double lerValorDouble() {
         while (true) {
             try {
-                double valor = Double.parseDouble(leitor.nextLine());
+                double valor = leitor.nextDouble();
+                leitor.nextLine();
+
                 if (valor < 0) {
-                    System.out.println("Valor inválido! Não pode ser negativo.");
-                } else {
-                    return valor;
+                    System.out.println("Valor inválido!Não pode ser negativo");
+                    continue;
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada inválida! Digite um número decimal válido.");
+
+                return valor;
+            } catch (InputMismatchException e) {
+                System.out.println("Valor inválido! Digite um número válido.");
+                leitor.nextLine();
             }
         }
     }
@@ -157,16 +162,15 @@ public class Leitura {
         } while (!opcao.equals("0"));
     }
 
-    public void realizarSaque(Conta conta) {
+    public void realizarSaque(Conta conta){
         System.out.print("Informe o valor a ser sacado: ");
         double valorSaque = lerValorDouble();
-        double saldoDisponivel = conta.getSaldo();
 
+        double saldoDisponivel = conta.getSaldo();     
         if (conta instanceof ContaCorrente) {
             ContaCorrente contaCorrente = (ContaCorrente) conta;
             saldoDisponivel += contaCorrente.getLimite();
         }
-
         if (valorSaque <= saldoDisponivel) {
             if (conta.sacar(valorSaque)) {
                 System.out.println("Saque realizado com sucesso!");
@@ -185,6 +189,22 @@ public class Leitura {
         System.out.println("Depósito realizado com sucesso!");
         System.out.println("Saldo atual: R$ " + conta.getSaldo());
     }
+    //Sobrecarga
+    public void realizarDeposito(ArrayList<Conta> contas) {
+        System.out.print("Digite o número da conta: ");
+                String numeroConta = lerString();
+
+                Conta contaSelecionada = Conta.encontrarConta(numeroConta, contas);
+                if (contaSelecionada != null) {
+                    System.out.print("Digite o valor a ser depositado: ");
+                    double valor = lerValorDouble();
+
+                    contaSelecionada.depositar(valor);
+                    System.out.println("Depósito realizado com sucesso!");
+                } else {
+                    System.out.println("Conta não encontrada!");
+                }
+    }
    
 
     public void metodosUnicos(Conta conta) {
@@ -198,7 +218,7 @@ public class Leitura {
         }
     }
 
-    public void realizarTransferencia(Conta conta) {
+    public void realizarTransferencia(Conta conta){
         if (conta instanceof ContaPoupanca) {
             System.out.println("Operação não permitida para Conta Poupança.");
         } else {
@@ -238,24 +258,7 @@ public class Leitura {
         }
     }
 
-    private double lerValorDouble() {
-        while (true) {
-            try {
-                double valor = leitor.nextDouble();
-                leitor.nextLine();
-
-                if (valor < 0) {
-                    System.out.println("Valor inválido!Não pode ser negativo");
-                    continue;
-                }
-
-                return valor;
-            } catch (InputMismatchException e) {
-                System.out.println("Valor inválido! Digite um número válido.");
-                leitor.nextLine();
-            }
-        }
-    }
+    
 
     private boolean validarNumeroConta(String numero) {
         if (numero.length() != 6) {
@@ -285,4 +288,6 @@ public class Leitura {
 
         return true;
     }
+
+   
 }
