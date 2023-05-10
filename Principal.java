@@ -1,8 +1,11 @@
+
+//Nome: Mateus Moreira Fonseca - RA: 1426885
+
 import java.util.ArrayList;
 
 public class Principal {
 
-    public static void main(String[] args) throws SaldoInsuficienteException {
+    public static void main(String[] args) throws TipoContaInvalidoException {
         Leitura leitura = new Leitura();
 
         ArrayList<Conta> contas = new ArrayList<>();
@@ -11,7 +14,7 @@ public class Principal {
         Conta conta;
 
         do {
-            System.out.println("| GERENCIA DE CONTAS |");
+            System.out.println("\n| GERENCIA DE CONTAS |");
             System.out.println("Selecione uma opção:");
             System.out.println("1 - Cadastrar Conta");
             System.out.println("2 - Listar todas as contas existentes");
@@ -44,11 +47,16 @@ public class Principal {
                 }
 
                 contas.add(conta);
-                leitura.executarOperacao(conta);
+
+                try {
+                    leitura.executarOperacao(conta);
+                } catch (TipoContaInvalidoException e) {
+                    System.out.println("Erro: " + e.getMessage());
+                }
+
             } else if (opcao.equals("2")) {
                 Conta.listarContas(contas);
             } else if (opcao.equals("3")) {
-                
                 leitura.realizarDeposito(contas);
             } else if (opcao.equals("0")) {
                 System.out.println("Saindo...");
@@ -56,6 +64,7 @@ public class Principal {
             } else {
                 System.out.println("Opção inválida! Digite novamente.");
             }
+
         } while (true);
 
         leitura.fecharLeitor();

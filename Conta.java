@@ -1,5 +1,6 @@
 
-//Nome: mateus Moreira Fonseca - RA: 1426885
+
+//Nome: Mateus Moreira Fonseca - RA: 1426885
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public abstract class Conta implements OperacoesBancarias{
         }
         return null;
     }
-
+    //Sobrescrita
     public static Conta encontrarConta(String numero, ArrayList<Conta> contas) {
         for (Conta conta : contas) {
             if (conta.getNumero().equals(numero)) {
