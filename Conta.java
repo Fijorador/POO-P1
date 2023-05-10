@@ -57,10 +57,21 @@ public abstract class Conta implements OperacoesBancarias{
             System.out.println("Não há contas cadastradas.");
         } else {
             System.out.println("Listando todas as contas existentes:");
-            for (Conta conta : contas) {
-                System.out.println(conta.getNumero());
+            for (int i = 0; i < contas.size(); i++) {
+                Conta conta = contas.get(i);
+                String tipoConta;
+                if (conta instanceof ContaCorrente) {
+                    tipoConta = "Corrente";
+                } else if (conta instanceof ContaPoupanca) {
+                    tipoConta = "Poupança";
+                } else {
+                    tipoConta = "Desconhecido";
+                }
+                System.out.println("Índice: " + i + " | Conta: " + conta.getNumero() + " | Agência: " + conta.getAgencia() + " | Tipo: " + tipoConta);
             }
         }
     }
+    
+    
 
 }

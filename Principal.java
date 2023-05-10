@@ -11,11 +11,14 @@ public class Principal {
         Conta conta;
 
         do {
+            System.out.println("| GERENCIA DE CONTAS |");
             System.out.println("Selecione uma opção:");
             System.out.println("1 - Cadastrar Conta");
             System.out.println("2 - Listar todas as contas existentes");
+            System.out.println("3 - Deposito em Conta Especifica");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
+
             String opcao = leitura.lerString();
 
             if (opcao.equals("1")) {
@@ -40,10 +43,12 @@ public class Principal {
                     continue;
                 }
 
-                contas.add(conta);
+                contas.add(conta);                
                 leitura.executarOperacao(conta);
             } else if (opcao.equals("2")) {
                 Conta.listarContas(contas);
+            } else if (opcao.equals("3")) {
+                Conta.depositar();
             } else if (opcao.equals("0")) {
                 System.out.println("Saindo...");
                 break;

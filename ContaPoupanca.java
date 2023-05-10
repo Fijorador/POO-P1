@@ -9,17 +9,18 @@ public class ContaPoupanca extends Conta {
     }
 
     public double getJuros() {
-        return juros / 100;
+        return juros;
     }
 
     public void setJuros(double juros) {
-        this.juros = juros / 100;
+        this.juros = juros;
     }
 
     public double calcularRendimento() {
-        return getSaldo() * getJuros();
+        return getSaldo() * (getJuros()/100);
     }
-
+   
+    //Sobrescrita
     @Override
     public void depositar(double valor) {
         setSaldo(getSaldo() + valor);
@@ -27,6 +28,7 @@ public class ContaPoupanca extends Conta {
 
     }
 
+    //Sobrescrita
     @Override
     public boolean sacar(double valor) {
         if (valor <= getSaldo()) {
@@ -38,8 +40,9 @@ public class ContaPoupanca extends Conta {
         return true;
     }
 
+    //Sobrescrita
     @Override
     public void consultarSaldo() {
-        System.out.println("Saldo atual: R$" + getSaldo());
+        System.out.println("Saldo atual(Poupanca): R$" + getSaldo());
     }
 }

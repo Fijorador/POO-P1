@@ -1,7 +1,7 @@
 
 //Nome: mateus Moreira Fonseca - RA: 1426885
-import java.util.InputMismatchException;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Leitura {
@@ -11,42 +11,42 @@ public class Leitura {
         leitor = new Scanner(System.in);
     }
 
-    public String lerString() {
-        return leitor.nextLine();
-    }
-
-    public int lerInteiro() {
-        try {
-            return Integer.parseInt(leitor.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida! Digite um número inteiro.");
-            return lerInteiro();
-        }
-    }
-
-    public double lerDouble() {
-        try {
-            return Double.parseDouble(leitor.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida! Digite um número decimal.");
-            return lerDouble();
-        }
-    }
-
     public void fecharLeitor() {
         leitor.close();
     }
 
+    public String lerString() {
+        return leitor.nextLine();
+    }
+
+    public double lerDouble() {
+        while (true) {
+            try {
+                double valor = Double.parseDouble(leitor.nextLine());
+                if (valor < 0) {
+                    System.out.println("Valor inválido! Não pode ser negativo.");
+                } else {
+                    return valor;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida! Digite um número decimal válido.");
+            }
+        }
+    }
+
     public ContaCorrente lerContaCorrente() {
         ContaCorrente conta = null;
-        String numero = "0";
-        String agencia = "0";
+        String numero = "";
+        String agencia = "";
 
         do {
             System.out.print("Número da conta: ");
             numero = leitor.nextLine();
             if (!validarNumeroConta(numero)) {
                 System.out.println("Conta inválida. Digite novamente.");
+            } else if (Conta.encontrarConta(numero) != null) {
+                System.out.println("Número da conta já existe. Digite outro número.");
+                numero = "";
             }
         } while (!validarNumeroConta(numero));
 
@@ -61,9 +61,10 @@ public class Leitura {
             }
         } while (!validarAgencia(agencia));
 
-        System.out.print("Saldo inicial: ");
+        System.out.print("Saldo inicial:R$ ");
         double saldo = lerValorDouble();
-        System.out.print("Limite: ");
+
+        System.out.print("Limite:R$ ");
         double limite = lerValorDouble();
 
         conta = new ContaCorrente(numero, agencia, senha, saldo, limite, limite);
@@ -96,6 +97,7 @@ public class Leitura {
 
         System.out.print("Saldo inicial: R$ ");
         double saldo = lerValorDouble();
+
         System.out.print("Juros da conta poupança mensal (1% - 100%): ");
         double juros = lerValorDouble();
 
@@ -106,6 +108,7 @@ public class Leitura {
     public void executarOperacao(Conta conta) {
         String opcao;
         do {
+            System.out.println("\n OPÇÕES BANCARIAS: |");
             System.out.println("\nEscolha uma opção:");
             System.out.println("1 - Sacar");
             System.out.println("2 - Depositar");
@@ -115,10 +118,13 @@ public class Leitura {
             } else if (conta instanceof ContaPoupanca) {
                 System.out.println("4 - Calcular rendimento mensal");
             }
-            System.out.println("0 - Sair");
+            System.out.println("5 - Consultar Saldo");
+            System.out.println("0 - Voltar");
             System.out.print("Opção: ");
             opcao = leitor.nextLine();
+
             switch (opcao) {
+
                 case "1":
                     consultarSaldo(conta);
                     realizarSaque(conta);
@@ -137,17 +143,13 @@ public class Leitura {
                     }
                     break;
                 case "4":
-                    if (conta instanceof ContaCorrente) {
-                        System.out.println("Limite: " + ((ContaCorrente) conta).getLimite());
-                    } else if (conta instanceof ContaPoupanca) {
-                        ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
-                        System.out.println("Rendimento mensal: " + contaPoupanca.calcularRendimento());
-                    } else {
-                        System.out.println("Opção inválida! Digite novamente.");
-                    }
+                    metodosUnicos(conta);
+                    break;
+                case "5":
+                    consultarSaldo(conta);
                     break;
                 case "0":
-                    System.out.println("Saindo...");
+                    System.out.println("Saindo...\n");
                     break;
                 default:
                     System.out.println("Opção inválida! Digite novamente.");
@@ -158,7 +160,6 @@ public class Leitura {
     public void realizarSaque(Conta conta) {
         System.out.print("Informe o valor a ser sacado: ");
         double valorSaque = lerValorDouble();
-
         double saldoDisponivel = conta.getSaldo();
 
         if (conta instanceof ContaCorrente) {
@@ -184,14 +185,16 @@ public class Leitura {
         System.out.println("Depósito realizado com sucesso!");
         System.out.println("Saldo atual: R$ " + conta.getSaldo());
     }
+   
 
     public void metodosUnicos(Conta conta) {
         if (conta instanceof ContaCorrente) {
-            System.out.println("\nO limite Disponível é:R$ " + ((ContaCorrente) conta).getLimiteDisponivel());
+            System.out.println("Limite: " + ((ContaCorrente) conta).getLimite());
         } else if (conta instanceof ContaPoupanca) {
             ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
-            consultarSaldo(contaPoupanca);
-            System.out.println("\nRendimento da conta poupança:R$ " + contaPoupanca.calcularRendimento());
+            System.out.println("Rendimento mensal: " + contaPoupanca.calcularRendimento());
+        } else {
+            System.out.println("Opção inválida! Digite novamente.");
         }
     }
 
@@ -202,9 +205,11 @@ public class Leitura {
             System.out.print("\nInforme o número da conta de destino: ");
             String numeroDestinoTransferencia = leitor.nextLine();
             Conta destinoTransferencia = Conta.encontrarConta(numeroDestinoTransferencia);
+
             if (destinoTransferencia != null) {
                 System.out.print("Informe o valor a ser transferido:R$ ");
                 double valorTransferencia = lerValorDouble();
+
                 if (((ContaCorrente) conta).transferir(destinoTransferencia, valorTransferencia)) {
                     System.out.println("Transferência realizada com sucesso!");
                     System.out.println("Saldo atual:R$ " + conta.getSaldo());
@@ -219,18 +224,16 @@ public class Leitura {
 
     public void consultarSaldo(Conta conta) {
         if (conta instanceof ContaCorrente) {
+            System.out.println("\nSaldo atual (Conta Corrente - Saldo em Conta):R$ " + conta.getSaldo());
+            System.out.println("Saldo atual (Conta Corrente - Limite):R$ "
+                    + ((ContaCorrente) conta).getLimiteDisponivel());
+            System.out.println("Saldo atual (Conta Corrente - Total):R$ "
+                    + (conta.getSaldo() + ((ContaCorrente) conta).getLimiteDisponivel()) + "\n");
 
-            System.out.println("\nSaldo atual (Conta Corrente - Saldo em Conta): " + conta.getSaldo());
-            System.out
-                    .println("Saldo atual (Conta Corrente - Limite): " + ((ContaCorrente) conta).getLimiteDisponivel());
-            System.out.println(
-                    "Saldo atual (Conta Corrente - Total): "
-                            + (conta.getSaldo() + ((ContaCorrente) conta).getLimiteDisponivel()) + "\n");
         } else if (conta instanceof ContaPoupanca) {
+            System.out.println("Saldo atual (Conta Poupança):R$ " + conta.getSaldo());
 
-            System.out.println("Saldo atual (Conta Poupança): " + conta.getSaldo());
         } else {
-
             System.out.println("Tipo de conta inválido.");
         }
     }
