@@ -1,5 +1,5 @@
 
-//Nome: mateus Moreira Fonseca - RA: 1426885
+//Nome: Mateus Moreira Fonseca - RA: 1426885
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

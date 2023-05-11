@@ -43,12 +43,15 @@ public class Principal {
                     continue;
                 }
 
-                contas.add(conta);                
+                contas.add(conta);
                 leitura.executarOperacao(conta);
+                // try {
+                //     leitura.executarOperacao(conta);
+                // } catch (InvalidaException e) {
+                //     System.out.println("Erro: " + e.getMessage());
+                // }
             } else if (opcao.equals("2")) {
                 Conta.listarContas(contas);
-            } else if (opcao.equals("3")) {
-                Conta.depositar();
             } else if (opcao.equals("0")) {
                 System.out.println("Saindo...");
                 break;
