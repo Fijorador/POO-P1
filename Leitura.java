@@ -33,7 +33,7 @@ public class Leitura {
         }
     }
 
-    public ContaCorrente lerContaCorrente() {
+    public ContaCorrente lerContaCorrente() throws InvalidaException {
         ContaCorrente conta = null;
         String numero = "";
         String agencia = "";
@@ -70,7 +70,7 @@ public class Leitura {
         return conta;
     }
 
-    public ContaPoupanca lerContaPoupanca() {
+    public ContaPoupanca lerContaPoupanca() throws InvalidaException {
         ContaPoupanca conta = null;
         String numero;
         String agencia;
@@ -104,47 +104,6 @@ public class Leitura {
         return conta;
     }
 
-    public ContaPoupancaEspecial lerContaPoupancaEspecial() {
-    ContaPoupancaEspecial conta = null;
-    String numero = "";
-    String agencia = "";
-
-    do {
-        System.out.print("Número da conta: ");
-        numero = leitor.nextLine();
-        if (!validarNumeroConta(numero)) {
-            System.out.println("Conta inválida. Digite novamente.");
-        } else if (Conta.encontrarConta(numero) != null) {
-            System.out.println("Número da conta já existe. Digite outro número.");
-            numero = "";
-        }
-    } while (!validarNumeroConta(numero));
-
-    System.out.print("Senha: ");
-    String senha = leitor.nextLine();
-
-    do {
-        System.out.print("Agência: ");
-        agencia = leitor.nextLine();
-        if (!validarAgencia(agencia)) {
-            System.out.println("Agência inválida. Digite novamente.");
-        }
-    } while (!validarAgencia(agencia));
-
-    System.out.print("Saldo inicial: R$ ");
-    double saldo = lerValorDouble();
-
-    System.out.print("Juros (%): ");
-    double juros = lerValorDouble();
-
-    System.out.print("Limite de crédito: R$ ");
-    double limiteCredito = lerValorDouble();
-
-    conta = new ContaPoupancaEspecial(numero, agencia, senha, saldo, juros, limiteCredito);
-    return conta;
-}
-
-
     public void executarOperacao(Conta conta) throws InvalidaException {
         String opcao;
         do {
@@ -162,85 +121,85 @@ public class Leitura {
             System.out.println("0 - Voltar");
             System.out.print("Opção: ");
             opcao = leitor.nextLine();
-    
-            switch (opcao) {
-                case "1":
-                    consultarSaldo(conta);
-                    realizarSaque(conta);
-                    consultarSaldo(conta);
-                    break;
-                case "2":
-                    realizarDeposito(conta);
-                    consultarSaldo(conta);
-                    break;
-                case "3":
-                    if (conta instanceof ContaCorrente) {
-                        realizarTransferencia(conta);
+
+            try {
+                switch (opcao) {
+                    case "1":
                         consultarSaldo(conta);
-                    } else {
+                        realizarSaque(conta);
+                        consultarSaldo(conta);
+                        break;
+                    case "2":
+                        realizarDeposito(conta);
+                        consultarSaldo(conta);
+                        break;
+                    case "3":
+                        if (conta instanceof ContaCorrente) {
+                            realizarTransferencia(conta);
+                            consultarSaldo(conta);
+                        } else {
+                            throw new InvalidaException("Opção inválida! Digite novamente.");
+                        }
+                        break;
+                    case "4":
+                        metodosUnicos(conta);
+                        break;
+                    case "5":
+                        consultarSaldo(conta);
+                        break;
+                    case "0":
+                        System.out.println("Saindo...\n");
+                        break;
+                    default:
                         throw new InvalidaException("Opção inválida! Digite novamente.");
-                    }
-                    break;
-                case "4":
-                    metodosUnicos(conta);
-                    break;
-                case "5":
-                    consultarSaldo(conta);
-                    break;
-                case "0":
-                    System.out.println("Saindo...\n");
-                    break;
-                default:
-                    throw new InvalidaException("Opção inválida! Digite novamente.");
+                }
+            } catch (InvalidaException e) {
+                System.out.println("Ocorreu um erro: " + e.getMessage());
             }
         } while (!opcao.equals("0"));
     }
-    
-    
 
     public void realizarSaque(Conta conta) throws InvalidaException {
         System.out.print("Informe o valor a ser sacado: ");
         double valorSaque = lerValorDouble();
         double saldoDisponivel = conta.getSaldo();
-    
+
         if (conta instanceof ContaCorrente) {
             ContaCorrente contaCorrente = (ContaCorrente) conta;
             saldoDisponivel += contaCorrente.getLimite();
         }
-    
+
         if (valorSaque <= saldoDisponivel) {
             if (conta.sacar(valorSaque)) {
                 System.out.println("Saque realizado com sucesso!");
             } else {
-                throw new InvalidaException ("Saldo insuficiente! Operação não realizada!");
+                throw new InvalidaException("Saldo insuficiente! Operação não realizada!");
             }
         } else {
             throw new InvalidaException("Valor de saque excede o saldo disponível!");
         }
     }
-    
 
-    public void realizarDeposito(Conta conta) {
+    public void realizarDeposito(Conta conta) throws InvalidaException {
         System.out.print("Informe o valor a ser depositado: R$ ");
         double valorDeposito = lerValorDouble();
         conta.depositar(valorDeposito);
         System.out.println("Depósito realizado com sucesso!");
         System.out.println("Saldo atual: R$ " + conta.getSaldo());
     }
-   
 
-    public void metodosUnicos(Conta conta) {
+    public void metodosUnicos(Conta conta) throws InvalidaException {
         if (conta instanceof ContaCorrente) {
             System.out.println("Limite: " + ((ContaCorrente) conta).getLimite());
         } else if (conta instanceof ContaPoupanca) {
             ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
-            System.out.println("Rendimento mensal: " + contaPoupanca.calcularRendimento());
+            throw new InvalidaException("Rendimento mensal: " + contaPoupanca.calcularRendimento());
         } else {
-            System.out.println("Opção inválida! Digite novamente.");
+            throw new InvalidaException("Opção inválida! Digite novamente.");
         }
     }
 
-    public void realizarTransferencia(Conta conta) {
+    public void realizarTransferencia(Conta conta) throws InvalidaException {
         if (conta instanceof ContaPoupanca) {
             System.out.println("Operação não permitida para Conta Poupança.");
         } else {
@@ -259,12 +218,12 @@ public class Leitura {
                     System.out.println("Saldo insuficiente para realizar a transferência!");
                 }
             } else {
-                System.out.println("Conta de destino não encontrada!");
+                throw new InvalidaException("Conta de destino não encontrada!");
             }
         }
     }
 
-    public void consultarSaldo(Conta conta) {
+    public void consultarSaldo(Conta conta) throws InvalidaException {
         if (conta instanceof ContaCorrente) {
             System.out.println("\nSaldo atual (Conta Corrente - Saldo em Conta):R$ " + conta.getSaldo());
             System.out.println("Saldo atual (Conta Corrente - Limite):R$ "
@@ -276,19 +235,18 @@ public class Leitura {
             System.out.println("Saldo atual (Conta Poupança):R$ " + conta.getSaldo());
 
         } else {
-            System.out.println("Tipo de conta inválido.");
+            throw new InvalidaException("Tipo de conta inválido.");
         }
     }
 
-    private double lerValorDouble() {
+    private double lerValorDouble() throws InvalidaException {
         while (true) {
             try {
                 double valor = leitor.nextDouble();
                 leitor.nextLine();
 
                 if (valor < 0) {
-                    System.out.println("Valor inválido!Não pode ser negativo");
-                    continue;
+                    throw new InvalidaException("Valor inválido!Não pode ser negativo");
                 }
 
                 return valor;

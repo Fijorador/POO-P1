@@ -57,11 +57,7 @@ public class Principal {
                     System.out.println("Opção inválida! Digite novamente.");
                 }
             } catch (InvalidaException e) {
-                System.out.println("Ocorreu uma exceção inválida: " + e.getMessage());
-                
-            } catch (Exception e) {
-                System.out.println("Ocorreu um erro: " + e.getMessage());
-                
+                System.out.println("Ocorreu uma exceção inválida: " + e.getMessage());//Nao to conseguindo pegar, antes eu estava --'                
             }
         } while (true);
 
