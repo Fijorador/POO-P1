@@ -1,4 +1,3 @@
-
 //Nome: Mateus Moreira Fonseca - RA: 1426885
 
 import java.util.InputMismatchException;
@@ -105,10 +104,51 @@ public class Leitura {
         return conta;
     }
 
-    public void executarOperacao(Conta conta) {
+    public ContaPoupancaEspecial lerContaPoupancaEspecial() {
+    ContaPoupancaEspecial conta = null;
+    String numero = "";
+    String agencia = "";
+
+    do {
+        System.out.print("Número da conta: ");
+        numero = leitor.nextLine();
+        if (!validarNumeroConta(numero)) {
+            System.out.println("Conta inválida. Digite novamente.");
+        } else if (Conta.encontrarConta(numero) != null) {
+            System.out.println("Número da conta já existe. Digite outro número.");
+            numero = "";
+        }
+    } while (!validarNumeroConta(numero));
+
+    System.out.print("Senha: ");
+    String senha = leitor.nextLine();
+
+    do {
+        System.out.print("Agência: ");
+        agencia = leitor.nextLine();
+        if (!validarAgencia(agencia)) {
+            System.out.println("Agência inválida. Digite novamente.");
+        }
+    } while (!validarAgencia(agencia));
+
+    System.out.print("Saldo inicial: R$ ");
+    double saldo = lerValorDouble();
+
+    System.out.print("Juros (%): ");
+    double juros = lerValorDouble();
+
+    System.out.print("Limite de crédito: R$ ");
+    double limiteCredito = lerValorDouble();
+
+    conta = new ContaPoupancaEspecial(numero, agencia, senha, saldo, juros, limiteCredito);
+    return conta;
+}
+
+
+    public void executarOperacao(Conta conta) throws InvalidaException {
         String opcao;
         do {
-            System.out.println("\n OPÇÕES BANCARIAS: |");
+            System.out.println("\nOPÇÕES BANCÁRIAS: |");
             System.out.println("\nEscolha uma opção:");
             System.out.println("1 - Sacar");
             System.out.println("2 - Depositar");
@@ -122,9 +162,8 @@ public class Leitura {
             System.out.println("0 - Voltar");
             System.out.print("Opção: ");
             opcao = leitor.nextLine();
-
+    
             switch (opcao) {
-
                 case "1":
                     consultarSaldo(conta);
                     realizarSaque(conta);
@@ -139,7 +178,7 @@ public class Leitura {
                         realizarTransferencia(conta);
                         consultarSaldo(conta);
                     } else {
-                        System.out.println("Opção inválida! Digite novamente.");
+                        throw new InvalidaException("Opção inválida! Digite novamente.");
                     }
                     break;
                 case "4":
@@ -152,31 +191,34 @@ public class Leitura {
                     System.out.println("Saindo...\n");
                     break;
                 default:
-                    System.out.println("Opção inválida! Digite novamente.");
+                    throw new InvalidaException("Opção inválida! Digite novamente.");
             }
         } while (!opcao.equals("0"));
     }
+    
+    
 
-    public void realizarSaque(Conta conta) {
+    public void realizarSaque(Conta conta) throws InvalidaException {
         System.out.print("Informe o valor a ser sacado: ");
         double valorSaque = lerValorDouble();
         double saldoDisponivel = conta.getSaldo();
-
+    
         if (conta instanceof ContaCorrente) {
             ContaCorrente contaCorrente = (ContaCorrente) conta;
             saldoDisponivel += contaCorrente.getLimite();
         }
-
+    
         if (valorSaque <= saldoDisponivel) {
             if (conta.sacar(valorSaque)) {
                 System.out.println("Saque realizado com sucesso!");
             } else {
-                System.out.println("Saldo insuficiente! Operação não realizada!");
+                throw new InvalidaException ("Saldo insuficiente! Operação não realizada!");
             }
         } else {
-            System.out.println("Valor de saque excede o saldo disponível!");
+            throw new InvalidaException("Valor de saque excede o saldo disponível!");
         }
     }
+    
 
     public void realizarDeposito(Conta conta) {
         System.out.print("Informe o valor a ser depositado: R$ ");

@@ -1,4 +1,3 @@
-
 //Nome: Mateus Moreira Fonseca - RA: 1426885
 import java.util.ArrayList;
 import java.util.List;
@@ -52,9 +51,9 @@ public abstract class Conta implements OperacoesBancarias{
         return null;
     }
 
-    public static void listarContas(ArrayList<Conta> contas) {
+    public static void listarContas(ArrayList<Conta> contas) throws InvalidaException {
         if (contas.isEmpty()) {
-            System.out.println("Não há contas cadastradas.");
+            throw new InvalidaException("Não há contas cadastradas.");
         } else {
             System.out.println("Listando todas as contas existentes:");
             for (int i = 0; i < contas.size(); i++) {

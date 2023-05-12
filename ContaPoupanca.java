@@ -1,4 +1,3 @@
-
 //Nome: Mateus Moreira Fonseca - RA: 1426885
 public class ContaPoupanca extends Conta {
     private double juros;
@@ -30,16 +29,16 @@ public class ContaPoupanca extends Conta {
 
     //Sobrescrita
     @Override
-    public boolean sacar(double valor) {
+    public boolean sacar(double valor) throws InvalidaException {
         if (valor <= getSaldo()) {
             setSaldo(getSaldo() - valor);
             System.out.println("Saque realizado: R$" + valor);
+            return true;
         } else {
-            System.out.println("Saldo insuficiente para realizar o saque.");
+            throw new InvalidaException("Saldo insuficiente para realizar o saque.");
         }
-        return true;
     }
-
+    
     //Sobrescrita
     @Override
     public void consultarSaldo() {
