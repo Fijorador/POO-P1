@@ -154,11 +154,12 @@ public class Leitura {
                         throw new InvalidaException("Opção inválida! Digite novamente.");
                 }
             } catch (InvalidaException e) {
-                System.out.println("Ocorreu um erro: " + e.getMessage());
+               e.IvalidaImprime(e);
             }
         } while (!opcao.equals("0"));
     }
 
+    
     public void realizarSaque(Conta conta) throws InvalidaException {
         System.out.print("Informe o valor a ser sacado: ");
         double valorSaque = lerValorDouble();
