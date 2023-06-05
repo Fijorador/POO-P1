@@ -1,7 +1,9 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BancoContas {
+
     private static BancoContas banco;
     private final List<ContaCorrente> bdContasCorrente;
     private final List<ContaPoupanca> bdContasPoupanca;
@@ -45,7 +47,7 @@ public class BancoContas {
     }
 
     public void excluirConta(String numero) {
-        // Verifica se a conta é uma conta corrente
+
         for (ContaCorrente conta : bdContasCorrente) {
             if (conta.getNumero().equals(numero)) {
                 bdContasCorrente.remove(conta);
@@ -53,7 +55,7 @@ public class BancoContas {
             }
         }
 
-        // Verifica se a conta é uma conta poupança
+      
         for (ContaPoupanca conta : bdContasPoupanca) {
             if (conta.getNumero().equals(numero)) {
                 bdContasPoupanca.remove(conta);
@@ -61,7 +63,7 @@ public class BancoContas {
             }
         }
 
-        // Verifica se a conta é uma conta poupança especial
+       
         for (ContaPoupancaEspecial conta : bdContasPoupancaEspecial) {
             if (conta.getNumero().equals(numero)) {
                 bdContasPoupancaEspecial.remove(conta);
@@ -71,21 +73,21 @@ public class BancoContas {
     }
 
     public Conta getContaByNumero(String numero) {
-        // Verifica se a conta é uma conta corrente
+       
         for (ContaCorrente conta : bdContasCorrente) {
             if (conta.getNumero().equals(numero)) {
                 return conta;
             }
         }
 
-        // Verifica se a conta é uma conta poupança
+     
         for (ContaPoupanca conta : bdContasPoupanca) {
             if (conta.getNumero().equals(numero)) {
                 return conta;
             }
         }
 
-        // Verifica se a conta é uma conta poupança especial
+       
         for (ContaPoupancaEspecial conta : bdContasPoupancaEspecial) {
             if (conta.getNumero().equals(numero)) {
                 return conta;
@@ -97,7 +99,7 @@ public class BancoContas {
 
     public void editarConta(Conta conta) {
         if (conta instanceof ContaCorrente) {
-            // Verifica se a conta é uma conta corrente
+            
             for (ContaCorrente cc : bdContasCorrente) {
                 if (cc.getNumero().equals(conta.getNumero())) {
                     bdContasCorrente.remove(cc);
@@ -106,7 +108,7 @@ public class BancoContas {
                 }
             }
         } else if (conta instanceof ContaPoupanca) {
-            // Verifica se a conta é uma conta poupança
+       
             for (ContaPoupanca cp : bdContasPoupanca) {
                 if (cp.getNumero().equals(conta.getNumero())) {
                     bdContasPoupanca.remove(cp);
@@ -115,7 +117,7 @@ public class BancoContas {
                 }
             }
         } else if (conta instanceof ContaPoupancaEspecial) {
-            // Verifica se a conta é uma conta poupança especial
+         
             for (ContaPoupancaEspecial cpe : bdContasPoupancaEspecial) {
                 if (cpe.getNumero().equals(conta.getNumero())) {
                     bdContasPoupancaEspecial.remove(cpe);
@@ -124,5 +126,31 @@ public class BancoContas {
                 }
             }
         }
+    }
+
+    public static boolean verificarContaExistente(String numeroConta) {
+        List<ContaCorrente> contasCorrentes = BancoContas.getBanco().getBdContasCorrente();
+        List<ContaPoupanca> contasPoupanca = BancoContas.getBanco().getBdContasPoupanca();
+        List<ContaPoupancaEspecial> contasPoupancaEspecial = BancoContas.getBanco().getBdContasPoupancaEspecial();
+
+        for (ContaCorrente conta : contasCorrentes) {
+            if (conta.getNumero().equals(numeroConta)) {
+                return true; 
+            }
+        }
+
+        for (ContaPoupanca conta : contasPoupanca) {
+            if (conta.getNumero().equals(numeroConta)) {
+                return true; 
+            }
+        }
+
+        for (ContaPoupancaEspecial conta : contasPoupancaEspecial) {
+            if (conta.getNumero().equals(numeroConta)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

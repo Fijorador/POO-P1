@@ -1,6 +1,7 @@
 
 //Nome: Mateus Moreira Fonseca - RA: 1426885
 public class ContaCorrente extends Conta {
+
     private double limite;
     private double limiteDisponivel;
 
@@ -26,6 +27,7 @@ public class ContaCorrente extends Conta {
     public void setLimiteDisponivel(double limite) {
         this.limiteDisponivel = limite;
     }
+
     //Sobrescreita
     @Override
     public void depositar(double valor) {
@@ -38,8 +40,8 @@ public class ContaCorrente extends Conta {
             valor -= valorRestante;
         }
         setSaldo(getSaldo() + valor);
-    }   
-    
+    }
+
     //Sobrescrita
     @Override
     public boolean sacar(double valor) {
@@ -59,6 +61,7 @@ public class ContaCorrente extends Conta {
             return false;
         }
     }
+
     //Sobrescrita
     @Override
     public void consultarSaldo() {
@@ -80,4 +83,5 @@ public class ContaCorrente extends Conta {
             return false;
         }
     }
+
 }
