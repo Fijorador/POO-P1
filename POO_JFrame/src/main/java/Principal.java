@@ -13,7 +13,6 @@ public class Principal extends javax.swing.JFrame {
 
     private static Principal instancia;
 
-    
     public Principal() {
         initComponents();
     }
@@ -35,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
 
         if (confirm == 0) {
             System.exit(0);
-            
+
         }
     }
 
@@ -107,6 +106,16 @@ public class Principal extends javax.swing.JFrame {
         BarraMenu.add(mCriarConta);
 
         mBuscarConta.setText("Buscar Contas");
+        mBuscarConta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mBuscarContaMouseClicked(evt);
+            }
+        });
+        mBuscarConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mBuscarContaActionPerformed(evt);
+            }
+        });
         BarraMenu.add(mBuscarConta);
 
         mOperaçõesBancarias.setText("Operações Bacarias");
@@ -206,6 +215,15 @@ public class Principal extends javax.swing.JFrame {
         CriarContaCorrente criarContaCorrente = CriarContaCorrente.getInstance();
         criarContaCorrente.setVisible(true);
     }//GEN-LAST:event_iCriarContaCorrenteActionPerformed
+
+    private void mBuscarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mBuscarContaActionPerformed
+
+     }//GEN-LAST:event_mBuscarContaActionPerformed
+
+    private void mBuscarContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mBuscarContaMouseClicked
+        dispose();
+        ConsultaContas consultaContas = ConsultaContas.getInstance();
+        consultaContas.setVisible(true);    }//GEN-LAST:event_mBuscarContaMouseClicked
 
     /**
      * @param args the command line arguments

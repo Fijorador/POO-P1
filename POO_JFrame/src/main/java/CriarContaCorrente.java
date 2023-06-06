@@ -1,5 +1,6 @@
 
 import java.awt.Component;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
@@ -15,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import jdk.jfr.Event;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -99,7 +102,6 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         rotLimiteCC.setText("Limite da Conta Corrente:");
 
         cxNumeroConta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        cxNumeroConta.setText("00000-0");
         cxNumeroConta.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 cxNumeroContaFocusGained(evt);
@@ -133,12 +135,27 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                 cxAgenciaMouseClicked(evt);
             }
         });
+        cxAgencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cxAgenciaKeyPressed(evt);
+            }
+        });
 
         cxSaldoInicial.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cxSaldoInicial.setText("0.00");
+        cxSaldoInicial.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cxSaldoInicialFocusLost(evt);
+            }
+        });
         cxSaldoInicial.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cxSaldoInicialMouseClicked(evt);
+            }
+        });
+        cxSaldoInicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cxSaldoInicialKeyPressed(evt);
             }
         });
 
@@ -155,7 +172,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
             }
         });
 
-        btSalvarCC.setText("Salvar e criar Conta Corrente");
+        btSalvarCC.setText("Salvar ");
         btSalvarCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalvarCCActionPerformed(evt);
@@ -184,12 +201,22 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                 pwSenhaMouseClicked(evt);
             }
         });
+        pwSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pwSenhaKeyPressed(evt);
+            }
+        });
 
         pwConfirmeSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pwConfirmeSenha.setText("000000");
         pwConfirmeSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pwConfirmeSenhaMouseClicked(evt);
+            }
+        });
+        pwConfirmeSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pwConfirmeSenhaKeyPressed(evt);
             }
         });
 
@@ -201,6 +228,8 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Separador)
+            .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,32 +238,44 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                     .addComponent(rotNAg)
                     .addComponent(rotConfirmeSenha))
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cxNumeroConta)
-                    .addComponent(cxAgencia)
-                    .addComponent(pwSenha)
-                    .addComponent(pwConfirmeSenha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Crifaro2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btSalvarCC))
-                    .addComponent(rotLimiteCC)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cxSaldoInicial, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(rotSaldoIncial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(304, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btSair))
-            .addComponent(Separador)
-            .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                                        .addGap(193, 193, 193))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Crifaro2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btSalvarCC)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btSair))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rotLimiteCC)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(cxSaldoInicial, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(rotSaldoIncial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 345, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,36 +284,41 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                 .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotNConta)
-                    .addComponent(rotSaldoIncial)
-                    .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rotNAg)
-                        .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Cifrao)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotSenha)
-                    .addComponent(rotLimiteCC)
-                    .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotConfirmeSenha)
-                    .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Crifaro2))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSalvarCC)
-                    .addComponent(btLimpar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btSair))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btSalvarCC)
+                            .addComponent(btSair))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotNConta)
+                            .addComponent(rotSaldoIncial)
+                            .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(rotNAg)
+                                .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Cifrao)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotSenha)
+                            .addComponent(rotLimiteCC)
+                            .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotConfirmeSenha)
+                            .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Crifaro2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btLimpar)
+                        .addContainerGap(53, Short.MAX_VALUE))))
         );
 
         pack();
@@ -312,6 +358,10 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     }//GEN-LAST:event_cxNumeroContaMouseClicked
 
     private void cxNumeroContaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyPressed
+    
+        
+
+    
 
     }//GEN-LAST:event_cxNumeroContaKeyPressed
 
@@ -338,6 +388,26 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     private void cxLimiteCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxLimiteCCMouseClicked
         limparCampo(cxLimiteCC);
     }//GEN-LAST:event_cxLimiteCCMouseClicked
+
+    private void cxAgenciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxAgenciaKeyPressed
+
+    }//GEN-LAST:event_cxAgenciaKeyPressed
+
+    private void pwSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwSenhaKeyPressed
+
+    }//GEN-LAST:event_pwSenhaKeyPressed
+
+    private void cxSaldoInicialKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxSaldoInicialKeyPressed
+
+    }//GEN-LAST:event_cxSaldoInicialKeyPressed
+
+    private void cxSaldoInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxSaldoInicialFocusLost
+
+    }//GEN-LAST:event_cxSaldoInicialFocusLost
+
+    private void pwConfirmeSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwConfirmeSenhaKeyPressed
+
+    }//GEN-LAST:event_pwConfirmeSenhaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -366,7 +436,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpar() {
-        String numeroContaPadrao = "00000-0";
+        String numeroContaPadrao = "00000-X";
         String agenciaPadrao = "0000";
         String saldoInicialPadrao = "0.00";
         String limiteCCPadrao = "100.00";
@@ -401,9 +471,13 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         double limiteCC = Double.parseDouble(cxLimiteCC.getText());
 
         try {
-
             if (!senha.equals(confirmacaoSenha)) {
                 throw new InvalidaException("As senhas não correspondem");
+            }
+
+            if (!OperacoesBancarias.validarSenha(senha)) {
+                throw new InvalidaException("A senha deve conter 6 digitos numéricos");
+
             }
 
             if (!OperacoesBancarias.validarNumeroConta(numeroConta)) {
@@ -419,13 +493,11 @@ public class CriarContaCorrente extends javax.swing.JFrame {
             }
 
             if (limiteCC < 100) {
-                limiteCC = 100;
-                throw new InvalidaException("O limite da conta corrente padrão é R$100.00");
+                throw new InvalidaException("Limite mínimo da conta corrente é R$100.00");
             }
 
             if (BancoContas.verificarContaExistente(numeroConta)) {
                 throw new InvalidaException("A conta já existe");
-
             }
 
             ContaCorrente contaCorrente = new ContaCorrente(numeroConta, agencia, senha, saldoInicial, limiteCC, limiteCC);
@@ -434,12 +506,47 @@ public class CriarContaCorrente extends javax.swing.JFrame {
 
             limpar();
 
+            String message = "<html><b>Número da Conta:</b> " + numeroConta + "<br><b>Agência:</b> " + agencia + "<br><b>Senha:</b> " + senha + "<br><br>Conta corrente criada com sucesso</html>";
             SwingUtilities.invokeLater(() -> {
-                JOptionPane.showMessageDialog(this, "Conta corrente criada com sucesso", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, message, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             });
         } catch (InvalidaException e) {
             JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    private void arrumaFloat(FocusEvent evt) {
+        JTextField textField = (JTextField) evt.getSource();
+        String text = textField.getText();
+
+        // Substitui a vírgula por ponto
+        text = text.replace(',', '.');
+
+        // Verifica se o ponto está presente no texto
+        if (!text.contains(".")) {
+            // Adiciona ".00" caso não exista ponto
+            text += ".00";
+        }
+
+        textField.setText(text);
+    }
+
+    private void limitaCaracters(KeyEvent evt, JTextField componente, int tamanho) {
+
+        int k = evt.getKeyChar();
+        if (Character.isDigit(k)) {
+            if (componente.getText().length() == tamanho) {
+                evt.consume(); // Impede a entrada adicional de caracteres
+            }
+        } else {
+            evt.consume(); // Impede a entrada de caracteres não numéricos
+        }
+    }
+
+    private void limitarNumeroCaracteres(java.awt.event.KeyEvent evt, int maxCaracteres) {
+        if (cxNumeroConta.getText().length() >= maxCaracteres) {
+            evt.consume(); // Impede a entrada de mais caracteres
+        }
+
+    }
 }

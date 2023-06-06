@@ -40,6 +40,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar Contas"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mBuscarContaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mBuscarContaActionPerformed"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mOpera&#xe7;&#xf5;esBancarias">
           <Properties>
