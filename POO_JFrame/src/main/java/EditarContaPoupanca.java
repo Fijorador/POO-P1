@@ -532,6 +532,12 @@ public class EditarContaPoupanca extends javax.swing.JFrame {
                 throw new InvalidaException("A conta não é uma Conta Poupança");
             }
 
+          
+            int resposta = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja salvar as alterações na conta?", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if (resposta != JOptionPane.YES_OPTION) {
+                return; 
+            }
+
             ContaPoupanca contaPoupancaNova = new ContaPoupanca(numeroConta, agencia, senha, saldoInicial, taxaJurosPadrao);
 
             BancoContas.getBanco().excluirConta(numeroConta);
@@ -544,7 +550,7 @@ public class EditarContaPoupanca extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, message, "Sucesso ao editar conta: " + numeroConta, JOptionPane.INFORMATION_MESSAGE);
             });
         } catch (InvalidaException e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro de Exceção", JOptionPane.ERROR_MESSAGE);
         }
     }
 

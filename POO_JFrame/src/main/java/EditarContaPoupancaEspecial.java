@@ -507,7 +507,7 @@ public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
         ContaPoupancaEspecial conta = (ContaPoupancaEspecial) BancoContas.getBanco().getContaByNumero(numeroConta);
 
         if (conta != null) {
-            // Obtenha os valores dos campos (supondo que sejam campos de entrada de texto)
+
             String agencia = conta.getAgencia();
             String senha = conta.getSenha();
             String confirmacaoSenha = senha;
@@ -515,7 +515,6 @@ public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
             double taxaJuros = conta.getJuros();
             double limite = conta.getLimite();
 
-            // Realize as operações de edição com o objeto "conta" aqui
             cxNumeroConta.setText(numeroConta);
             cxAgencia.setText(agencia);
             pwSenha.setText(senha);
@@ -527,14 +526,13 @@ public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
     }
 
     public void editarContaPoupancaEspecial() {
-        
-        
         String agencia = cxAgencia.getText();
         String numeroConta = cxNumeroConta.getText();
         String senha = new String(pwSenha.getPassword());
         String confirmacaoSenha = new String(pwConfirmeSenha.getPassword());
         double saldoInicial = Double.parseDouble(cxSaldoInicial.getText());
         double limiteCPE = Double.parseDouble(cxLimiteCPE.getText());
+        double taxaJuros = Double.parseDouble(cxTaxaJuros.getText());
 
         try {
             if (!senha.equals(confirmacaoSenha)) {
@@ -557,7 +555,7 @@ public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
                 throw new InvalidaException("O saldo inicial deve ser maior ou igual a zero");
             }
 
-            if (limiteCPE < 500) {
+            if (limiteCPE < 300) {
                 throw new InvalidaException("Limite mínimo da conta Poupanca Especial é R$300.00");
             }
 
@@ -565,15 +563,17 @@ public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
                 throw new InvalidaException("A conta não existe");
             }
 
-            
             ContaPoupancaEspecial contaPoupancaEspecialExistente = (ContaPoupancaEspecial) BancoContas.getBanco().getContaByNumero(numeroConta);
 
-           
-            ContaCorrente contaCorrenteNova = new ContaCorrente(numeroConta, agencia, senha, saldoInicial, limiteCPE, contaPoupancaEspecialExistente.getLimiteDisponivel());
+            int resposta = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja salvar as alterações na conta?", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if (resposta != JOptionPane.YES_OPTION) {
+                return;
+            }
 
-            
+            ContaPoupancaEspecial contaPoupancaEspecialNova = new ContaPoupancaEspecial(numeroConta, agencia, senha, saldoInicial, taxaJuros, limiteCPE, contaPoupancaEspecialExistente.getLimiteDisponivel());
+
             BancoContas.getBanco().excluirConta(numeroConta);
-            BancoContas.getBanco().addContaCorrente(contaCorrenteNova);
+            BancoContas.getBanco().addContaPoupancaEspecial(contaPoupancaEspecialNova);
 
             limpar();
 
@@ -582,26 +582,25 @@ public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, message, "Sucesso ao editar conta: " + numeroConta, JOptionPane.INFORMATION_MESSAGE);
             });
         } catch (InvalidaException e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro de Exceção", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-      public void carregamentoEdicao(String numeroConta) {
+
+    public void carregamentoEdicao(String numeroConta) {
 
         pwSenha.setEchoChar('\u0000');
         pwConfirmeSenha.setEchoChar('\u0000');
-        
+
         ContaCorrente conta = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
 
         if (conta != null) {
-            // Obtenha os valores dos campos (supondo que sejam campos de entrada de texto)
+
             String agencia = conta.getAgencia();
             String senha = conta.getSenha();
             String confirmacaoSenha = senha;
             double saldoInicial = conta.getSaldo();
             double limiteCPE = conta.getLimite();
 
-           
             cxNumeroConta.setText(numeroConta);
             cxAgencia.setText(agencia);
             pwSenha.setText(senha);
@@ -612,8 +611,7 @@ public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
         }
     }
 
-
-private void limitarTamanhoCampo(int tamanhoMaximo, JTextField campo, java.awt.event.KeyEvent evt) {
+    private void limitarTamanhoCampo(int tamanhoMaximo, JTextField campo, java.awt.event.KeyEvent evt) {
         int k = evt.getKeyChar();
         if ((k > 47 && k < 58)) {
             if (campo.getText().length() == tamanhoMaximo) {

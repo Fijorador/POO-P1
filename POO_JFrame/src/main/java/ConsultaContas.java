@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,15 +15,13 @@ import javax.swing.table.DefaultTableModel;
  */
 /**
  *
- * @author Mateus
+ * @author Mateus Moreira Fonseca RA:1426885
  */
 public class ConsultaContas extends javax.swing.JFrame {
 
     private static ConsultaContas instancia;
 
-    /**
-     * Creates new form CriarContaCorrente
-     */
+    
     public ConsultaContas() {
         initComponents();
         cxNumeroConta.requestFocus();
@@ -97,6 +96,12 @@ public class ConsultaContas extends javax.swing.JFrame {
         btPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btPesquisarActionPerformed(evt);
+            }
+        });
+
+        PainelContas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PainelContasMouseClicked(evt);
             }
         });
 
@@ -359,6 +364,10 @@ public class ConsultaContas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TodasContasActionPerformed
 
+    private void PainelContasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelContasMouseClicked
+
+    }//GEN-LAST:event_PainelContasMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Corrente;
@@ -418,7 +427,7 @@ public class ConsultaContas extends javax.swing.JFrame {
                 todasContas();
             } else if (Corrente.isSelected()) {
                 limparTabela();
-                correnteContas();
+                preencheTabela();
             } else if (Poupanca.isSelected()) {
 
                 limparTabela();
@@ -624,7 +633,7 @@ public class ConsultaContas extends javax.swing.JFrame {
         }
     }
 
-    private void correnteContas() {
+    private void preencheTabela() {
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
         model.setRowCount(0); // Limpa a tabela
 

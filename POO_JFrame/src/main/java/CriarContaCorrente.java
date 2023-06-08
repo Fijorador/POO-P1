@@ -60,32 +60,31 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         pwSenha = new javax.swing.JPasswordField();
         pwConfirmeSenha = new javax.swing.JPasswordField();
-        Separador = new javax.swing.JSeparator();
         Cifrao = new javax.swing.JLabel();
         Crifaro2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        rotNConta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotNConta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotNConta.setText("Numero da Conta :");
 
-        rotNAg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotNAg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotNAg.setText("Numero da Agencia:");
 
-        rotTituloPaginaCC.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        rotTituloPaginaCC.setFont(rotTituloPaginaCC.getFont().deriveFont(rotTituloPaginaCC.getFont().getSize()+12f));
         rotTituloPaginaCC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rotTituloPaginaCC.setText("| Criar Conta Corrente |");
 
-        rotSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotSenha.setText("Senha:");
 
-        rotConfirmeSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotConfirmeSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotConfirmeSenha.setText("Confirme a Senha:");
 
-        rotSaldoIncial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotSaldoIncial.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotSaldoIncial.setText("Saldo Inicial:");
 
-        rotLimiteCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotLimiteCC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotLimiteCC.setText("Limite da Conta:");
 
         cxNumeroConta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -233,11 +232,12 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Separador)
-            .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btLimpar)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rotNConta)
@@ -250,25 +250,31 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                             .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Crifaro2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(rotLimiteCC)
-                            .addComponent(rotSaldoIncial)
+                                    .addComponent(rotLimiteCC)
+                                    .addComponent(rotSaldoIncial))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btSalvarCC)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btSair)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Crifaro2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(cxLimiteCC)
+                                            .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btSalvarCC)
+                                        .addGap(13, 13, 13)
+                                        .addComponent(btSair)))
+                                .addContainerGap())))))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -276,38 +282,42 @@ public class CriarContaCorrente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotNConta)
-                    .addComponent(rotSaldoIncial)
-                    .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rotNAg)
-                        .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Cifrao)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotSenha)
-                    .addComponent(rotLimiteCC)
-                    .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotConfirmeSenha)
-                    .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Crifaro2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotNConta)
+                            .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotNAg)
+                            .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotSenha)
+                            .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotConfirmeSenha)
+                            .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rotSaldoIncial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cifrao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rotLimiteCC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Crifaro2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btSair)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btLimpar)
-                        .addComponent(btSalvarCC)))
+                        .addComponent(btSair)
+                        .addComponent(btSalvarCC))
+                    .addComponent(btLimpar))
                 .addContainerGap())
         );
 
@@ -422,7 +432,6 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cifrao;
     private javax.swing.JLabel Crifaro2;
-    private javax.swing.JSeparator Separador;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSalvarCC;
@@ -517,7 +526,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, message, "Sucesso ao criar conta:" + numeroConta, JOptionPane.INFORMATION_MESSAGE);
             });
         } catch (InvalidaException e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro de Exceção", JOptionPane.ERROR_MESSAGE);
         }
 
     }

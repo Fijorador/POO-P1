@@ -23,8 +23,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Separador" max="32767" attributes="0"/>
-          <Component id="rotTituloPaginaPP" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -47,33 +45,35 @@
                   </Group>
                   <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="btSalvarCP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btSair" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="rotLimiteCP" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cxTaxaJuros" min="-2" pref="64" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rotPorcentagem" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="rotCifrao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="rotLimiteCP" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="cxSaldoInicial" alignment="0" max="32767" attributes="0"/>
-                              <Component id="rotSaldoIncial" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="cxTaxaJuros" min="-2" pref="107" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rotPorcentagem" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
+                      <Component id="cxSaldoInicial" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="rotTituloPaginaPP" alignment="0" pref="425" max="32767" attributes="0"/>
+                  <Component id="Separador" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,52 +84,59 @@
               <Component id="rotTituloPaginaPP" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="Separador" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rotNConta" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cxNumeroConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btSalvarCP" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rotNAg" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cxAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rotSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="pwSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rotConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="pwConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="rotNConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cxNumeroConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="rotNAg" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cxAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="rotSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pwSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="rotConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pwConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cxSaldoInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rotCifrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="rotLimiteCP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cxTaxaJuros" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rotPorcentagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btSalvarCP" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cxSaldoInicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rotCifrao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rotLimiteCP" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cxTaxaJuros" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rotPorcentagem" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -138,7 +145,7 @@
     <Component class="javax.swing.JLabel" name="rotNConta">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Numero da Conta :"/>
       </Properties>
@@ -146,7 +153,7 @@
     <Component class="javax.swing.JLabel" name="rotNAg">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Numero da Agencia:"/>
       </Properties>
@@ -163,7 +170,7 @@
     <Component class="javax.swing.JLabel" name="rotSenha">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Senha:"/>
       </Properties>
@@ -171,7 +178,7 @@
     <Component class="javax.swing.JLabel" name="rotConfirmeSenha">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Confirme a Senha:"/>
       </Properties>
@@ -179,7 +186,7 @@
     <Component class="javax.swing.JLabel" name="rotSaldoIncial">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Saldo Inicial:"/>
       </Properties>
@@ -187,9 +194,9 @@
     <Component class="javax.swing.JLabel" name="rotLimiteCP">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Taxa de Juros"/>
+        <Property name="text" type="java.lang.String" value="Taxa de Juros:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cxNumeroConta">

@@ -453,7 +453,7 @@ public class EditarContaCorrente extends javax.swing.JFrame {
         ContaCorrente conta = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
 
         if (conta != null) {
-           
+
             String agencia = conta.getAgencia();
             String senha = conta.getSenha();
             String confirmacaoSenha = senha;
@@ -542,13 +542,15 @@ public class EditarContaCorrente extends javax.swing.JFrame {
                 throw new InvalidaException("A conta não existe");
             }
 
-            
             ContaCorrente contaCorrenteExistente = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
 
-         
+            int resposta = JOptionPane.showConfirmDialog(this, "Tem certeza que deseja salvar as alterações na conta?", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if (resposta != JOptionPane.YES_OPTION) {
+                return;
+            }
+
             ContaCorrente contaCorrenteNova = new ContaCorrente(numeroConta, agencia, senha, saldoInicial, limiteCC, contaCorrenteExistente.getLimiteDisponivel());
 
-          
             BancoContas.getBanco().excluirConta(numeroConta);
             BancoContas.getBanco().addContaCorrente(contaCorrenteNova);
 
@@ -559,7 +561,7 @@ public class EditarContaCorrente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, message, "Sucesso ao editar conta: " + numeroConta, JOptionPane.INFORMATION_MESSAGE);
             });
         } catch (InvalidaException e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro de Exceção", JOptionPane.ERROR_MESSAGE);
         }
     }
 

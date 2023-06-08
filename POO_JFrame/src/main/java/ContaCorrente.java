@@ -60,18 +60,7 @@ public class ContaCorrente extends Conta {
         } else {
             return false;
         }
-    }
-
-    //Sobrescrita
-    @Override
-    public void consultarSaldo() {
-        double saldoConta = getSaldo();
-        double saldoLimite = getLimite();
-        double saldoTotal = saldoConta + saldoLimite;
-        System.out.println("Saldo atual (Conta Corrente - Saldo em Conta):R$ " + saldoConta);
-        System.out.println("Saldo atual (Conta Corrente - Saldo através do Limite):R$ " + saldoLimite);
-        System.out.println("Saldo atual (Conta Corrente - Total):R$ " + saldoTotal);
-    }
+    }  
 
     public boolean transferir(Conta contaDestino, double valor) {
         double saldo = getSaldo();

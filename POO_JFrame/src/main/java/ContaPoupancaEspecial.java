@@ -2,7 +2,7 @@
 
 public class ContaPoupancaEspecial extends ContaPoupanca {
 
-    private double limite;   
+    private double limite;
     private double limiteDisponivel;
 
     public ContaPoupancaEspecial(String numero, String agencia, String senha, double saldo, double juros, double limite, double limiteDisponivel) {
@@ -51,23 +51,6 @@ public class ContaPoupancaEspecial extends ContaPoupanca {
         } else {
             return false;
         }
-    }
-
-    // Sobrescrita
-    @Override
-    public void consultarSaldo() {
-        double saldoAtual = getSaldo();
-        System.out.println("Saldo atual (Conta Poupança Especial): R$" + saldoAtual);
-    }
-
-    // Sobrescrita
-    @Override
-    public double calcularRendimento() {
-        double saldoAtual = getSaldo();
-        double juros = getJuros();
-        return saldoAtual * (juros / 100);
-    }
-
-    
+    }  
 
 }

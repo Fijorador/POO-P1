@@ -18,14 +18,13 @@ public class ContaPoupanca extends Conta {
     }
 
     public double calcularRendimento() {
-        return getSaldo() * (getJuros() / 100);
+        return getSaldo() * (getJuros());
     }
 
     //Sobrescrita
     @Override
     public void depositar(double valor) {
         setSaldo(getSaldo() + valor);
-        System.out.println("Depósito realizado: R$" + valor);
 
     }
 
@@ -34,17 +33,11 @@ public class ContaPoupanca extends Conta {
     public boolean sacar(double valor) throws InvalidaException {
         if (valor <= getSaldo()) {
             setSaldo(getSaldo() - valor);
-            System.out.println("Saque realizado: R$" + valor);
+
             return true;
         } else {
             throw new InvalidaException("Saldo insuficiente para realizar o saque.");
         }
-    }
-
-    //Sobrescrita
-    @Override
-    public void consultarSaldo() {
-        System.out.println("Saldo atual(Poupanca): R$" + getSaldo());
     }
 
 }

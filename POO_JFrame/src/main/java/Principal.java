@@ -3,6 +3,7 @@ import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -23,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
+
     }
 
     public static Principal getInstance() {
@@ -57,22 +59,20 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         rotTituloPrinc = new javax.swing.JLabel();
-        btSair = new javax.swing.JButton();
-        Separador = new javax.swing.JSeparator();
-        txTituloDeposito = new javax.swing.JLabel();
+        pnMetodos = new javax.swing.JPanel();
+        pnSaque = new javax.swing.JDesktopPane();
         txTituloSaque = new javax.swing.JLabel();
-        txTituloTranferencia = new javax.swing.JLabel();
-        txValorDeposito = new javax.swing.JLabel();
-        cxNumeroContaDeposito = new javax.swing.JTextField();
-        txNumeroContaDeposito = new javax.swing.JLabel();
-        cxValorDeposito = new javax.swing.JTextField();
-        btDepositar = new javax.swing.JButton();
+        pwSenhaSaque = new javax.swing.JPasswordField();
         txValorSaque = new javax.swing.JLabel();
         cxNumeroContaSaque = new javax.swing.JTextField();
         txNumeroContaSaque = new javax.swing.JLabel();
         cxValorSaque = new javax.swing.JTextField();
         btSacar = new javax.swing.JButton();
         txSenha = new javax.swing.JLabel();
+        pnTransferencia = new javax.swing.JDesktopPane();
+        txContaDestino = new javax.swing.JLabel();
+        pwSenhaTransferencia = new javax.swing.JPasswordField();
+        txTituloTranferencia = new javax.swing.JLabel();
         txValorTransferencia = new javax.swing.JLabel();
         cxNumeroContaOrigem = new javax.swing.JTextField();
         txContaOrigem = new javax.swing.JLabel();
@@ -80,78 +80,60 @@ public class Principal extends javax.swing.JFrame {
         btTraferir = new javax.swing.JButton();
         txSenhaTranferencia = new javax.swing.JLabel();
         cxNumeroContaDestino = new javax.swing.JTextField();
-        txContaDestino = new javax.swing.JLabel();
-        pwSenhaTransferencia = new javax.swing.JPasswordField();
-        pwSenhaSaque = new javax.swing.JPasswordField();
+        pnDeposito = new javax.swing.JDesktopPane();
+        txValorDeposito = new javax.swing.JLabel();
+        cxNumeroContaDeposito = new javax.swing.JTextField();
+        txNumeroContaDeposito = new javax.swing.JLabel();
+        cxValorDeposito = new javax.swing.JTextField();
+        btDepositar = new javax.swing.JButton();
+        txTituloDeposito = new javax.swing.JLabel();
+        pnSubMetodos = new javax.swing.JPanel();
+        Separador = new javax.swing.JSeparator();
+        pnConsultaRendimento = new javax.swing.JDesktopPane();
+        cxNumeroContaConsultarRendimento = new javax.swing.JTextField();
+        txNumeroContaRendimento = new javax.swing.JLabel();
+        btCalcularRendimento = new javax.swing.JButton();
+        txCalculoRendimento = new javax.swing.JLabel();
+        btSair = new javax.swing.JButton();
+        pnConsultaSaldo = new javax.swing.JDesktopPane();
+        cxNumeroContaConsultarSaldo = new javax.swing.JTextField();
+        txNumeroContaSaldo = new javax.swing.JLabel();
+        btConsultarSaldo = new javax.swing.JButton();
+        txConsultarSaldo = new javax.swing.JLabel();
+        txSubTitulo = new javax.swing.JLabel();
         BarraMenu = new javax.swing.JMenuBar();
         mCriarConta = new javax.swing.JMenu();
         iCriarContaCorrente = new javax.swing.JMenuItem();
         iCriarContaPoupanca = new javax.swing.JMenuItem();
-        iCriarContaPoupanca1 = new javax.swing.JMenuItem();
-        mOperaçõesBancarias = new javax.swing.JMenu();
-        sbTodasContas = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        sbMetodosUnicos = new javax.swing.JMenu();
-        iTransferencia = new javax.swing.JMenuItem();
+        iCriarContaPoupancaEspeial = new javax.swing.JMenuItem();
         mBuscarConta = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        rotTituloPrinc.setFont(new java.awt.Font("Segoe UI", 2, 48)); // NOI18N
-        rotTituloPrinc.setText("Sistema Gerencial de Contas Bancarias");
+        rotTituloPrinc.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        rotTituloPrinc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rotTituloPrinc.setText("SISTEMA GERENCIAL ");
 
-        btSair.setText("Sair");
-        btSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSairActionPerformed(evt);
-            }
-        });
+        pnSaque.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pnSaque.setOpaque(false);
 
-        txTituloDeposito.setText("Deposito:");
-
+        txTituloSaque.setBackground(new java.awt.Color(255, 0, 0));
+        txTituloSaque.setForeground(new java.awt.Color(255, 255, 255));
+        txTituloSaque.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txTituloSaque.setText("Saque");
 
-        txTituloTranferencia.setText("Transferencia");
-
-        txValorDeposito.setText("Valor R$:");
-
-        cxNumeroContaDeposito.addMouseListener(new java.awt.event.MouseAdapter() {
+        pwSenhaSaque.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cxNumeroContaDepositoMouseClicked(evt);
+                pwSenhaSaqueMouseClicked(evt);
             }
         });
-        cxNumeroContaDeposito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cxNumeroContaDepositoActionPerformed(evt);
-            }
-        });
-        cxNumeroContaDeposito.addKeyListener(new java.awt.event.KeyAdapter() {
+        pwSenhaSaque.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                cxNumeroContaDepositoKeyTyped(evt);
+                pwSenhaSaqueKeyTyped(evt);
             }
         });
 
-        txNumeroContaDeposito.setText("Numero da Conta:");
-
-        cxValorDeposito.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cxValorDepositoFocusLost(evt);
-            }
-        });
-        cxValorDeposito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cxValorDepositoActionPerformed(evt);
-            }
-        });
-
-        btDepositar.setText("Depositar");
-        btDepositar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDepositarActionPerformed(evt);
-            }
-        });
-
+        txValorSaque.setForeground(new java.awt.Color(255, 255, 255));
         txValorSaque.setText("Valor R$:");
 
         cxNumeroContaSaque.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,11 +152,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txNumeroContaSaque.setForeground(new java.awt.Color(255, 255, 255));
         txNumeroContaSaque.setText("Numero da Conta:");
 
         cxValorSaque.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cxValorSaqueFocusLost(evt);
+            }
+        });
+        cxValorSaque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxValorSaqueMouseClicked(evt);
             }
         });
         cxValorSaque.addActionListener(new java.awt.event.ActionListener() {
@@ -190,10 +178,92 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txSenha.setForeground(new java.awt.Color(255, 255, 255));
         txSenha.setText("Senha:");
 
+        pnSaque.setLayer(txTituloSaque, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnSaque.setLayer(pwSenhaSaque, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnSaque.setLayer(txValorSaque, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnSaque.setLayer(cxNumeroContaSaque, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnSaque.setLayer(txNumeroContaSaque, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnSaque.setLayer(cxValorSaque, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnSaque.setLayer(btSacar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnSaque.setLayer(txSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout pnSaqueLayout = new javax.swing.GroupLayout(pnSaque);
+        pnSaque.setLayout(pnSaqueLayout);
+        pnSaqueLayout.setHorizontalGroup(
+            pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnSaqueLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnSaqueLayout.createSequentialGroup()
+                        .addGroup(pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txNumeroContaSaque)
+                            .addComponent(txValorSaque)
+                            .addComponent(txSenha))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cxNumeroContaSaque)
+                            .addComponent(cxValorSaque)
+                            .addComponent(pwSenhaSaque, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSaqueLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txTituloSaque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnSaqueLayout.setVerticalGroup(
+            pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnSaqueLayout.createSequentialGroup()
+                .addComponent(txTituloSaque)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxNumeroContaSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txNumeroContaSaque))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxValorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txValorSaque))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txSenha)
+                    .addComponent(pwSenhaSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btSacar))
+        );
+
+        pnTransferencia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pnTransferencia.setOpaque(false);
+
+        txContaDestino.setForeground(new java.awt.Color(255, 255, 255));
+        txContaDestino.setText("Numero da Conta Destino:");
+
+        pwSenhaTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwSenhaTransferenciaActionPerformed(evt);
+            }
+        });
+        pwSenhaTransferencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pwSenhaTransferenciaKeyTyped(evt);
+            }
+        });
+
+        txTituloTranferencia.setBackground(new java.awt.Color(255, 0, 0));
+        txTituloTranferencia.setForeground(new java.awt.Color(255, 255, 255));
+        txTituloTranferencia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txTituloTranferencia.setText("Transferencia");
+
+        txValorTransferencia.setForeground(new java.awt.Color(255, 255, 255));
         txValorTransferencia.setText("Valor R$:");
 
+        cxNumeroContaOrigem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxNumeroContaOrigemMouseClicked(evt);
+            }
+        });
         cxNumeroContaOrigem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cxNumeroContaOrigemActionPerformed(evt);
@@ -205,6 +275,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txContaOrigem.setForeground(new java.awt.Color(255, 255, 255));
         txContaOrigem.setText("Numero da Conta Origem:");
 
         cxValorTransferencia.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -230,8 +301,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        txSenhaTranferencia.setForeground(new java.awt.Color(255, 255, 255));
         txSenhaTranferencia.setText("Senha:");
 
+        cxNumeroContaDestino.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxNumeroContaDestinoMouseClicked(evt);
+            }
+        });
         cxNumeroContaDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cxNumeroContaDestinoActionPerformed(evt);
@@ -243,24 +320,394 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        txContaDestino.setText("Numero da Conta Destino:");
+        pnTransferencia.setLayer(txContaDestino, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(pwSenhaTransferencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(txTituloTranferencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(txValorTransferencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(cxNumeroContaOrigem, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(txContaOrigem, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(cxValorTransferencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(btTraferir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(txSenhaTranferencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnTransferencia.setLayer(cxNumeroContaDestino, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        pwSenhaTransferencia.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout pnTransferenciaLayout = new javax.swing.GroupLayout(pnTransferencia);
+        pnTransferencia.setLayout(pnTransferenciaLayout);
+        pnTransferenciaLayout.setHorizontalGroup(
+            pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTransferenciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txTituloTranferencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnTransferenciaLayout.createSequentialGroup()
+                        .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTransferenciaLayout.createSequentialGroup()
+                                .addComponent(txContaOrigem)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cxNumeroContaOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTransferenciaLayout.createSequentialGroup()
+                                .addComponent(txContaDestino)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cxNumeroContaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTransferenciaLayout.createSequentialGroup()
+                                .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txValorTransferencia)
+                                    .addComponent(txSenhaTranferencia))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cxValorTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pwSenhaTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btTraferir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnTransferenciaLayout.setVerticalGroup(
+            pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTransferenciaLayout.createSequentialGroup()
+                .addComponent(txTituloTranferencia)
+                .addGap(15, 15, 15)
+                .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxNumeroContaOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txContaOrigem))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxNumeroContaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txContaDestino))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxValorTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txValorTransferencia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txSenhaTranferencia)
+                    .addComponent(pwSenhaTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btTraferir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnDeposito.setBackground(new java.awt.Color(255, 51, 0));
+        pnDeposito.setToolTipText("");
+        pnDeposito.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pnDeposito.setOpaque(false);
+
+        txValorDeposito.setForeground(new java.awt.Color(255, 255, 255));
+        txValorDeposito.setText("Valor R$:");
+
+        cxNumeroContaDeposito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxNumeroContaDepositoMouseClicked(evt);
+            }
+        });
+        cxNumeroContaDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwSenhaTransferenciaActionPerformed(evt);
+                cxNumeroContaDepositoActionPerformed(evt);
             }
         });
-        pwSenhaTransferencia.addKeyListener(new java.awt.event.KeyAdapter() {
+        cxNumeroContaDeposito.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                pwSenhaTransferenciaKeyTyped(evt);
+                cxNumeroContaDepositoKeyTyped(evt);
             }
         });
 
-        pwSenhaSaque.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                pwSenhaSaqueKeyTyped(evt);
+        txNumeroContaDeposito.setForeground(new java.awt.Color(255, 255, 255));
+        txNumeroContaDeposito.setText("Numero da Conta:");
+
+        cxValorDeposito.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cxValorDepositoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cxValorDepositoFocusLost(evt);
             }
         });
+        cxValorDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxValorDepositoActionPerformed(evt);
+            }
+        });
+
+        btDepositar.setText("Depositar");
+        btDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDepositarActionPerformed(evt);
+            }
+        });
+
+        txTituloDeposito.setBackground(new java.awt.Color(255, 0, 0));
+        txTituloDeposito.setForeground(new java.awt.Color(255, 255, 255));
+        txTituloDeposito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txTituloDeposito.setText("Deposito");
+
+        pnDeposito.setLayer(txValorDeposito, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnDeposito.setLayer(cxNumeroContaDeposito, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnDeposito.setLayer(txNumeroContaDeposito, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnDeposito.setLayer(cxValorDeposito, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnDeposito.setLayer(btDepositar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnDeposito.setLayer(txTituloDeposito, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout pnDepositoLayout = new javax.swing.GroupLayout(pnDeposito);
+        pnDeposito.setLayout(pnDepositoLayout);
+        pnDepositoLayout.setHorizontalGroup(
+            pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDepositoLayout.createSequentialGroup()
+                .addGroup(pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnDepositoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txNumeroContaDeposito)
+                            .addComponent(txValorDeposito))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cxValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cxNumeroContaDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDepositoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btDepositar))
+                    .addComponent(txTituloDeposito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnDepositoLayout.setVerticalGroup(
+            pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDepositoLayout.createSequentialGroup()
+                .addComponent(txTituloDeposito)
+                .addGap(15, 15, 15)
+                .addGroup(pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txNumeroContaDeposito)
+                    .addComponent(cxNumeroContaDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txValorDeposito))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btDepositar)
+                .addContainerGap())
+        );
+
+        pnConsultaRendimento.setBackground(new java.awt.Color(255, 51, 0));
+        pnConsultaRendimento.setToolTipText("");
+        pnConsultaRendimento.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pnConsultaRendimento.setOpaque(false);
+
+        cxNumeroContaConsultarRendimento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cxNumeroContaConsultarRendimentoFocusGained(evt);
+            }
+        });
+        cxNumeroContaConsultarRendimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxNumeroContaConsultarRendimentoMouseClicked(evt);
+            }
+        });
+        cxNumeroContaConsultarRendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxNumeroContaConsultarRendimentoActionPerformed(evt);
+            }
+        });
+        cxNumeroContaConsultarRendimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cxNumeroContaConsultarRendimentoKeyTyped(evt);
+            }
+        });
+
+        txNumeroContaRendimento.setForeground(new java.awt.Color(255, 255, 255));
+        txNumeroContaRendimento.setText("Numero da Conta:");
+
+        btCalcularRendimento.setText("Calcular Rendimento");
+        btCalcularRendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCalcularRendimentoActionPerformed(evt);
+            }
+        });
+
+        txCalculoRendimento.setBackground(new java.awt.Color(255, 0, 0));
+        txCalculoRendimento.setForeground(new java.awt.Color(255, 255, 255));
+        txCalculoRendimento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txCalculoRendimento.setText("Calcular Rendimento Anual");
+
+        pnConsultaRendimento.setLayer(cxNumeroContaConsultarRendimento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnConsultaRendimento.setLayer(txNumeroContaRendimento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnConsultaRendimento.setLayer(btCalcularRendimento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnConsultaRendimento.setLayer(txCalculoRendimento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout pnConsultaRendimentoLayout = new javax.swing.GroupLayout(pnConsultaRendimento);
+        pnConsultaRendimento.setLayout(pnConsultaRendimentoLayout);
+        pnConsultaRendimentoLayout.setHorizontalGroup(
+            pnConsultaRendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnConsultaRendimentoLayout.createSequentialGroup()
+                .addGroup(pnConsultaRendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnConsultaRendimentoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txNumeroContaRendimento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cxNumeroContaConsultarRendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConsultaRendimentoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btCalcularRendimento))
+                    .addComponent(txCalculoRendimento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnConsultaRendimentoLayout.setVerticalGroup(
+            pnConsultaRendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnConsultaRendimentoLayout.createSequentialGroup()
+                .addComponent(txCalculoRendimento)
+                .addGap(15, 15, 15)
+                .addGroup(pnConsultaRendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txNumeroContaRendimento)
+                    .addComponent(cxNumeroContaConsultarRendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btCalcularRendimento)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
+
+        pnConsultaSaldo.setBackground(new java.awt.Color(255, 51, 0));
+        pnConsultaSaldo.setToolTipText("");
+        pnConsultaSaldo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pnConsultaSaldo.setOpaque(false);
+
+        cxNumeroContaConsultarSaldo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cxNumeroContaConsultarSaldoFocusGained(evt);
+            }
+        });
+        cxNumeroContaConsultarSaldo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxNumeroContaConsultarSaldoMouseClicked(evt);
+            }
+        });
+        cxNumeroContaConsultarSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxNumeroContaConsultarSaldoActionPerformed(evt);
+            }
+        });
+        cxNumeroContaConsultarSaldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cxNumeroContaConsultarSaldoKeyTyped(evt);
+            }
+        });
+
+        txNumeroContaSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        txNumeroContaSaldo.setText("Numero da Conta:");
+
+        btConsultarSaldo.setText("Consultar Saldo");
+        btConsultarSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConsultarSaldoActionPerformed(evt);
+            }
+        });
+
+        txConsultarSaldo.setBackground(new java.awt.Color(255, 0, 0));
+        txConsultarSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        txConsultarSaldo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txConsultarSaldo.setText("Consultar Saldo");
+
+        pnConsultaSaldo.setLayer(cxNumeroContaConsultarSaldo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnConsultaSaldo.setLayer(txNumeroContaSaldo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnConsultaSaldo.setLayer(btConsultarSaldo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        pnConsultaSaldo.setLayer(txConsultarSaldo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout pnConsultaSaldoLayout = new javax.swing.GroupLayout(pnConsultaSaldo);
+        pnConsultaSaldo.setLayout(pnConsultaSaldoLayout);
+        pnConsultaSaldoLayout.setHorizontalGroup(
+            pnConsultaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnConsultaSaldoLayout.createSequentialGroup()
+                .addGroup(pnConsultaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnConsultaSaldoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txNumeroContaSaldo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cxNumeroContaConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnConsultaSaldoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btConsultarSaldo))
+                    .addComponent(txConsultarSaldo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnConsultaSaldoLayout.setVerticalGroup(
+            pnConsultaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnConsultaSaldoLayout.createSequentialGroup()
+                .addComponent(txConsultarSaldo)
+                .addGap(15, 15, 15)
+                .addGroup(pnConsultaSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txNumeroContaSaldo)
+                    .addComponent(cxNumeroContaConsultarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btConsultarSaldo)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnSubMetodosLayout = new javax.swing.GroupLayout(pnSubMetodos);
+        pnSubMetodos.setLayout(pnSubMetodosLayout);
+        pnSubMetodosLayout.setHorizontalGroup(
+            pnSubMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnSubMetodosLayout.createSequentialGroup()
+                .addComponent(Separador)
+                .addContainerGap())
+            .addGroup(pnSubMetodosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnConsultaRendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(162, 162, 162)
+                .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnSubMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnSubMetodosLayout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addComponent(pnConsultaSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(455, Short.MAX_VALUE)))
+        );
+        pnSubMetodosLayout.setVerticalGroup(
+            pnSubMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnSubMetodosLayout.createSequentialGroup()
+                .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(pnSubMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSubMetodosLayout.createSequentialGroup()
+                        .addComponent(pnConsultaRendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(pnSubMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSubMetodosLayout.createSequentialGroup()
+                    .addContainerGap(29, Short.MAX_VALUE)
+                    .addComponent(pnConsultaSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
+        );
+
+        javax.swing.GroupLayout pnMetodosLayout = new javax.swing.GroupLayout(pnMetodos);
+        pnMetodos.setLayout(pnMetodosLayout);
+        pnMetodosLayout.setHorizontalGroup(
+            pnMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnSubMetodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnMetodosLayout.createSequentialGroup()
+                .addComponent(pnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnMetodosLayout.setVerticalGroup(
+            pnMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMetodosLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(pnMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addComponent(pnSubMetodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        txSubTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txSubTitulo.setText("| CONTAS BANCARIAS |");
 
         mCriarConta.setText("Criar Contas");
 
@@ -280,36 +727,15 @@ public class Principal extends javax.swing.JFrame {
         });
         mCriarConta.add(iCriarContaPoupanca);
 
-        iCriarContaPoupanca1.setText("Criar Conta Poupança Especial");
-        iCriarContaPoupanca1.addActionListener(new java.awt.event.ActionListener() {
+        iCriarContaPoupancaEspeial.setText("Criar Conta Poupança Especial");
+        iCriarContaPoupancaEspeial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iCriarContaPoupanca1ActionPerformed(evt);
+                iCriarContaPoupancaEspeialActionPerformed(evt);
             }
         });
-        mCriarConta.add(iCriarContaPoupanca1);
+        mCriarConta.add(iCriarContaPoupancaEspeial);
 
         BarraMenu.add(mCriarConta);
-
-        mOperaçõesBancarias.setText("Operações Bacarias");
-
-        sbTodasContas.setText("Todas Contas");
-
-        jMenuItem1.setText("Realizar Saque");
-        sbTodasContas.add(jMenuItem1);
-
-        jMenuItem2.setText("Realizar Deposito");
-        sbTodasContas.add(jMenuItem2);
-
-        mOperaçõesBancarias.add(sbTodasContas);
-
-        sbMetodosUnicos.setText("Métodos Unicos");
-
-        iTransferencia.setText("Realizar Transferencia");
-        sbMetodosUnicos.add(iTransferencia);
-
-        mOperaçõesBancarias.add(sbMetodosUnicos);
-
-        BarraMenu.add(mOperaçõesBancarias);
 
         mBuscarConta.setText("Pesquisar Contas");
         mBuscarConta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -333,133 +759,26 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(rotTituloPrinc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Separador, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
-                .addComponent(rotTituloPrinc)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(txTituloDeposito)
-                .addGap(300, 300, 300)
-                .addComponent(txTituloSaque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txTituloTranferencia)
-                .addGap(179, 179, 179))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txNumeroContaDeposito)
-                    .addComponent(txValorDeposito))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btDepositar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cxNumeroContaDeposito)
-                    .addComponent(cxValorDeposito))
-                .addGap(138, 138, 138)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txNumeroContaSaque)
-                    .addComponent(txValorSaque)
-                    .addComponent(txSenha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btSacar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cxNumeroContaSaque)
-                    .addComponent(cxValorSaque, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(pwSenhaSaque, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txContaOrigem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cxNumeroContaOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txContaDestino)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cxNumeroContaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txValorTransferencia)
-                            .addComponent(txSenhaTranferencia))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btTraferir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cxValorTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pwSenhaTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(127, 127, 127))
+                        .addComponent(txSubTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnMetodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 7, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(rotTituloPrinc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txSubTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txTituloDeposito)
-                    .addComponent(txTituloSaque)
-                    .addComponent(txTituloTranferencia))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cxNumeroContaDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txNumeroContaDeposito))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cxValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txValorDeposito))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btDepositar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cxNumeroContaSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txNumeroContaSaque))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cxValorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txValorSaque))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txSenha)
-                                    .addComponent(pwSenhaSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btSacar)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxNumeroContaOrigem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txContaOrigem))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxNumeroContaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txContaDestino))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxValorTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txValorTransferencia))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txSenhaTranferencia)
-                            .addComponent(pwSenhaTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btTraferir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(pnMetodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        sair();
-    }//GEN-LAST:event_btSairActionPerformed
 
     private void iCriarContaCorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCriarContaCorrenteActionPerformed
         dispose();
@@ -473,10 +792,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void mBuscarContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mBuscarContaMouseClicked
         dispose();
-        ConsultaContas consultaContas = ConsultaContas.getInstance();
 
+        ConsultaContas consultaContas = ConsultaContas.getInstance();
         consultaContas.limparTabela();
         consultaContas.setVisible(true);
+
         consultaContas.setVisible(true);    }//GEN-LAST:event_mBuscarContaMouseClicked
 
     private void iCriarContaPoupancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCriarContaPoupancaActionPerformed
@@ -485,104 +805,51 @@ public class Principal extends javax.swing.JFrame {
         criarContaPoupanca.setVisible(true);
     }//GEN-LAST:event_iCriarContaPoupancaActionPerformed
 
-    private void iCriarContaPoupanca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCriarContaPoupanca1ActionPerformed
-
+    private void iCriarContaPoupancaEspeialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iCriarContaPoupancaEspeialActionPerformed
+        dispose();
         CriarContaPoupancaEspecial criarContaPoupancaEspecial = CriarContaPoupancaEspecial.getInstance();
         criarContaPoupancaEspecial.setVisible(true);
-    }//GEN-LAST:event_iCriarContaPoupanca1ActionPerformed
+    }//GEN-LAST:event_iCriarContaPoupancaEspeialActionPerformed
 
-    private void cxNumeroContaDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaDepositoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cxNumeroContaDepositoActionPerformed
-
-    private void cxValorDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxValorDepositoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cxValorDepositoActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        sair();
+    }//GEN-LAST:event_btSairActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
         depositar();
     }//GEN-LAST:event_btDepositarActionPerformed
 
-    private void cxNumeroContaSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaSaqueActionPerformed
-
-    }//GEN-LAST:event_cxNumeroContaSaqueActionPerformed
-
-    private void cxValorSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxValorSaqueActionPerformed
+    private void cxValorDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxValorDepositoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cxValorSaqueActionPerformed
-
-    private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
-        try {
-            sacar();
-        } catch (InvalidaException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, "Erro não mapeado" + ex.getMessage(), ex);
-
-        }
-    }//GEN-LAST:event_btSacarActionPerformed
-
-    private void cxNumeroContaOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaOrigemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cxNumeroContaOrigemActionPerformed
-
-    private void cxValorTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxValorTransferenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cxValorTransferenciaActionPerformed
-
-    private void btTraferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTraferirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btTraferirActionPerformed
-
-    private void cxNumeroContaDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaDestinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cxNumeroContaDestinoActionPerformed
-
-    private void cxNumeroContaDepositoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaDepositoMouseClicked
-        limparCampo(cxNumeroContaDeposito);
-    }//GEN-LAST:event_cxNumeroContaDepositoMouseClicked
-
-    private void cxNumeroContaDepositoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaDepositoKeyTyped
-        limitarTamanhoCampo(6, cxNumeroContaDeposito, evt);
-    }//GEN-LAST:event_cxNumeroContaDepositoKeyTyped
+    }//GEN-LAST:event_cxValorDepositoActionPerformed
 
     private void cxValorDepositoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxValorDepositoFocusLost
         formataNumero(cxValorDeposito);
     }//GEN-LAST:event_cxValorDepositoFocusLost
 
-    private void cxNumeroContaSaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaSaqueMouseClicked
-        limparCampo(cxNumeroContaSaque);
-    }//GEN-LAST:event_cxNumeroContaSaqueMouseClicked
+    private void cxNumeroContaDepositoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaDepositoKeyTyped
+        limitarTamanhoCampo(6, cxNumeroContaDeposito, evt);
+    }//GEN-LAST:event_cxNumeroContaDepositoKeyTyped
 
-    private void cxNumeroContaSaqueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaSaqueKeyTyped
-        limitarTamanhoCampo(6, cxNumeroContaSaque, evt);
-    }//GEN-LAST:event_cxNumeroContaSaqueKeyTyped
+    private void cxNumeroContaDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaDepositoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxNumeroContaDepositoActionPerformed
 
-    private void cxNumeroContaOrigemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaOrigemKeyTyped
-        limitarTamanhoCampo(6, cxNumeroContaOrigem, evt);
-    }//GEN-LAST:event_cxNumeroContaOrigemKeyTyped
+    private void cxNumeroContaDepositoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaDepositoMouseClicked
+        limparCampo(cxNumeroContaDeposito);
+    }//GEN-LAST:event_cxNumeroContaDepositoMouseClicked
 
     private void cxNumeroContaDestinoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaDestinoKeyTyped
         limitarTamanhoCampo(6, cxNumeroContaDestino, evt);
     }//GEN-LAST:event_cxNumeroContaDestinoKeyTyped
 
-    private void cxValorSaqueFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxValorSaqueFocusLost
-        formataNumero(cxValorSaque);
-    }//GEN-LAST:event_cxValorSaqueFocusLost
-
-    private void cxValorTransferenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxValorTransferenciaFocusLost
-        formataNumero(cxValorTransferencia);
-    }//GEN-LAST:event_cxValorTransferenciaFocusLost
-
-    private void pwSenhaSaqueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwSenhaSaqueKeyTyped
-        limitarTamanhoCampo(6, pwSenhaSaque, evt);
-    }//GEN-LAST:event_pwSenhaSaqueKeyTyped
-
-    private void pwSenhaTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwSenhaTransferenciaActionPerformed
+    private void cxNumeroContaDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaDestinoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pwSenhaTransferenciaActionPerformed
+    }//GEN-LAST:event_cxNumeroContaDestinoActionPerformed
 
-    private void pwSenhaTransferenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwSenhaTransferenciaKeyTyped
-        formataNumero(pwSenhaTransferencia);
-    }//GEN-LAST:event_pwSenhaTransferenciaKeyTyped
+    private void btTraferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTraferirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTraferirActionPerformed
 
     private void btTraferirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btTraferirMouseClicked
         try {
@@ -591,6 +858,123 @@ public class Principal extends javax.swing.JFrame {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, "Erro não mapeado" + ex.getMessage(), ex);
         }
     }//GEN-LAST:event_btTraferirMouseClicked
+
+    private void cxValorTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxValorTransferenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxValorTransferenciaActionPerformed
+
+    private void cxValorTransferenciaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxValorTransferenciaFocusLost
+        formataNumero(cxValorTransferencia);
+    }//GEN-LAST:event_cxValorTransferenciaFocusLost
+
+    private void cxNumeroContaOrigemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaOrigemKeyTyped
+        limitarTamanhoCampo(6, cxNumeroContaOrigem, evt);
+    }//GEN-LAST:event_cxNumeroContaOrigemKeyTyped
+
+    private void cxNumeroContaOrigemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaOrigemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxNumeroContaOrigemActionPerformed
+
+    private void pwSenhaTransferenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwSenhaTransferenciaKeyTyped
+        limitarTamanhoCampo(6, pwSenhaTransferencia, evt);
+    }//GEN-LAST:event_pwSenhaTransferenciaKeyTyped
+
+    private void pwSenhaTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwSenhaTransferenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwSenhaTransferenciaActionPerformed
+
+    private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
+        try {
+            sacar();
+        } catch (InvalidaException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, "Erro de Exceção Chegou ao Ultimo Nivel" + ex.getMessage(), ex);
+
+        }
+    }//GEN-LAST:event_btSacarActionPerformed
+
+    private void cxValorSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxValorSaqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxValorSaqueActionPerformed
+
+    private void cxValorSaqueFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxValorSaqueFocusLost
+        formataNumero(cxValorSaque);
+    }//GEN-LAST:event_cxValorSaqueFocusLost
+
+    private void cxNumeroContaSaqueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaSaqueKeyTyped
+        limitarTamanhoCampo(6, cxNumeroContaSaque, evt);
+    }//GEN-LAST:event_cxNumeroContaSaqueKeyTyped
+
+    private void cxNumeroContaSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaSaqueActionPerformed
+
+    }//GEN-LAST:event_cxNumeroContaSaqueActionPerformed
+
+    private void cxNumeroContaSaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaSaqueMouseClicked
+        limparCampo(cxNumeroContaSaque);
+    }//GEN-LAST:event_cxNumeroContaSaqueMouseClicked
+
+    private void pwSenhaSaqueKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwSenhaSaqueKeyTyped
+        limitarTamanhoCampo(6, pwSenhaSaque, evt);
+    }//GEN-LAST:event_pwSenhaSaqueKeyTyped
+
+    private void cxValorDepositoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxValorDepositoFocusGained
+        limparCampo(cxValorDeposito);
+    }//GEN-LAST:event_cxValorDepositoFocusGained
+
+    private void cxValorSaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxValorSaqueMouseClicked
+        limparCampo(cxValorSaque);
+    }//GEN-LAST:event_cxValorSaqueMouseClicked
+
+    private void pwSenhaSaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwSenhaSaqueMouseClicked
+        limparCampo(pwSenhaSaque);
+    }//GEN-LAST:event_pwSenhaSaqueMouseClicked
+
+    private void cxNumeroContaOrigemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaOrigemMouseClicked
+        limparCampo(cxNumeroContaOrigem);
+    }//GEN-LAST:event_cxNumeroContaOrigemMouseClicked
+
+    private void cxNumeroContaDestinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaDestinoMouseClicked
+        limparCampo(cxNumeroContaDestino);
+    }//GEN-LAST:event_cxNumeroContaDestinoMouseClicked
+
+    private void btCalcularRendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalcularRendimentoActionPerformed
+        calcularRendimentos();
+    }//GEN-LAST:event_btCalcularRendimentoActionPerformed
+
+    private void cxNumeroContaConsultarRendimentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarRendimentoKeyTyped
+        limitarTamanhoCampo(6, cxNumeroContaConsultarRendimento, evt);
+    }//GEN-LAST:event_cxNumeroContaConsultarRendimentoKeyTyped
+
+    private void cxNumeroContaConsultarRendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarRendimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxNumeroContaConsultarRendimentoActionPerformed
+
+    private void cxNumeroContaConsultarRendimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarRendimentoMouseClicked
+        limparCampo(cxNumeroContaConsultarRendimento);
+    }//GEN-LAST:event_cxNumeroContaConsultarRendimentoMouseClicked
+
+    private void cxNumeroContaConsultarRendimentoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarRendimentoFocusGained
+
+    }//GEN-LAST:event_cxNumeroContaConsultarRendimentoFocusGained
+
+    private void btConsultarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarSaldoActionPerformed
+        consultarSaldo();
+    }//GEN-LAST:event_btConsultarSaldoActionPerformed
+
+    private void cxNumeroContaConsultarSaldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarSaldoKeyTyped
+        limitarTamanhoCampo(6, cxNumeroContaConsultarSaldo, evt);
+    }//GEN-LAST:event_cxNumeroContaConsultarSaldoKeyTyped
+
+    private void cxNumeroContaConsultarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarSaldoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxNumeroContaConsultarSaldoActionPerformed
+
+    private void cxNumeroContaConsultarSaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarSaldoMouseClicked
+        limparCampo(cxNumeroContaConsultarSaldo);
+    }//GEN-LAST:event_cxNumeroContaConsultarSaldoMouseClicked
+
+    private void cxNumeroContaConsultarSaldoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxNumeroContaConsultarSaldoFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cxNumeroContaConsultarSaldoFocusGained
 
     /**
      * @param args the command line arguments
@@ -668,10 +1052,16 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraMenu;
     private javax.swing.JSeparator Separador;
+    private javax.swing.JButton btCalcularRendimento;
+    private javax.swing.JButton btConsultarSaldo;
+    private javax.swing.JButton btConsultarSaldo1;
     private javax.swing.JButton btDepositar;
     private javax.swing.JButton btSacar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btTraferir;
+    private javax.swing.JTextField cxNumeroContaConsultarRendimento;
+    private javax.swing.JTextField cxNumeroContaConsultarSaldo;
+    private javax.swing.JTextField cxNumeroContaConsultarSaldo1;
     private javax.swing.JTextField cxNumeroContaDeposito;
     private javax.swing.JTextField cxNumeroContaDestino;
     private javax.swing.JTextField cxNumeroContaOrigem;
@@ -681,24 +1071,33 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField cxValorTransferencia;
     private javax.swing.JMenuItem iCriarContaCorrente;
     private javax.swing.JMenuItem iCriarContaPoupanca;
-    private javax.swing.JMenuItem iCriarContaPoupanca1;
-    private javax.swing.JMenuItem iTransferencia;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem iCriarContaPoupancaEspeial;
     private javax.swing.JMenu mBuscarConta;
     private javax.swing.JMenu mCriarConta;
-    private javax.swing.JMenu mOperaçõesBancarias;
+    private javax.swing.JDesktopPane pnConsultaRendimento;
+    private javax.swing.JDesktopPane pnConsultaSaldo;
+    private javax.swing.JDesktopPane pnConsultaSaldo1;
+    private javax.swing.JDesktopPane pnDeposito;
+    private javax.swing.JPanel pnMetodos;
+    private javax.swing.JDesktopPane pnSaque;
+    private javax.swing.JPanel pnSubMetodos;
+    private javax.swing.JDesktopPane pnTransferencia;
     private javax.swing.JPasswordField pwSenhaSaque;
     private javax.swing.JPasswordField pwSenhaTransferencia;
     private javax.swing.JLabel rotTituloPrinc;
-    private javax.swing.JMenu sbMetodosUnicos;
-    private javax.swing.JMenu sbTodasContas;
+    private javax.swing.JLabel txCalculoRendimento;
+    private javax.swing.JLabel txConsultarSaldo;
+    private javax.swing.JLabel txConsultarSaldo1;
     private javax.swing.JLabel txContaDestino;
     private javax.swing.JLabel txContaOrigem;
     private javax.swing.JLabel txNumeroContaDeposito;
+    private javax.swing.JLabel txNumeroContaRendimento;
+    private javax.swing.JLabel txNumeroContaSaldo;
+    private javax.swing.JLabel txNumeroContaSaldo1;
     private javax.swing.JLabel txNumeroContaSaque;
     private javax.swing.JLabel txSenha;
     private javax.swing.JLabel txSenhaTranferencia;
+    private javax.swing.JLabel txSubTitulo;
     private javax.swing.JLabel txTituloDeposito;
     private javax.swing.JLabel txTituloSaque;
     private javax.swing.JLabel txTituloTranferencia;
@@ -848,8 +1247,8 @@ public class Principal extends javax.swing.JFrame {
                         double limiteDisponivelOrigem = contaCorrenteOrigem.getLimiteDisponivel();
 
                         JOptionPane.showMessageDialog(this, """
-                                                    Transfer\u00eancia realizada com sucesso:
-                                                    Conta de origem: """ + contaOrigem.getNumero() + "\n"
+                                                Transfer\u00eancia realizada com sucesso:
+                                                Conta de origem: """ + contaOrigem.getNumero() + "\n"
                                 + "Saldo anterior: " + saldoAnteriorOrigem + "\n"
                                 + "Novo saldo: " + novoSaldoOrigem + "\n"
                                 + "Limite disponível: " + limiteDisponivelOrigem + "\n\n"
@@ -867,6 +1266,63 @@ public class Principal extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "Conta de origem ou conta de destino não encontrada.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void consultarSaldo() {
+        String numeroContaConsultarSaldo = cxNumeroContaConsultarSaldo.getText();
+        BancoContas banco = BancoContas.getBanco();
+        Conta contaConsultarSaldo = banco.getContaByNumero(numeroContaConsultarSaldo);
+
+        if (contaConsultarSaldo != null) {
+            double saldoConta = contaConsultarSaldo.getSaldo();
+            String tipoConta = "";
+            double saldoLimite = 0.0;
+            double saldoTotal = 0.0;
+
+            if (contaConsultarSaldo instanceof ContaPoupanca) {
+                tipoConta = "Poupança";
+                saldoTotal = saldoConta + saldoLimite;
+            } else if (contaConsultarSaldo instanceof ContaCorrente) {
+                tipoConta = "Corrente";
+                saldoLimite = ((ContaCorrente) contaConsultarSaldo).getLimite();
+                saldoTotal = saldoConta + saldoLimite;
+            } else if (contaConsultarSaldo instanceof ContaPoupancaEspecial) {
+                tipoConta = "Poupança Especial";
+                saldoLimite = ((ContaPoupancaEspecial) contaConsultarSaldo).getLimiteDisponivel();
+                saldoTotal = saldoConta + saldoLimite;
+            }
+
+            JOptionPane.showMessageDialog(this, "Saldo da conta " + numeroContaConsultarSaldo + " (" + tipoConta + ")\nSaldo em Conta: R$ " + saldoConta
+                    + "\nSaldo no Limite: R$ " + saldoLimite
+                    + "\nSaldo Total: R$ " + saldoTotal, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Conta não encontrada.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void calcularRendimentos() {
+        String numeroConta = cxNumeroContaConsultarRendimento.getText();
+        BancoContas banco = BancoContas.getBanco();
+        Conta conta = banco.getContaByNumero(numeroConta);
+
+        if (conta != null) {
+            double rendimentos = 0.0;
+
+            if (conta instanceof ContaPoupanca) {
+                ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
+                rendimentos = contaPoupanca.calcularRendimento();
+            } else if (conta instanceof ContaPoupancaEspecial) {
+                ContaPoupancaEspecial contaPoupancaEspecial = (ContaPoupancaEspecial) conta;
+                rendimentos = contaPoupancaEspecial.calcularRendimento();
+            } else {
+                JOptionPane.showMessageDialog(this, "Não é possível calcular rendimentos para essa conta.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            JOptionPane.showMessageDialog(this, "Rendimentos da conta " + numeroConta + ": R$ " + rendimentos, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Conta não encontrada.", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }
 

@@ -1,8 +1,10 @@
 //Nome: Mateus Moreira Fonseca - RA: 1426885
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Conta implements OperacoesBancarias{
+public abstract class Conta implements OperacoesBancarias {
+
     private String numero;
     private String agencia;
     private double saldo;
@@ -70,9 +72,5 @@ public abstract class Conta implements OperacoesBancarias{
             }
         }
     }
-
-  
-    
-    
 
 }

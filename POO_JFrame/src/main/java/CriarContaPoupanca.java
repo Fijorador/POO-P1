@@ -66,27 +66,27 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        rotNConta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotNConta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotNConta.setText("Numero da Conta :");
 
-        rotNAg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotNAg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotNAg.setText("Numero da Agencia:");
 
         rotTituloPaginaPP.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         rotTituloPaginaPP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         rotTituloPaginaPP.setText("| Criar Conta Poupança |");
 
-        rotSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotSenha.setText("Senha:");
 
-        rotConfirmeSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotConfirmeSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotConfirmeSenha.setText("Confirme a Senha:");
 
-        rotSaldoIncial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotSaldoIncial.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         rotSaldoIncial.setText("Saldo Inicial:");
 
-        rotLimiteCP.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        rotLimiteCP.setText("Taxa de Juros");
+        rotLimiteCP.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        rotLimiteCP.setText("Taxa de Juros:");
 
         cxNumeroConta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cxNumeroConta.setText("00000-X");
@@ -233,8 +233,6 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Separador)
-            .addComponent(rotTituloPaginaPP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,27 +250,29 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
                                 .addComponent(pwSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                                 .addComponent(cxNumeroConta, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))))
                     .addComponent(btLimpar))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rotSaldoIncial)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btSalvarCP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btSair))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(rotLimiteCP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cxTaxaJuros, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rotPorcentagem))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(rotCifrao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rotLimiteCP)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cxSaldoInicial, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(rotSaldoIncial, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cxTaxaJuros, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rotPorcentagem)))
-                        .addGap(0, 14, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(cxSaldoInicial)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(rotTituloPaginaPP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addComponent(Separador, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,42 +281,46 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
                 .addComponent(rotTituloPaginaPP, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 124, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btSair)
+                            .addComponent(btSalvarCP))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rotNConta)
-                            .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rotNAg)
-                            .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rotSenha)
-                            .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rotConfirmeSenha)
-                            .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rotNConta)
+                                    .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rotNAg)
+                                    .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rotSenha)
+                                    .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rotConfirmeSenha)
+                                    .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rotSaldoIncial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rotCifrao))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(rotLimiteCP)
+                                    .addComponent(cxTaxaJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rotPorcentagem))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btLimpar)
-                            .addComponent(btSalvarCP)
-                            .addComponent(btSair)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rotSaldoIncial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rotCifrao))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rotLimiteCP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxTaxaJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rotPorcentagem))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btLimpar)
+                        .addGap(0, 6, Short.MAX_VALUE))))
         );
 
         pack();
@@ -412,15 +416,15 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
         limitarTamanhoCampo(4, cxAgencia, evt);    }//GEN-LAST:event_cxAgenciaKeyTyped
 
     private void pwSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwSenhaKeyTyped
-        limitarTamanhoCampo(6, pwSenha, evt);      
+        limitarTamanhoCampo(6, pwSenha, evt);
     }//GEN-LAST:event_pwSenhaKeyTyped
 
     private void pwConfirmeSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwConfirmeSenhaKeyTyped
-        limitarTamanhoCampo(6, pwConfirmeSenha, evt);        
+        limitarTamanhoCampo(6, pwConfirmeSenha, evt);
     }//GEN-LAST:event_pwConfirmeSenhaKeyTyped
 
     private void cxTaxaJurosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxTaxaJurosFocusLost
-        formataNumero(cxTaxaJuros);       
+        formataNumero(cxTaxaJuros);
     }//GEN-LAST:event_cxTaxaJurosFocusLost
 
     /**
@@ -525,7 +529,7 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, message, "Sucesso ao criar conta:" + numeroConta, JOptionPane.INFORMATION_MESSAGE);
             });
         } catch (InvalidaException e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro de Exceção", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -542,17 +546,14 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
     }
 
     private void formataNumero(JTextField campo) {
-        String texto = campo.getText(); 
+        String texto = campo.getText();
 
-        
         String semLetras = texto.replaceAll("[^\\d.,]", "");
 
-        
         String resultado = semLetras.replace(",", ".");
 
-        
         if (!resultado.matches("\\d+\\.\\d{2}")) {
-            
+
             resultado += ".00";
         }
 

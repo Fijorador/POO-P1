@@ -6,9 +6,7 @@ public interface OperacoesBancarias {
 
     void depositar(double valor);
 
-    boolean sacar(double valor) throws InvalidaException;
-
-    void consultarSaldo();
+    boolean sacar(double valor) throws InvalidaException;    
     
     static boolean validarNumeroConta(String numero) {
         numero = numero.replace("-", "");
