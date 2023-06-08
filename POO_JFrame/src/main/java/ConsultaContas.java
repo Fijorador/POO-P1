@@ -1,21 +1,11 @@
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -37,6 +27,8 @@ public class ConsultaContas extends javax.swing.JFrame {
     public ConsultaContas() {
         initComponents();
         cxNumeroConta.requestFocus();
+        setResizable(false);
+        setLocationRelativeTo(null);
 
     }
 
@@ -56,22 +48,30 @@ public class ConsultaContas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         rotTituloPaginaConsultar = new javax.swing.JLabel();
         btSair = new javax.swing.JButton();
         Separador = new javax.swing.JSeparator();
         cxNumeroConta = new javax.swing.JTextField();
         txNumeroConta = new javax.swing.JLabel();
-        btLimpar1 = new javax.swing.JButton();
+        btPesquisar = new javax.swing.JButton();
         PainelContas = new javax.swing.JScrollPane();
         tbContas = new javax.swing.JTable();
         btDeletar = new javax.swing.JButton();
+        btDetalhes = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
+        Corrente = new javax.swing.JRadioButton();
+        PoupancaEspecial = new javax.swing.JRadioButton();
+        Poupanca = new javax.swing.JRadioButton();
+        txTipo = new javax.swing.JLabel();
+        TodasContas = new javax.swing.JRadioButton();
         btEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         rotTituloPaginaConsultar.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         rotTituloPaginaConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rotTituloPaginaConsultar.setText("| Consultar Contas |");
+        rotTituloPaginaConsultar.setText("| Contas |");
 
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +81,11 @@ public class ConsultaContas extends javax.swing.JFrame {
         });
 
         cxNumeroConta.setToolTipText("");
+        cxNumeroConta.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cxNumeroContaFocusGained(evt);
+            }
+        });
         cxNumeroConta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cxNumeroContaKeyTyped(evt);
@@ -89,10 +94,10 @@ public class ConsultaContas extends javax.swing.JFrame {
 
         txNumeroConta.setText("Numero da Conta:");
 
-        btLimpar1.setText("Pesquisar");
-        btLimpar1.addActionListener(new java.awt.event.ActionListener() {
+        btPesquisar.setText("Pesquisar");
+        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLimpar1ActionPerformed(evt);
+                btPesquisarActionPerformed(evt);
             }
         });
 
@@ -104,7 +109,7 @@ public class ConsultaContas extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Tipo", "Numero da Conta", "Agencia:"
+                "Numero da Conta", "Agencia:", "Tipo"
             }
         ));
         tbContas.setColumnSelectionAllowed(true);
@@ -124,6 +129,55 @@ public class ConsultaContas extends javax.swing.JFrame {
             }
         });
 
+        btDetalhes.setText("Exibir Detalhes de Conta");
+        btDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDetalhesActionPerformed(evt);
+            }
+        });
+
+        btLimpar.setText("Limpar Filtro");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(Corrente);
+        Corrente.setText("Corrente");
+        Corrente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CorrenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(PoupancaEspecial);
+        PoupancaEspecial.setText("Poupança Especial");
+        PoupancaEspecial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PoupancaEspecialActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(Poupanca);
+        Poupanca.setText("Poupança");
+        Poupanca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PoupancaActionPerformed(evt);
+            }
+        });
+
+        txTipo.setText("Tipo:");
+
+        buttonGroup1.add(TodasContas);
+        TodasContas.setSelected(true);
+        TodasContas.setText("Todos");
+        TodasContas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TodasContasActionPerformed(evt);
+            }
+        });
+
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,27 +189,46 @@ public class ConsultaContas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rotTituloPaginaConsultar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1059, Short.MAX_VALUE)
+            .addComponent(rotTituloPaginaConsultar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(Separador))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(txNumeroConta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btLimpar1)
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btDeletar)
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Poupanca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Corrente))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(PoupancaEspecial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TodasContas))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txTipo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txNumeroConta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btPesquisar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btSair)
-                        .addContainerGap())
-                    .addComponent(PainelContas)))
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btDetalhes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btDeletar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btSair))
+                    .addComponent(PainelContas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addComponent(Separador, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,24 +236,39 @@ public class ConsultaContas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(rotTituloPaginaConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txNumeroConta)
-                            .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btLimpar1))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PainelContas, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                        .addComponent(PainelContas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btDeletar)
-                            .addComponent(btEditar)
-                            .addComponent(btSair))
-                        .addGap(12, 12, 12))))
+                            .addComponent(btSair)
+                            .addComponent(btDetalhes)
+                            .addComponent(btEditar))
+                        .addGap(12, 12, 12))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(txTipo)
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Poupanca)
+                                    .addComponent(Corrente)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txNumeroConta)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PoupancaEspecial)
+                            .addComponent(TodasContas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btPesquisar)
+                            .addComponent(btLimpar))
+                        .addGap(26, 106, Short.MAX_VALUE))))
         );
 
         pack();
@@ -190,20 +278,17 @@ public class ConsultaContas extends javax.swing.JFrame {
         dispose();
         Principal principal = Principal.getInstance();
         principal.setVisible(true);
+        limparTabela();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void btLimpar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpar1ActionPerformed
+    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
         pesquisar();
-
-    }//GEN-LAST:event_btLimpar1ActionPerformed
+        cxNumeroConta.requestFocus();
+    }//GEN-LAST:event_btPesquisarActionPerformed
 
     private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btDeletarActionPerformed
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btEditarActionPerformed
+    }//GEN-LAST:event_btDeletarActionPerformed
 
     private void btDeletarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDeletarMouseClicked
         deletar();
@@ -211,68 +296,197 @@ public class ConsultaContas extends javax.swing.JFrame {
 
     private void cxNumeroContaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyTyped
 
-        limitaCaracters(evt, cxNumeroConta, 6);
-
+        limitarTamanhoCampo(6, cxNumeroConta, evt);
 
     }//GEN-LAST:event_cxNumeroContaKeyTyped
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDetalhesActionPerformed
+        detalhes();
+    }//GEN-LAST:event_btDetalhesActionPerformed
+
+    private void cxNumeroContaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxNumeroContaFocusGained
+        cxNumeroConta.selectAll();
+    }//GEN-LAST:event_cxNumeroContaFocusGained
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        limparCampo(cxNumeroConta);
+        limparTabela();
+        TodasContas.setSelected(true);
+
+
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+
+        dispose();
+        String numeroConta = cxNumeroConta.getText();
+        EditarContaCorrente editarContaCorrente = new EditarContaCorrente(numeroConta);
+        editarContaCorrente.setVisible(true);
+
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void CorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CorrenteActionPerformed
+
+    private void PoupancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PoupancaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PoupancaActionPerformed
+
+    private void PoupancaEspecialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PoupancaEspecialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PoupancaEspecialActionPerformed
+
+    private void TodasContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TodasContasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TodasContasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Corrente;
     private javax.swing.JScrollPane PainelContas;
+    private javax.swing.JRadioButton Poupanca;
+    private javax.swing.JRadioButton PoupancaEspecial;
     private javax.swing.JSeparator Separador;
+    private javax.swing.JRadioButton TodasContas;
     private javax.swing.JButton btDeletar;
+    private javax.swing.JButton btDetalhes;
     private javax.swing.JButton btEditar;
-    private javax.swing.JButton btLimpar1;
+    private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btPesquisar;
     private javax.swing.JButton btSair;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField cxNumeroConta;
     private javax.swing.JLabel rotTituloPaginaConsultar;
     private javax.swing.JTable tbContas;
     private javax.swing.JLabel txNumeroConta;
+    private javax.swing.JLabel txTipo;
     // End of variables declaration//GEN-END:variables
 
-    private void limpar() {
+    private void limparTabela() {
+
+        DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+        model.setRowCount(0);
 
     }
 
-    
-    private void pesquisar() {
+    private void limparCampo(Component componente) {
+        if (componente instanceof JTextField) {
+            JTextField textField = (JTextField) componente;
+            textField.setText("");
+        } else if (componente instanceof JPasswordField) {
+            JPasswordField passwordField = (JPasswordField) componente;
+            passwordField.setText("");
+        }
+    }
+
+    private void limitarTamanhoCampo(int tamanhoMaximo, JTextField campo, java.awt.event.KeyEvent evt) {
+        int k = evt.getKeyChar();
+        if ((k > 47 && k < 58)) {
+            if (campo.getText().length() == tamanhoMaximo) {
+                evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+            }
+        } else {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+        }
+    }
+
+    public void pesquisar() {
         String numeroConta = cxNumeroConta.getText();
+
+        if (numeroConta.isEmpty()) {
+            if (TodasContas.isSelected()) {
+                limparTabela();
+                todasContas();
+            } else if (Corrente.isSelected()) {
+                limparTabela();
+                correnteContas();
+            } else if (Poupanca.isSelected()) {
+
+                limparTabela();
+                poupancaContas();
+            } else if (PoupancaEspecial.isSelected()) {
+
+                limparTabela();
+                poupancaEspecialContas();
+            }
+            return;
+        }
+
         BancoContas banco = BancoContas.getBanco();
-        List<ContaCorrente> contasCorrente = banco.getBdContasCorrente();
-        List<ContaPoupanca> contasPoupanca = banco.getBdContasPoupanca();
-        List<ContaPoupancaEspecial> contasPoupancaEspecial = banco.getBdContasPoupancaEspecial();
 
-        DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
-        model.setRowCount(0); // Clear existing rows
-
-        for (ContaCorrente conta : contasCorrente) {
-            if (conta.getNumero().equals(numeroConta)) {
-                Object[] rowData = {"Conta Corrente", conta.getNumero(), conta.getAgencia()};
+        if (Corrente.isSelected()) {
+            Conta conta = banco.getContaByNumero(numeroConta);
+            if (conta != null && conta instanceof ContaCorrente) {
+                ContaCorrente contaCorrente = (ContaCorrente) conta;
+                limparTabela();
+                DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+                Object[] rowData = {contaCorrente.getNumero(), contaCorrente.getAgencia(), "Conta Corrente"};
                 model.addRow(rowData);
-                return; // No need to check other lists
+            } else {
+                limparTabela();
+                JOptionPane.showMessageDialog(this, "Conta corrente não encontrada.");
+            }
+        } else if (Poupanca.isSelected()) {
+            Conta conta = banco.getContaByNumero(numeroConta);
+            if (conta != null && conta instanceof ContaPoupanca && !(conta instanceof ContaPoupancaEspecial)) {
+                ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
+                limparTabela();
+                DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+                Object[] rowData = {contaPoupanca.getNumero(), contaPoupanca.getAgencia(), "Conta Poupança"};
+                model.addRow(rowData);
+            } else {
+                limparTabela();
+                JOptionPane.showMessageDialog(this, "Conta poupança não encontrada.");
+            }
+        } else if (PoupancaEspecial.isSelected()) {
+            Conta conta = banco.getContaByNumero(numeroConta);
+            if (conta != null && conta instanceof ContaPoupancaEspecial) {
+                ContaPoupancaEspecial contaPoupancaEspecial = (ContaPoupancaEspecial) conta;
+                limparTabela();
+                DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+                Object[] rowData = {contaPoupancaEspecial.getNumero(), contaPoupancaEspecial.getAgencia(), "Conta Poupança Especial"};
+                model.addRow(rowData);
+            } else {
+                limparTabela();
+                JOptionPane.showMessageDialog(this, "Conta poupança especial não encontrada.");
+            }
+        } else if (TodasContas.isSelected()) {
+            String numeroContaPesquisada = cxNumeroConta.getText();
+
+            limparTabela();
+            DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+
+            for (ContaCorrente contaCorrente : banco.getBdContasCorrente()) {
+                if (contaCorrente.getNumero().equals(numeroContaPesquisada)) {
+                    Object[] rowData = {contaCorrente.getNumero(), contaCorrente.getAgencia(), "Conta Corrente"};
+                    model.addRow(rowData);
+                    break;
+                }
+            }
+
+            for (ContaPoupanca contaPoupanca : banco.getBdContasPoupanca()) {
+                if (contaPoupanca.getNumero().equals(numeroContaPesquisada)) {
+                    if (contaPoupanca instanceof ContaPoupancaEspecial) {
+                        ContaPoupancaEspecial contaPoupancaEspecial = (ContaPoupancaEspecial) contaPoupanca;
+                        Object[] rowData = {contaPoupancaEspecial.getNumero(), contaPoupancaEspecial.getAgencia(), "Conta Poupança Especial"};
+                        model.addRow(rowData);
+                    } else {
+                        Object[] rowData = {contaPoupanca.getNumero(), contaPoupanca.getAgencia(), "Conta Poupança"};
+                        model.addRow(rowData);
+                    }
+                    break;
+                }
+            }
+
+            for (ContaPoupancaEspecial contaPoupancaEspecial : banco.getBdContasPoupancaEspecial()) {
+                if (contaPoupancaEspecial.getNumero().equals(numeroContaPesquisada)) {
+                    Object[] rowData = {contaPoupancaEspecial.getNumero(), contaPoupancaEspecial.getAgencia(), "Conta Poupança Especial"};
+                    model.addRow(rowData);
+                    break; // interrompe o loop após encontrar a conta correspondente
+                }
             }
         }
-
-        for (ContaPoupanca conta : contasPoupanca) {
-            if (conta.getNumero().equals(numeroConta)) {
-                Object[] rowData = {"Conta Poupança", conta.getNumero(), conta.getAgencia()};
-                model.addRow(rowData);
-                return; // No need to check other lists
-            }
-        }
-
-        for (ContaPoupancaEspecial conta : contasPoupancaEspecial) {
-            if (conta.getNumero().equals(numeroConta)) {
-                Object[] rowData = {"Conta Poupança Especial", conta.getNumero(), conta.getAgencia()};
-                model.addRow(rowData);
-                return; // No need to check other lists
-            }
-        }
-
-        JOptionPane.showMessageDialog(this, "Conta não encontrada", "Pesquisar Conta", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void deletar() {
@@ -282,20 +496,24 @@ public class ConsultaContas extends javax.swing.JFrame {
             return;
         }
 
-        String tipoConta = (String) tbContas.getValueAt(selectedRow, 0);
-        String numeroConta = (String) tbContas.getValueAt(selectedRow, 1);
-        String agencia = (String) tbContas.getValueAt(selectedRow, 2);
+        String numeroConta = (String) tbContas.getValueAt(selectedRow, 0);
+        String agencia = (String) tbContas.getValueAt(selectedRow, 1);
+        String tipoConta = (String) tbContas.getValueAt(selectedRow, 2);
 
         String message = "<html><b>Número da Conta:</b> " + numeroConta + "<br><b>Agência:</b> " + agencia + "<br><br>Tem certeza que deseja deletar a conta?</html>";
 
         int option = JOptionPane.showConfirmDialog(this, message, "Deletar Conta", JOptionPane.YES_NO_OPTION);
         if (option == JOptionPane.YES_OPTION) {
             BancoContas banco = BancoContas.getBanco();
-            banco.excluirConta(numeroConta);
+            boolean contaDeletada = banco.excluirConta(numeroConta);
 
-            DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
-            model.removeRow(selectedRow);
-            JOptionPane.showMessageDialog(this, "Conta deletada com sucesso", "Deletar Conta", JOptionPane.INFORMATION_MESSAGE);
+            if (contaDeletada) {
+                DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+                model.removeRow(selectedRow);
+                JOptionPane.showMessageDialog(this, "Conta deletada com sucesso\n" + numeroConta, "Deletar Conta", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao deletar a conta", "Deletar Conta", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
@@ -303,10 +521,145 @@ public class ConsultaContas extends javax.swing.JFrame {
         int k = evt.getKeyChar();
         if (Character.isDigit(k)) {
             if (componente.getText().length() == tamanho) {
-                evt.consume(); // Impede a entrada adicional de caracteres
+                evt.consume();
             }
         } else {
-            evt.consume(); // Impede a entrada de caracteres não numéricos
+            evt.consume();
+        }
+    }
+
+    private void detalhes() {
+        int selectedRow = tbContas.getSelectedRow();
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione uma conta para exibir detalhes.");
+            return;
+        }
+
+        String numeroConta = tbContas.getValueAt(selectedRow, 0).toString();
+        String tipoConta = tbContas.getValueAt(selectedRow, 2).toString();
+
+        BancoContas banco = BancoContas.getBanco();
+        Conta conta = banco.getContaByNumero(numeroConta);
+
+        String detalhesConta = "";
+
+        if (tipoConta.equals("Conta Corrente")) {
+            ContaCorrente contaCorrente = (ContaCorrente) conta;
+            detalhesConta = "Número da Conta: " + contaCorrente.getNumero() + "\n"
+                    + "Agência: " + contaCorrente.getAgencia() + "\n"
+                    + "Saldo: " + contaCorrente.getSaldo() + "\n"
+                    + "Limite: " + contaCorrente.getLimite() + "\n"
+                    + "Limite Disponível: " + contaCorrente.getLimiteDisponivel();
+        } else if (tipoConta.equals("Conta Poupança")) {
+            ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
+            detalhesConta = "Número da Conta: " + contaPoupanca.getNumero() + "\n"
+                    + "Agência: " + contaPoupanca.getAgencia() + "\n"
+                    + "Saldo: " + contaPoupanca.getSaldo() + "\n"
+                    + "Taxa de Juros: " + contaPoupanca.getJuros();
+        } else if (tipoConta.equals("Conta Poupança Especial")) {
+            ContaPoupancaEspecial contaPoupancaEspecial = (ContaPoupancaEspecial) conta;
+            detalhesConta = "Número da Conta: " + contaPoupancaEspecial.getNumero() + "\n"
+                    + "Agência: " + contaPoupancaEspecial.getAgencia() + "\n"
+                    + "Saldo: " + contaPoupancaEspecial.getSaldo() + "\n"
+                    + "Taxa de Juros: " + contaPoupancaEspecial.getJuros() + "\n"
+                    + "Limite de Crédito: " + contaPoupancaEspecial.getLimite();
+        }
+
+        JOptionPane.showMessageDialog(this, detalhesConta, "Detalhes da Conta", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void todasContas() {
+        DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+        model.setRowCount(0); // Limpa a tabela
+
+        BancoContas banco = BancoContas.getBanco();
+        List<ContaCorrente> contasCorrente = banco.getBdContasCorrente();
+        List<ContaPoupanca> contasPoupanca = banco.getBdContasPoupanca();
+        List<ContaPoupancaEspecial> contasPoupancaEspecial = banco.getBdContasPoupancaEspecial();
+
+        boolean contaEncontrada = false;
+
+        for (ContaCorrente conta : contasCorrente) {
+            Object[] rowData = {conta.getNumero(), conta.getAgencia(), "Conta Corrente"};
+            model.addRow(rowData);
+            contaEncontrada = true;
+        }
+
+        for (ContaPoupanca conta : contasPoupanca) {
+            Object[] rowData = {conta.getNumero(), conta.getAgencia(), "Conta Poupança"};
+            model.addRow(rowData);
+            contaEncontrada = true;
+        }
+
+        for (ContaPoupancaEspecial conta : contasPoupancaEspecial) {
+            Object[] rowData = {conta.getNumero(), conta.getAgencia(), "Conta Poupança Especial"};
+            model.addRow(rowData);
+            contaEncontrada = true;
+        }
+
+        if (!contaEncontrada) {
+            JOptionPane.showMessageDialog(this, "Nenhuma conta encontrada.");
+        }
+    }
+
+    private void correnteContas() {
+        DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+        model.setRowCount(0); // Limpa a tabela
+
+        BancoContas banco = BancoContas.getBanco();
+        List<ContaCorrente> contasCorrente = banco.getBdContasCorrente();
+
+        boolean contaEncontrada = false;
+
+        for (ContaCorrente conta : contasCorrente) {
+            Object[] rowData = {conta.getNumero(), conta.getAgencia(), "Conta Corrente"};
+            model.addRow(rowData);
+            contaEncontrada = true;
+        }
+
+        if (!contaEncontrada) {
+            JOptionPane.showMessageDialog(this, "Nenhuma conta corrente encontrada.");
+        }
+    }
+
+    private void poupancaContas() {
+        DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+        model.setRowCount(0); // Limpa a tabela
+
+        BancoContas banco = BancoContas.getBanco();
+        List<ContaPoupanca> contasPoupanca = banco.getBdContasPoupanca();
+
+        boolean contaEncontrada = false;
+
+        for (ContaPoupanca conta : contasPoupanca) {
+            Object[] rowData = {conta.getNumero(), conta.getAgencia(), "Conta Poupança"};
+            model.addRow(rowData);
+            contaEncontrada = true;
+        }
+
+        if (!contaEncontrada) {
+            JOptionPane.showMessageDialog(this, "Nenhuma conta poupança encontrada.");
+        }
+    }
+
+    private void poupancaEspecialContas() {
+        DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
+        model.setRowCount(0); // Limpa a tabela
+
+        BancoContas banco = BancoContas.getBanco();
+        List<ContaPoupancaEspecial> contasPoupancaEspecial = banco.getBdContasPoupancaEspecial();
+
+        boolean contaEncontrada = false;
+
+        for (ContaPoupancaEspecial conta : contasPoupancaEspecial) {
+            Object[] rowData = {conta.getNumero(), conta.getAgencia(), "Conta Poupança Especial"};
+            model.addRow(rowData);
+            contaEncontrada = true;
+        }
+
+        if (!contaEncontrada) {
+            JOptionPane.showMessageDialog(this, "Nenhuma conta poupança especial encontrada.");
         }
     }
 

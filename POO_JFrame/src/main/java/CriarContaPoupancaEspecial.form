@@ -24,52 +24,60 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="Separador" max="32767" attributes="0"/>
-          <Component id="rotTituloPaginaCC" alignment="0" max="32767" attributes="0"/>
+          <Component id="rotTituloPaginaCPE" alignment="1" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="rotNConta" min="-2" max="-2" attributes="0"/>
                           <Component id="rotSenha" min="-2" max="-2" attributes="0"/>
                           <Component id="rotNAg" min="-2" max="-2" attributes="0"/>
                           <Component id="rotConfirmeSenha" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cxAgencia" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="pwSenha" min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="cxNumeroConta" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="pwConfirmeSenha" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cxAgencia" pref="81" max="32767" attributes="0"/>
+                          <Component id="pwSenha" pref="81" max="32767" attributes="0"/>
+                          <Component id="cxNumeroConta" alignment="0" pref="81" max="32767" attributes="0"/>
+                          <Component id="pwConfirmeSenha" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="199" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="244" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Cifrao" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Crifaro2" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cxSaldoInicial" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                                  <Component id="cxLimiteCC" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="rotLimiteCC" min="-2" max="-2" attributes="0"/>
-                          <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="btSalvarCC" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btSair" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btLimpar" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btSalvarCPE" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btSair" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Cifrao" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="Crifaro2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cxSaldoInicial" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="cxTaxaJuros" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="cxLimiteCPE" min="-2" pref="107" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rotPorcentagem" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="rotTaxaJuros" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="rotLimiteCPE" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,48 +85,64 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="rotTituloPaginaCC" min="-2" pref="48" max="-2" attributes="0"/>
+              <Component id="rotTituloPaginaCPE" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="Separador" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rotNConta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rotSaldoIncial" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cxNumeroConta" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="rotNAg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cxAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rotNConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cxNumeroConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rotNAg" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cxAgencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rotSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pwSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rotConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pwConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="cxSaldoInicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cifrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cxSaldoInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Cifrao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rotLimiteCPE" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cxLimiteCPE" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Crifaro2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rotTaxaJuros" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cxTaxaJuros" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rotPorcentagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btSalvarCPE" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rotSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rotLimiteCC" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="pwSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rotConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cxLimiteCC" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="pwConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Crifaro2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btSair" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btSalvarCC" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -140,13 +164,13 @@
         <Property name="text" type="java.lang.String" value="Numero da Agencia:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="rotTituloPaginaCC">
+    <Component class="javax.swing.JLabel" name="rotTituloPaginaCPE">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="2"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="| Criar Conta Corrente |"/>
+        <Property name="text" type="java.lang.String" value="| Criar Conta Poupanca Especial |"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="rotSenha">
@@ -173,7 +197,7 @@
         <Property name="text" type="java.lang.String" value="Saldo Inicial:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="rotLimiteCC">
+    <Component class="javax.swing.JLabel" name="rotLimiteCPE">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -217,23 +241,23 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cxSaldoInicialKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="cxLimiteCC">
+    <Component class="javax.swing.JTextField" name="cxLimiteCPE">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="100.00"/>
+        <Property name="text" type="java.lang.String" value="300.00"/>
       </Properties>
       <Events>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cxLimiteCCFocusLost"/>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cxLimiteCCMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxLimiteCCActionPerformed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cxLimiteCPEFocusLost"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cxLimiteCPEMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxLimiteCPEActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btSalvarCC">
+    <Component class="javax.swing.JButton" name="btSalvarCPE">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar "/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarCCActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSalvarCPEActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btLimpar">
@@ -286,6 +310,30 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="R$"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rotTaxaJuros">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Taxa de Juros"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rotPorcentagem">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="%"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxTaxaJuros">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="text" type="java.lang.String" value="5.12"/>
+      </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cxTaxaJurosFocusLost"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cxTaxaJurosMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxTaxaJurosActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

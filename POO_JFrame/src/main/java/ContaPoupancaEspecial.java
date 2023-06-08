@@ -1,19 +1,22 @@
 //Nome: Mateus Moreira Fonseca - RA: 1426885
 
 public class ContaPoupancaEspecial extends ContaPoupanca {
-    private double limiteCredito;
 
-    public ContaPoupancaEspecial(String numero, String agencia, String senha, double saldo, double juros, double limiteCredito) {
+    private double limite;
+    private double limiteDisponiel;
+
+    public ContaPoupancaEspecial(String numero, String agencia, String senha, double saldo, double juros, double limite, double limiteDisponivel) {
         super(numero, agencia, senha, saldo, juros);
-        this.limiteCredito = limiteCredito;
+        this.limite = limite;
+        this.limiteDisponiel = limiteDisponivel;
     }
 
-    public double getLimiteCredito() {
-        return limiteCredito;
+    public double getLimite() {
+        return limite;
     }
 
-    public void setLimiteCredito(double limiteCredito) {
-        this.limiteCredito = limiteCredito;
+    public void setLimiteCredito(double limite) {
+        this.limite = limite;
     }
 
     // Sobrescrita
@@ -28,13 +31,13 @@ public class ContaPoupancaEspecial extends ContaPoupanca {
     public boolean sacar(double valor) {
         double saldoAtual = getSaldo();
 
-        if (valor <= saldoAtual || valor <= limiteCredito) {
+        if (valor <= saldoAtual || valor <= limite) {
             if (valor <= saldoAtual) {
                 setSaldo(saldoAtual - valor);
             } else {
                 double limiteUtilizado = valor - saldoAtual;
                 setSaldo(0);
-                limiteCredito -= limiteUtilizado;
+                limite -= limiteUtilizado;
             }
             return true;
         } else {
@@ -56,6 +59,9 @@ public class ContaPoupancaEspecial extends ContaPoupanca {
         double juros = getJuros();
         return saldoAtual * (juros / 100);
     }
-    
-    
+
+    void setLimite(double limite) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

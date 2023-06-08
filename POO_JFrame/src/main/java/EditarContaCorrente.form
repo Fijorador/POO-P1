@@ -46,30 +46,35 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btLimpar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="244" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace pref="238" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Cifrao" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Crifaro2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Cifrao" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Cifrao2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cxSaldoInicial" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
+                                          <Component id="cxLimiteCC" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="rotLimiteCC" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cxSaldoInicial" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                                  <Component id="cxLimiteCC" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="rotLimiteCC" min="-2" max="-2" attributes="0"/>
-                          <Component id="rotSaldoIncial" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="btSalvarCC" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btSair" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -108,15 +113,13 @@
                   <Component id="rotConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cxLimiteCC" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="pwConfirmeSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Crifaro2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Cifrao2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btSair" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btSalvarCC" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btSalvarCC" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btSair" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -146,7 +149,7 @@
           <Font name="Segoe UI" size="24" style="2"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="| Criar Conta Corrente |"/>
+        <Property name="text" type="java.lang.String" value="| Editar Conta Corrente |"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="rotSenha">
@@ -170,7 +173,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Saldo Inicial:"/>
+        <Property name="text" type="java.lang.String" value="Saldo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="rotLimiteCC">
@@ -183,8 +186,11 @@
     </Component>
     <Component class="javax.swing.JTextField" name="cxNumeroConta">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="00000-X"/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cxNumeroContaFocusGained"/>
@@ -282,7 +288,7 @@
         <Property name="text" type="java.lang.String" value="R$"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Crifaro2">
+    <Component class="javax.swing.JLabel" name="Cifrao2">
       <Properties>
         <Property name="text" type="java.lang.String" value="R$"/>
       </Properties>

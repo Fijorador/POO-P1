@@ -15,16 +15,20 @@ import javax.swing.SwingUtilities;
  *
  * @author Mateus Moreira Fonseca RA:1426885
  */
-public class CriarContaCorrente extends javax.swing.JFrame {
+public class EditarContaCorrente extends javax.swing.JFrame {
+
+    private String numeroConta;
 
     private static CriarContaCorrente instancia;
     private JDialog confirmationDialog;
 
-    public CriarContaCorrente() {
+    public EditarContaCorrente(String numeroConta) {
+        this.numeroConta = numeroConta;
         initComponents();
         rotTituloPaginaCC.requestFocus();
         setResizable(false);
         setLocationRelativeTo(null);
+        carregaDados(numeroConta);
 
     }
 
@@ -62,7 +66,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         pwConfirmeSenha = new javax.swing.JPasswordField();
         Separador = new javax.swing.JSeparator();
         Cifrao = new javax.swing.JLabel();
-        Crifaro2 = new javax.swing.JLabel();
+        Cifrao2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,7 +78,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
 
         rotTituloPaginaCC.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         rotTituloPaginaCC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rotTituloPaginaCC.setText("| Criar Conta Corrente |");
+        rotTituloPaginaCC.setText("| Editar Conta Corrente |");
 
         rotSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         rotSenha.setText("Senha:");
@@ -83,13 +87,16 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         rotConfirmeSenha.setText("Confirme a Senha:");
 
         rotSaldoIncial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        rotSaldoIncial.setText("Saldo Inicial:");
+        rotSaldoIncial.setText("Saldo:");
 
         rotLimiteCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         rotLimiteCC.setText("Limite da Conta:");
 
+        cxNumeroConta.setEditable(false);
         cxNumeroConta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cxNumeroConta.setText("00000-X");
+        cxNumeroConta.setEnabled(false);
+        cxNumeroConta.setFocusable(false);
         cxNumeroConta.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 cxNumeroContaFocusGained(evt);
@@ -227,7 +234,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
 
         Cifrao.setText("R$");
 
-        Crifaro2.setText("R$");
+        Cifrao2.setText("R$");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,26 +257,29 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                             .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE))
+                        .addContainerGap(199, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Crifaro2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(rotLimiteCC)
-                            .addComponent(rotSaldoIncial)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Cifrao2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(rotLimiteCC)
+                                    .addComponent(rotSaldoIncial))
+                                .addGap(12, 12, 12))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btSalvarCC)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btSair)))))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btSair)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,13 +311,12 @@ public class CriarContaCorrente extends javax.swing.JFrame {
                     .addComponent(rotConfirmeSenha)
                     .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Crifaro2))
+                    .addComponent(Cifrao2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btSair)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btLimpar)
-                        .addComponent(btSalvarCC)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btLimpar)
+                    .addComponent(btSalvarCC)
+                    .addComponent(btSair))
                 .addContainerGap())
         );
 
@@ -330,7 +339,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
 
     private void btSalvarCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarCCActionPerformed
 
-        criarContaCorrente();
+        editarContaCorrente();
         limpar();
 
     }//GEN-LAST:event_btSalvarCCActionPerformed
@@ -344,7 +353,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     }//GEN-LAST:event_cxLimiteCCActionPerformed
 
     private void cxNumeroContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaMouseClicked
-        limparCampo(cxNumeroConta);
+
     }//GEN-LAST:event_cxNumeroContaMouseClicked
 
     private void cxNumeroContaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyPressed
@@ -353,7 +362,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     }//GEN-LAST:event_cxNumeroContaKeyPressed
 
     private void cxNumeroContaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxNumeroContaFocusGained
-        cxNumeroConta.selectAll();
+
     }//GEN-LAST:event_cxNumeroContaFocusGained
 
     private void cxAgenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxAgenciaMouseClicked
@@ -397,7 +406,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     }//GEN-LAST:event_pwConfirmeSenhaKeyPressed
 
     private void cxNumeroContaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyTyped
-        limitarTamanhoCampo(6, cxNumeroConta, evt);
+
     }//GEN-LAST:event_cxNumeroContaKeyTyped
 
     private void cxAgenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxAgenciaKeyTyped
@@ -421,7 +430,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cifrao;
-    private javax.swing.JLabel Crifaro2;
+    private javax.swing.JLabel Cifrao2;
     private javax.swing.JSeparator Separador;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
@@ -442,20 +451,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void limpar() {
-        String numeroContaPadrao = "00000-X";
-        String agenciaPadrao = "0000";
-        String saldoInicialPadrao = "0.00";
-        String limiteCCPadrao = "100.00";
-        String senhaPadrao = "000000";
 
-        cxNumeroConta.setText(numeroContaPadrao);
-        cxAgencia.setText(agenciaPadrao);
-        cxLimiteCC.setText(limiteCCPadrao);
-        cxSaldoInicial.setText(saldoInicialPadrao);
-        pwConfirmeSenha.setText(senhaPadrao);
-        pwSenha.setText(senhaPadrao);
-
-        btLimpar.requestFocusInWindow();
     }
 
     private void limparCampo(Component componente) {
@@ -466,60 +462,6 @@ public class CriarContaCorrente extends javax.swing.JFrame {
             JPasswordField passwordField = (JPasswordField) componente;
             passwordField.setText("");
         }
-    }
-
-    public void criarContaCorrente() {
-        String agencia = cxAgencia.getText();
-        String numeroConta = cxNumeroConta.getText();
-        String senha = new String(pwSenha.getPassword());
-        String confirmacaoSenha = new String(pwConfirmeSenha.getPassword());
-        double saldoInicial = Double.parseDouble(cxSaldoInicial.getText());
-        double limiteCC = Double.parseDouble(cxLimiteCC.getText());
-
-        try {
-            if (!senha.equals(confirmacaoSenha)) {
-                throw new InvalidaException("As senhas não correspondem");
-            }
-
-            if (!OperacoesBancarias.validarSenha(senha)) {
-                throw new InvalidaException("A senha deve conter 6 digitos numéricos");
-
-            }
-
-            if (!OperacoesBancarias.validarNumeroConta(numeroConta)) {
-                throw new InvalidaException("Conta deve ter 6 dígitos numéricos");
-            }
-
-            if (!OperacoesBancarias.validarAgencia(agencia)) {
-                throw new InvalidaException("Agência deve ter 4 dígitos numéricos");
-            }
-
-            if (saldoInicial < 0) {
-                throw new InvalidaException("O saldo inicial deve ser maior ou igual a zero");
-            }
-
-            if (limiteCC < 100) {
-                throw new InvalidaException("Limite mínimo da conta corrente é R$100.00");
-            }
-
-            if (BancoContas.verificarContaExistente(numeroConta)) {
-                throw new InvalidaException("A conta já existe");
-            }
-
-            ContaCorrente contaCorrente = new ContaCorrente(numeroConta, agencia, senha, saldoInicial, limiteCC, limiteCC);
-
-            BancoContas.getBanco().addContaCorrente(contaCorrente);
-
-            limpar();
-
-            String message = "<html><b>Número da Conta:</b> " + numeroConta + "<br><b>Agência:</b> " + agencia + "<br><b>Senha:</b> " + senha + "<br><br>Conta corrente criada com sucesso</html>";
-            SwingUtilities.invokeLater(() -> {
-                JOptionPane.showMessageDialog(this, message, "Sucesso ao criar conta:" + numeroConta, JOptionPane.INFORMATION_MESSAGE);
-            });
-        } catch (InvalidaException e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-
     }
 
     private void limitarTamanhoCampo(int tamanhoMaximo, JTextField campo, java.awt.event.KeyEvent evt) {
@@ -546,6 +488,74 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         }
 
         campo.setText(resultado);
+    }
+
+    public void editarContaCorrente() {
+        String agencia = cxAgencia.getText();
+        String numeroConta = cxNumeroConta.getText();
+        String senha = new String(pwSenha.getPassword());
+        String confirmacaoSenha = new String(pwConfirmeSenha.getPassword());
+        double saldoInicial = Double.parseDouble(cxSaldoInicial.getText());
+        double limiteCC = Double.parseDouble(cxLimiteCC.getText());
+
+        try {
+            if (!senha.equals(confirmacaoSenha)) {
+                throw new InvalidaException("As senhas não correspondem");
+            }
+
+            if (!OperacoesBancarias.validarSenha(senha)) {
+                throw new InvalidaException("A senha deve conter 6 dígitos numéricos");
+            }
+
+            if (!OperacoesBancarias.validarNumeroConta(numeroConta)) {
+                throw new InvalidaException("Conta deve ter 6 dígitos numéricos");
+            }
+
+            if (!OperacoesBancarias.validarAgencia(agencia)) {
+                throw new InvalidaException("Agência deve ter 4 dígitos numéricos");
+            }
+
+            if (saldoInicial < 0) {
+                throw new InvalidaException("O saldo inicial deve ser maior ou igual a zero");
+            }
+
+            if (limiteCC < 100) {
+                throw new InvalidaException("Limite mínimo da conta corrente é R$100.00");
+            }
+
+            if (!BancoContas.verificarContaExistente(numeroConta)) {
+                throw new InvalidaException("A conta não existe");
+            }
+
+            // Obtém a conta corrente existente pelo número da conta
+            ContaCorrente contaCorrenteExistente = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
+
+            // Cria uma nova conta corrente com os dados fornecidos
+            ContaCorrente contaCorrenteNova = new ContaCorrente(numeroConta, agencia, senha, saldoInicial, limiteCC, contaCorrenteExistente.getLimiteDisponivel());
+
+            // Remove a conta corrente existente e adiciona a nova conta corrente
+            BancoContas.getBanco().excluirConta(numeroConta);
+            BancoContas.getBanco().addContaCorrente(contaCorrenteNova);
+
+            limpar();
+
+            String message = "<html><b>Número da Conta:</b> " + numeroConta + "<br><b>Agência:</b> " + agencia + "<br><b>Senha:</b> " + senha + "<br><br>Conta corrente editada com sucesso</html>";
+            SwingUtilities.invokeLater(() -> {
+                JOptionPane.showMessageDialog(this, message, "Sucesso ao editar conta: " + numeroConta, JOptionPane.INFORMATION_MESSAGE);
+            });
+        } catch (InvalidaException e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void carregaDados(String numeroConta1) {
+        BancoContas banco = BancoContas.getBanco();
+        ContaCorrente contaCorrente = (ContaCorrente) banco.getContaByNumero(numeroConta1);
+
+        cxNumeroConta.setText(contaCorrente.getNumero());
+        cxAgencia.setText(contaCorrente.getAgencia());
+        cxSaldoInicial.setText(String.valueOf(contaCorrente.getSaldo()));
+        cxLimiteCC.setText(String.valueOf(contaCorrente.getLimite()));
     }
 
 }

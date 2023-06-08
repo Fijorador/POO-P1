@@ -1,5 +1,7 @@
+//@author Mateus Moreira Fonseca RA:1426885
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class BancoContas {
@@ -46,48 +48,51 @@ public class BancoContas {
         return bdContasPoupancaEspecial;
     }
 
-    public void excluirConta(String numero) {
-
-        for (ContaCorrente conta : bdContasCorrente) {
+    public boolean excluirConta(String numero) {
+        Iterator<ContaCorrente> iteratorCorrente = bdContasCorrente.iterator();
+        while (iteratorCorrente.hasNext()) {
+            ContaCorrente conta = iteratorCorrente.next();
             if (conta.getNumero().equals(numero)) {
-                bdContasCorrente.remove(conta);
-                return;
+                iteratorCorrente.remove();
+                return true;
             }
         }
 
-      
-        for (ContaPoupanca conta : bdContasPoupanca) {
+        Iterator<ContaPoupanca> iteratorPoupanca = bdContasPoupanca.iterator();
+        while (iteratorPoupanca.hasNext()) {
+            ContaPoupanca conta = iteratorPoupanca.next();
             if (conta.getNumero().equals(numero)) {
-                bdContasPoupanca.remove(conta);
-                return;
+                iteratorPoupanca.remove();
+                return true;
             }
         }
 
-       
-        for (ContaPoupancaEspecial conta : bdContasPoupancaEspecial) {
+        Iterator<ContaPoupancaEspecial> iteratorPoupancaEspecial = bdContasPoupancaEspecial.iterator();
+        while (iteratorPoupancaEspecial.hasNext()) {
+            ContaPoupancaEspecial conta = iteratorPoupancaEspecial.next();
             if (conta.getNumero().equals(numero)) {
-                bdContasPoupancaEspecial.remove(conta);
-                return;
+                iteratorPoupancaEspecial.remove();
+                return true;
             }
         }
+
+        return false;
     }
 
     public Conta getContaByNumero(String numero) {
-       
+
         for (ContaCorrente conta : bdContasCorrente) {
             if (conta.getNumero().equals(numero)) {
                 return conta;
             }
         }
 
-     
         for (ContaPoupanca conta : bdContasPoupanca) {
             if (conta.getNumero().equals(numero)) {
                 return conta;
             }
         }
 
-       
         for (ContaPoupancaEspecial conta : bdContasPoupancaEspecial) {
             if (conta.getNumero().equals(numero)) {
                 return conta;
@@ -97,37 +102,6 @@ public class BancoContas {
         return null;
     }
 
-    public void editarConta(Conta conta) {
-        if (conta instanceof ContaCorrente) {
-            
-            for (ContaCorrente cc : bdContasCorrente) {
-                if (cc.getNumero().equals(conta.getNumero())) {
-                    bdContasCorrente.remove(cc);
-                    bdContasCorrente.add((ContaCorrente) conta);
-                    return;
-                }
-            }
-        } else if (conta instanceof ContaPoupanca) {
-       
-            for (ContaPoupanca cp : bdContasPoupanca) {
-                if (cp.getNumero().equals(conta.getNumero())) {
-                    bdContasPoupanca.remove(cp);
-                    bdContasPoupanca.add((ContaPoupanca) conta);
-                    return;
-                }
-            }
-        } else if (conta instanceof ContaPoupancaEspecial) {
-         
-            for (ContaPoupancaEspecial cpe : bdContasPoupancaEspecial) {
-                if (cpe.getNumero().equals(conta.getNumero())) {
-                    bdContasPoupancaEspecial.remove(cpe);
-                    bdContasPoupancaEspecial.add((ContaPoupancaEspecial) conta);
-                    return;
-                }
-            }
-        }
-    }
-
     public static boolean verificarContaExistente(String numeroConta) {
         List<ContaCorrente> contasCorrentes = BancoContas.getBanco().getBdContasCorrente();
         List<ContaPoupanca> contasPoupanca = BancoContas.getBanco().getBdContasPoupanca();
@@ -135,13 +109,13 @@ public class BancoContas {
 
         for (ContaCorrente conta : contasCorrentes) {
             if (conta.getNumero().equals(numeroConta)) {
-                return true; 
+                return true;
             }
         }
 
         for (ContaPoupanca conta : contasPoupanca) {
             if (conta.getNumero().equals(numeroConta)) {
-                return true; 
+                return true;
             }
         }
 
@@ -153,4 +127,29 @@ public class BancoContas {
 
         return false;
     }
+
+    public void editarContaCorrente(String numeroContaAntiga, ContaCorrente contaNova) {
+        double limiteDisponivel = 0;
+
+        // Verifica se a conta antiga existe no banco
+        if (verificarContaExistente(numeroContaAntiga)) {
+            // Procura a conta antiga na lista de contas corrente
+            for (ContaCorrente conta : bdContasCorrente) {
+                if (conta.getNumero().equals(numeroContaAntiga)) {
+                    limiteDisponivel = conta.getLimiteDisponivel();
+                    break;
+                }
+            }
+
+            // Exclui a conta antiga
+            excluirConta(numeroContaAntiga);
+
+            // Configura o limite disponível na nova conta corrente
+            contaNova.setLimiteDisponivel(limiteDisponivel);
+
+            // Adiciona a nova conta corrente
+            addContaCorrente(contaNova);
+        }
+    }
+
 }
