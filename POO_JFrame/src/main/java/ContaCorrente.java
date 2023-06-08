@@ -9,7 +9,7 @@ public class ContaCorrente extends Conta {
             double limiteDisponivel) {
         super(numero, agencia, senha, saldo);
         this.limite = limite;
-        this.limiteDisponivel = limite;
+        this.limiteDisponivel = limiteDisponivel;
     }
 
     public double getLimite() {

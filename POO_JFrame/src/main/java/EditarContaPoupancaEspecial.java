@@ -13,24 +13,24 @@ import javax.swing.SwingUtilities;
  */
 /**
  *
- * @author Mateus Moreira Fonseca RA:1426885
+ * * @author Mateus Moreira Fonseca RA:1426885
  */
-public class EditarContaCorrente extends javax.swing.JFrame {
+public class EditarContaPoupancaEspecial extends javax.swing.JFrame {
 
-    private static EditarContaCorrente instancia;
+    private static EditarContaPoupancaEspecial instancia;
+    private JDialog confirmationDialog;
 
-    public EditarContaCorrente() {
-
+    public EditarContaPoupancaEspecial() {
         initComponents();
-        rotTituloPaginaCC.requestFocus();
+        rotTituloPaginaCPE.requestFocus();
         setResizable(false);
         setLocationRelativeTo(null);
 
     }
 
-    public static EditarContaCorrente getInstance() {
+    public static EditarContaPoupancaEspecial getInstance() {
         if (instancia == null) {
-            instancia = new EditarContaCorrente();
+            instancia = new EditarContaPoupancaEspecial();
         }
         return instancia;
     }
@@ -46,23 +46,26 @@ public class EditarContaCorrente extends javax.swing.JFrame {
 
         rotNConta = new javax.swing.JLabel();
         rotNAg = new javax.swing.JLabel();
-        rotTituloPaginaCC = new javax.swing.JLabel();
+        rotTituloPaginaCPE = new javax.swing.JLabel();
         rotSenha = new javax.swing.JLabel();
         rotConfirmeSenha = new javax.swing.JLabel();
         rotSaldoIncial = new javax.swing.JLabel();
-        rotLimiteCC = new javax.swing.JLabel();
+        rotLimiteCPE = new javax.swing.JLabel();
         cxNumeroConta = new javax.swing.JTextField();
         cxAgencia = new javax.swing.JTextField();
         cxSaldoInicial = new javax.swing.JTextField();
-        cxLimiteCC = new javax.swing.JTextField();
-        btSalvarCC = new javax.swing.JButton();
+        cxLimiteCPE = new javax.swing.JTextField();
+        btSalvarCPE = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         pwSenha = new javax.swing.JPasswordField();
         pwConfirmeSenha = new javax.swing.JPasswordField();
         Separador = new javax.swing.JSeparator();
         Cifrao = new javax.swing.JLabel();
-        Cifrao2 = new javax.swing.JLabel();
+        Crifaro2 = new javax.swing.JLabel();
+        rotTaxaJuros = new javax.swing.JLabel();
+        rotPorcentagem = new javax.swing.JLabel();
+        cxTaxaJuros = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,9 +75,9 @@ public class EditarContaCorrente extends javax.swing.JFrame {
         rotNAg.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         rotNAg.setText("Numero da Agencia:");
 
-        rotTituloPaginaCC.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        rotTituloPaginaCC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rotTituloPaginaCC.setText("| Editar Conta Corrente |");
+        rotTituloPaginaCPE.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        rotTituloPaginaCPE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rotTituloPaginaCPE.setText("| Criar Conta Poupanca Especial |");
 
         rotSenha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         rotSenha.setText("Senha:");
@@ -83,18 +86,13 @@ public class EditarContaCorrente extends javax.swing.JFrame {
         rotConfirmeSenha.setText("Confirme a Senha:");
 
         rotSaldoIncial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        rotSaldoIncial.setText("Saldo:");
+        rotSaldoIncial.setText("Saldo Inicial:");
 
-        rotLimiteCC.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        rotLimiteCC.setText("Limite da Conta:");
+        rotLimiteCPE.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotLimiteCPE.setText("Limite da Conta:");
 
         cxNumeroConta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         cxNumeroConta.setText("00000-X");
-        cxNumeroConta.setAutoscrolls(false);
-        cxNumeroConta.setEnabled(false);
-        cxNumeroConta.setFocusable(false);
-        cxNumeroConta.setRequestFocusEnabled(false);
-        cxNumeroConta.setVerifyInputWhenFocusTarget(false);
         cxNumeroConta.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 cxNumeroContaFocusGained(evt);
@@ -158,28 +156,28 @@ public class EditarContaCorrente extends javax.swing.JFrame {
             }
         });
 
-        cxLimiteCC.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        cxLimiteCC.setText("100.00");
-        cxLimiteCC.addFocusListener(new java.awt.event.FocusAdapter() {
+        cxLimiteCPE.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cxLimiteCPE.setText("300.00");
+        cxLimiteCPE.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                cxLimiteCCFocusLost(evt);
+                cxLimiteCPEFocusLost(evt);
             }
         });
-        cxLimiteCC.addMouseListener(new java.awt.event.MouseAdapter() {
+        cxLimiteCPE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cxLimiteCCMouseClicked(evt);
+                cxLimiteCPEMouseClicked(evt);
             }
         });
-        cxLimiteCC.addActionListener(new java.awt.event.ActionListener() {
+        cxLimiteCPE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cxLimiteCCActionPerformed(evt);
+                cxLimiteCPEActionPerformed(evt);
             }
         });
 
-        btSalvarCC.setText("Salvar ");
-        btSalvarCC.addActionListener(new java.awt.event.ActionListener() {
+        btSalvarCPE.setText("Salvar ");
+        btSalvarCPE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSalvarCCActionPerformed(evt);
+                btSalvarCPEActionPerformed(evt);
             }
         });
 
@@ -232,90 +230,130 @@ public class EditarContaCorrente extends javax.swing.JFrame {
 
         Cifrao.setText("R$");
 
-        Cifrao2.setText("R$");
+        Crifaro2.setText("R$");
+
+        rotTaxaJuros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rotTaxaJuros.setText("Taxa de Juros");
+
+        rotPorcentagem.setText("%");
+
+        cxTaxaJuros.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        cxTaxaJuros.setText("5.12");
+        cxTaxaJuros.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cxTaxaJurosFocusLost(evt);
+            }
+        });
+        cxTaxaJuros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cxTaxaJurosMouseClicked(evt);
+            }
+        });
+        cxTaxaJuros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxTaxaJurosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Separador)
-            .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(rotTituloPaginaCPE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rotNConta)
                             .addComponent(rotSenha)
                             .addComponent(rotNAg)
                             .addComponent(rotConfirmeSenha))
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(199, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cxAgencia, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(pwSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(cxNumeroConta, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(pwConfirmeSenha)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btSalvarCPE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btSair))
+                    .addComponent(rotSaldoIncial)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Crifaro2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Cifrao, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(Cifrao2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(rotLimiteCC)
-                                    .addComponent(rotSaldoIncial))
-                                .addGap(12, 12, 12))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btSalvarCC)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btSair)
-                                .addContainerGap())))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cxTaxaJuros, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cxLimiteCPE, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rotPorcentagem))))
+                    .addComponent(rotTaxaJuros)
+                    .addComponent(rotLimiteCPE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rotTituloPaginaCC, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rotTituloPaginaCPE, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotNConta)
-                    .addComponent(rotSaldoIncial)
-                    .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rotNAg)
-                        .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Cifrao)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotSenha)
-                    .addComponent(rotLimiteCC)
-                    .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rotConfirmeSenha)
-                    .addComponent(cxLimiteCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cifrao2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btLimpar)
-                    .addComponent(btSalvarCC)
-                    .addComponent(btSair))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotNConta)
+                            .addComponent(cxNumeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotNAg)
+                            .addComponent(cxAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotSenha)
+                            .addComponent(pwSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rotConfirmeSenha)
+                            .addComponent(pwConfirmeSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rotSaldoIncial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cxSaldoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cifrao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rotLimiteCPE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cxLimiteCPE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Crifaro2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rotTaxaJuros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cxTaxaJuros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rotPorcentagem))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btSair)
+                            .addComponent(btSalvarCPE)
+                            .addComponent(btLimpar))
+                        .addContainerGap())))
         );
 
         pack();
@@ -331,16 +369,37 @@ public class EditarContaCorrente extends javax.swing.JFrame {
         limpar();
     }//GEN-LAST:event_btLimparActionPerformed
 
-    private void btSalvarCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarCCActionPerformed
+    private void cxNumeroContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaActionPerformed
 
-        editarContaCorrente();
+    }//GEN-LAST:event_cxNumeroContaActionPerformed
+
+    private void btSalvarCPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarCPEActionPerformed
+
+        editarContaPoupancaEspecial();
         limpar();
 
-    }//GEN-LAST:event_btSalvarCCActionPerformed
+    }//GEN-LAST:event_btSalvarCPEActionPerformed
 
-    private void cxLimiteCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxLimiteCCActionPerformed
+    private void cxNumeroContaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cxNumeroContaPropertyChange
 
-    }//GEN-LAST:event_cxLimiteCCActionPerformed
+    }//GEN-LAST:event_cxNumeroContaPropertyChange
+
+    private void cxLimiteCPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxLimiteCPEActionPerformed
+
+    }//GEN-LAST:event_cxLimiteCPEActionPerformed
+
+    private void cxNumeroContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaMouseClicked
+        limparCampo(cxNumeroConta);
+    }//GEN-LAST:event_cxNumeroContaMouseClicked
+
+    private void cxNumeroContaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyPressed
+
+
+    }//GEN-LAST:event_cxNumeroContaKeyPressed
+
+    private void cxNumeroContaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxNumeroContaFocusGained
+        cxNumeroConta.selectAll();
+    }//GEN-LAST:event_cxNumeroContaFocusGained
 
     private void cxAgenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxAgenciaMouseClicked
         limparCampo(cxAgencia);
@@ -358,9 +417,9 @@ public class EditarContaCorrente extends javax.swing.JFrame {
         limparCampo(cxSaldoInicial);
     }//GEN-LAST:event_cxSaldoInicialMouseClicked
 
-    private void cxLimiteCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxLimiteCCMouseClicked
-        limparCampo(cxLimiteCC);
-    }//GEN-LAST:event_cxLimiteCCMouseClicked
+    private void cxLimiteCPEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxLimiteCPEMouseClicked
+        limparCampo(cxLimiteCPE);
+    }//GEN-LAST:event_cxLimiteCPEMouseClicked
 
     private void cxAgenciaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxAgenciaKeyPressed
 
@@ -382,6 +441,10 @@ public class EditarContaCorrente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_pwConfirmeSenhaKeyPressed
 
+    private void cxNumeroContaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyTyped
+        limitarTamanhoCampo(6, cxNumeroConta, evt);
+    }//GEN-LAST:event_cxNumeroContaKeyTyped
+
     private void cxAgenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxAgenciaKeyTyped
         limitarTamanhoCampo(4, cxAgencia, evt);    }//GEN-LAST:event_cxAgenciaKeyTyped
 
@@ -393,33 +456,21 @@ public class EditarContaCorrente extends javax.swing.JFrame {
         limitarTamanhoCampo(6, pwConfirmeSenha, evt);
     }//GEN-LAST:event_pwConfirmeSenhaKeyTyped
 
-    private void cxLimiteCCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxLimiteCCFocusLost
-        formataNumero(cxLimiteCC);
-    }//GEN-LAST:event_cxLimiteCCFocusLost
+    private void cxLimiteCPEFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxLimiteCPEFocusLost
+        formataNumero(cxLimiteCPE);
+    }//GEN-LAST:event_cxLimiteCPEFocusLost
 
-    private void cxNumeroContaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyTyped
+    private void cxTaxaJurosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxTaxaJurosFocusLost
+        formataNumero(cxTaxaJuros);
+    }//GEN-LAST:event_cxTaxaJurosFocusLost
 
-    }//GEN-LAST:event_cxNumeroContaKeyTyped
+    private void cxTaxaJurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxTaxaJurosMouseClicked
+        limparCampo(cxTaxaJuros);
+    }//GEN-LAST:event_cxTaxaJurosMouseClicked
 
-    private void cxNumeroContaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cxNumeroContaKeyPressed
+    private void cxTaxaJurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxTaxaJurosActionPerformed
 
-    }//GEN-LAST:event_cxNumeroContaKeyPressed
-
-    private void cxNumeroContaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cxNumeroContaPropertyChange
-
-    }//GEN-LAST:event_cxNumeroContaPropertyChange
-
-    private void cxNumeroContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNumeroContaActionPerformed
-
-    }//GEN-LAST:event_cxNumeroContaActionPerformed
-
-    private void cxNumeroContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cxNumeroContaMouseClicked
-
-    }//GEN-LAST:event_cxNumeroContaMouseClicked
-
-    private void cxNumeroContaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cxNumeroContaFocusGained
-
-    }//GEN-LAST:event_cxNumeroContaFocusGained
+    }//GEN-LAST:event_cxTaxaJurosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,59 +478,142 @@ public class EditarContaCorrente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cifrao;
-    private javax.swing.JLabel Cifrao2;
+    private javax.swing.JLabel Crifaro2;
     private javax.swing.JSeparator Separador;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
-    private javax.swing.JButton btSalvarCC;
+    private javax.swing.JButton btSalvarCPE;
     private javax.swing.JTextField cxAgencia;
-    private javax.swing.JTextField cxLimiteCC;
+    private javax.swing.JTextField cxLimiteCPE;
     private javax.swing.JTextField cxNumeroConta;
     private javax.swing.JTextField cxSaldoInicial;
+    private javax.swing.JTextField cxTaxaJuros;
     private javax.swing.JPasswordField pwConfirmeSenha;
     private javax.swing.JPasswordField pwSenha;
     private javax.swing.JLabel rotConfirmeSenha;
-    private javax.swing.JLabel rotLimiteCC;
+    private javax.swing.JLabel rotLimiteCPE;
     private javax.swing.JLabel rotNAg;
     private javax.swing.JLabel rotNConta;
+    private javax.swing.JLabel rotPorcentagem;
     private javax.swing.JLabel rotSaldoIncial;
     private javax.swing.JLabel rotSenha;
-    private javax.swing.JLabel rotTituloPaginaCC;
+    private javax.swing.JLabel rotTaxaJuros;
+    private javax.swing.JLabel rotTituloPaginaCPE;
     // End of variables declaration//GEN-END:variables
 
     private void limpar() {
         String numeroConta = cxNumeroConta.getText();
 
-        ContaCorrente conta = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
+        ContaPoupancaEspecial conta = (ContaPoupancaEspecial) BancoContas.getBanco().getContaByNumero(numeroConta);
 
         if (conta != null) {
-           
+            // Obtenha os valores dos campos (supondo que sejam campos de entrada de texto)
             String agencia = conta.getAgencia();
             String senha = conta.getSenha();
             String confirmacaoSenha = senha;
             double saldoInicial = conta.getSaldo();
+            double taxaJuros = conta.getJuros();
             double limite = conta.getLimite();
 
+            // Realize as operações de edição com o objeto "conta" aqui
             cxNumeroConta.setText(numeroConta);
             cxAgencia.setText(agencia);
             pwSenha.setText(senha);
             pwConfirmeSenha.setText(confirmacaoSenha);
             cxSaldoInicial.setText(String.valueOf(saldoInicial));
-            cxLimiteCC.setText(String.valueOf(limite));
+            cxTaxaJuros.setText(String.valueOf(taxaJuros));
+            cxLimiteCPE.setText(String.valueOf(limite));
         }
     }
 
-    private void limparCampo(Component componente) {
-        if (componente instanceof JTextField) {
-            JTextField textField = (JTextField) componente;
-            textField.setText("");
-        } else if (componente instanceof JPasswordField) {
-            JPasswordField passwordField = (JPasswordField) componente;
-            passwordField.setText("");
+    public void editarContaPoupancaEspecial() {
+        
+        
+        String agencia = cxAgencia.getText();
+        String numeroConta = cxNumeroConta.getText();
+        String senha = new String(pwSenha.getPassword());
+        String confirmacaoSenha = new String(pwConfirmeSenha.getPassword());
+        double saldoInicial = Double.parseDouble(cxSaldoInicial.getText());
+        double limiteCPE = Double.parseDouble(cxLimiteCPE.getText());
+
+        try {
+            if (!senha.equals(confirmacaoSenha)) {
+                throw new InvalidaException("As senhas não correspondem");
+            }
+
+            if (!OperacoesBancarias.validarSenha(senha)) {
+                throw new InvalidaException("A senha deve conter 6 dígitos numéricos");
+            }
+
+            if (!OperacoesBancarias.validarNumeroConta(numeroConta)) {
+                throw new InvalidaException("Conta deve ter 6 dígitos numéricos");
+            }
+
+            if (!OperacoesBancarias.validarAgencia(agencia)) {
+                throw new InvalidaException("Agência deve ter 4 dígitos numéricos");
+            }
+
+            if (saldoInicial < 0) {
+                throw new InvalidaException("O saldo inicial deve ser maior ou igual a zero");
+            }
+
+            if (limiteCPE < 500) {
+                throw new InvalidaException("Limite mínimo da conta Poupanca Especial é R$300.00");
+            }
+
+            if (!BancoContas.verificarContaExistente(numeroConta)) {
+                throw new InvalidaException("A conta não existe");
+            }
+
+            
+            ContaPoupancaEspecial contaPoupancaEspecialExistente = (ContaPoupancaEspecial) BancoContas.getBanco().getContaByNumero(numeroConta);
+
+           
+            ContaCorrente contaCorrenteNova = new ContaCorrente(numeroConta, agencia, senha, saldoInicial, limiteCPE, contaPoupancaEspecialExistente.getLimiteDisponivel());
+
+            
+            BancoContas.getBanco().excluirConta(numeroConta);
+            BancoContas.getBanco().addContaCorrente(contaCorrenteNova);
+
+            limpar();
+
+            String message = "<html><b>Número da Conta:</b> " + numeroConta + "<br><b>Agência:</b> " + agencia + "<br><b>Senha:</b> " + senha + "<br><br>Conta Poupanca Especial editada com sucesso</html>";
+            SwingUtilities.invokeLater(() -> {
+                JOptionPane.showMessageDialog(this, message, "Sucesso ao editar conta: " + numeroConta, JOptionPane.INFORMATION_MESSAGE);
+            });
+        } catch (InvalidaException e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+      public void carregamentoEdicao(String numeroConta) {
+
+        pwSenha.setEchoChar('\u0000');
+        pwConfirmeSenha.setEchoChar('\u0000');
+        
+        ContaCorrente conta = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
+
+        if (conta != null) {
+            // Obtenha os valores dos campos (supondo que sejam campos de entrada de texto)
+            String agencia = conta.getAgencia();
+            String senha = conta.getSenha();
+            String confirmacaoSenha = senha;
+            double saldoInicial = conta.getSaldo();
+            double limiteCPE = conta.getLimite();
+
+           
+            cxNumeroConta.setText(numeroConta);
+            cxAgencia.setText(agencia);
+            pwSenha.setText(senha);
+            pwConfirmeSenha.setText(confirmacaoSenha);
+            cxSaldoInicial.setText(String.valueOf(saldoInicial));
+            cxLimiteCPE.setText(String.valueOf(limiteCPE));
+
         }
     }
 
-    private void limitarTamanhoCampo(int tamanhoMaximo, JTextField campo, java.awt.event.KeyEvent evt) {
+
+private void limitarTamanhoCampo(int tamanhoMaximo, JTextField campo, java.awt.event.KeyEvent evt) {
         int k = evt.getKeyChar();
         if ((k > 47 && k < 58)) {
             if (campo.getText().length() == tamanhoMaximo) {
@@ -505,86 +639,13 @@ public class EditarContaCorrente extends javax.swing.JFrame {
         campo.setText(resultado);
     }
 
-    public void editarContaCorrente() {
-        String agencia = cxAgencia.getText();
-        String numeroConta = cxNumeroConta.getText();
-        String senha = new String(pwSenha.getPassword());
-        String confirmacaoSenha = new String(pwConfirmeSenha.getPassword());
-        double saldoInicial = Double.parseDouble(cxSaldoInicial.getText());
-        double limiteCC = Double.parseDouble(cxLimiteCC.getText());
-
-        try {
-            if (!senha.equals(confirmacaoSenha)) {
-                throw new InvalidaException("As senhas não correspondem");
-            }
-
-            if (!OperacoesBancarias.validarSenha(senha)) {
-                throw new InvalidaException("A senha deve conter 6 dígitos numéricos");
-            }
-
-            if (!OperacoesBancarias.validarNumeroConta(numeroConta)) {
-                throw new InvalidaException("Conta deve ter 6 dígitos numéricos");
-            }
-
-            if (!OperacoesBancarias.validarAgencia(agencia)) {
-                throw new InvalidaException("Agência deve ter 4 dígitos numéricos");
-            }
-
-            if (saldoInicial < 0) {
-                throw new InvalidaException("O saldo inicial deve ser maior ou igual a zero");
-            }
-
-            if (limiteCC < 100) {
-                throw new InvalidaException("Limite mínimo da Conta Corrente é R$100.00");
-            }
-
-            if (!BancoContas.verificarContaExistente(numeroConta)) {
-                throw new InvalidaException("A conta não existe");
-            }
-
-            
-            ContaCorrente contaCorrenteExistente = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
-
-         
-            ContaCorrente contaCorrenteNova = new ContaCorrente(numeroConta, agencia, senha, saldoInicial, limiteCC, contaCorrenteExistente.getLimiteDisponivel());
-
-          
-            BancoContas.getBanco().excluirConta(numeroConta);
-            BancoContas.getBanco().addContaCorrente(contaCorrenteNova);
-
-            limpar();
-
-            String message = "<html><b>Número da Conta:</b> " + numeroConta + "<br><b>Agência:</b> " + agencia + "<br><b>Senha:</b> " + senha + "<br><br>Conta Corrente editada com sucesso</html>";
-            SwingUtilities.invokeLater(() -> {
-                JOptionPane.showMessageDialog(this, message, "Sucesso ao editar conta: " + numeroConta, JOptionPane.INFORMATION_MESSAGE);
-            });
-        } catch (InvalidaException e) {
-            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    public void carregamentoEdicao(String numeroConta) {
-
-        pwSenha.setEchoChar('\u0000');
-        pwConfirmeSenha.setEchoChar('\u0000');
-
-        ContaCorrente conta = (ContaCorrente) BancoContas.getBanco().getContaByNumero(numeroConta);
-
-        if (conta != null) {
-
-            String agencia = conta.getAgencia();
-            String senha = conta.getSenha();
-            String confirmacaoSenha = senha;
-            double saldoInicial = conta.getSaldo();
-            double limiteCC = conta.getLimite();
-
-            cxNumeroConta.setText(numeroConta);
-            cxAgencia.setText(agencia);
-            pwSenha.setText(senha);
-            pwConfirmeSenha.setText(confirmacaoSenha);
-            cxSaldoInicial.setText(String.valueOf(saldoInicial));
-            cxLimiteCC.setText(String.valueOf(limiteCC));
-
+    private void limparCampo(Component componente) {
+        if (componente instanceof JTextField) {
+            JTextField textField = (JTextField) componente;
+            textField.setText("");
+        } else if (componente instanceof JPasswordField) {
+            JPasswordField passwordField = (JPasswordField) componente;
+            passwordField.setText("");
         }
     }
 

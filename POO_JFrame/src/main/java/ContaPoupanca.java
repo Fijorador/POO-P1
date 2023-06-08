@@ -47,13 +47,4 @@ public class ContaPoupanca extends Conta {
         System.out.println("Saldo atual(Poupanca): R$" + getSaldo());
     }
 
-    void setAgencia(String agencia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    void setSenha(String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    
 }

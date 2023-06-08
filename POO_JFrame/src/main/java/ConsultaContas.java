@@ -19,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 public class ConsultaContas extends javax.swing.JFrame {
 
     private static ConsultaContas instancia;
-    private JDialog confirmationDialog;
 
     /**
      * Creates new form CriarContaCorrente
@@ -71,7 +70,7 @@ public class ConsultaContas extends javax.swing.JFrame {
 
         rotTituloPaginaConsultar.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         rotTituloPaginaConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rotTituloPaginaConsultar.setText("| Contas |");
+        rotTituloPaginaConsultar.setText("| Consulta de Contas |");
 
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -318,11 +317,30 @@ public class ConsultaContas extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
 
-        dispose();
-        String numeroConta = cxNumeroConta.getText();
-        EditarContaCorrente editarContaCorrente = new EditarContaCorrente(numeroConta);
-        editarContaCorrente.setVisible(true);
+        int linhaSelecionada = tbContas.getSelectedRow();
+        String tipoConta = (String) tbContas.getValueAt(linhaSelecionada, 2);
 
+        if (linhaSelecionada >= 0) {
+            if (tipoConta.equals("Conta Corrente")) {
+                String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                dispose();
+                EditarContaCorrente editarContaCorrente = new EditarContaCorrente();
+                editarContaCorrente.setVisible(true);
+                editarContaCorrente.carregamentoEdicao(numeroConta);
+            } else if (tipoConta.equals("Conta Poupança")) {
+                String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                dispose();
+                EditarContaPoupanca editarContaPoupanca = new EditarContaPoupanca();
+                editarContaPoupanca.setVisible(true);
+                editarContaPoupanca.carregamentoEdicao(numeroConta);
+            } else if (tipoConta.equals("Conta Poupança Especial")) {
+                String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                dispose();
+                EditarContaPoupancaEspecial editarContaPoupancaEspecial = new EditarContaPoupancaEspecial();
+                editarContaPoupancaEspecial.setVisible(true);
+                editarContaPoupancaEspecial.carregamentoEdicao(numeroConta);
+            }
+        }
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void CorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrenteActionPerformed
@@ -363,7 +381,7 @@ public class ConsultaContas extends javax.swing.JFrame {
     private javax.swing.JLabel txTipo;
     // End of variables declaration//GEN-END:variables
 
-    private void limparTabela() {
+    void limparTabela() {
 
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
         model.setRowCount(0);
@@ -485,6 +503,9 @@ public class ConsultaContas extends javax.swing.JFrame {
                     model.addRow(rowData);
                     break; // interrompe o loop após encontrar a conta correspondente
                 }
+            }
+            if (model.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Nenhuma conta encontrada com o número: " + numeroContaPesquisada);
             }
         }
     }

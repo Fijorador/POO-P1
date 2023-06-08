@@ -2,21 +2,29 @@
 
 public class ContaPoupancaEspecial extends ContaPoupanca {
 
-    private double limite;
-    private double limiteDisponiel;
+    private double limite;   
+    private double limiteDisponivel;
 
     public ContaPoupancaEspecial(String numero, String agencia, String senha, double saldo, double juros, double limite, double limiteDisponivel) {
         super(numero, agencia, senha, saldo, juros);
         this.limite = limite;
-        this.limiteDisponiel = limiteDisponivel;
+        this.limiteDisponivel = limiteDisponivel;
     }
 
     public double getLimite() {
         return limite;
     }
 
-    public void setLimiteCredito(double limite) {
+    public void setLimite(double limite) {
         this.limite = limite;
+    }
+
+    public double getLimiteDisponivel() {
+        return limiteDisponivel;
+    }
+
+    public void setLimiteDisponivel(double limite) {
+        this.limiteDisponivel = limite;
     }
 
     // Sobrescrita
@@ -60,8 +68,6 @@ public class ContaPoupancaEspecial extends ContaPoupanca {
         return saldoAtual * (juros / 100);
     }
 
-    void setLimite(double limite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
 }

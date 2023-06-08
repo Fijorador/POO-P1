@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class BancoContas {
 
@@ -128,28 +129,6 @@ public class BancoContas {
         return false;
     }
 
-    public void editarContaCorrente(String numeroContaAntiga, ContaCorrente contaNova) {
-        double limiteDisponivel = 0;
-
-        // Verifica se a conta antiga existe no banco
-        if (verificarContaExistente(numeroContaAntiga)) {
-            // Procura a conta antiga na lista de contas corrente
-            for (ContaCorrente conta : bdContasCorrente) {
-                if (conta.getNumero().equals(numeroContaAntiga)) {
-                    limiteDisponivel = conta.getLimiteDisponivel();
-                    break;
-                }
-            }
-
-            // Exclui a conta antiga
-            excluirConta(numeroContaAntiga);
-
-            // Configura o limite disponível na nova conta corrente
-            contaNova.setLimiteDisponivel(limiteDisponivel);
-
-            // Adiciona a nova conta corrente
-            addContaCorrente(contaNova);
-        }
-    }
+ 
 
 }

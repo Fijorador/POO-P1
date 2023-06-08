@@ -106,14 +106,82 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btSair" min="-2" pref="96" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="Separador" alignment="1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
               <Component id="rotTituloPrinc" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="240" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+              <Component id="txTituloDeposito" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
+              <Component id="txTituloSaque" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="btSair" min="-2" pref="96" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txTituloTranferencia" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="txNumeroContaDeposito" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txValorDeposito" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btDepositar" max="32767" attributes="0"/>
+                  <Component id="cxNumeroContaDeposito" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cxValorDeposito" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="txNumeroContaSaque" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txValorSaque" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txSenha" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btSacar" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cxNumeroContaSaque" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cxValorSaque" alignment="0" pref="80" max="32767" attributes="0"/>
+                  <Component id="pwSenhaSaque" alignment="0" pref="80" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="txContaOrigem" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cxNumeroContaOrigem" min="-2" pref="80" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="txContaDestino" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cxNumeroContaDestino" min="-2" pref="80" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txValorTransferencia" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txSenhaTranferencia" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btTraferir" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cxValorTransferencia" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="pwSenhaTransferencia" min="-2" pref="80" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,9 +189,78 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="rotTituloPrinc" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="270" max="32767" attributes="0"/>
-              <Component id="btSair" min="-2" pref="32" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="Separador" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txTituloDeposito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txTituloSaque" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txTituloTranferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cxNumeroContaDeposito" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txNumeroContaDeposito" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cxValorDeposito" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txValorDeposito" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btDepositar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cxNumeroContaSaque" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txNumeroContaSaque" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cxValorSaque" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txValorSaque" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txSenha" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pwSenhaSaque" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btSacar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cxNumeroContaOrigem" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txContaOrigem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cxNumeroContaDestino" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txContaDestino" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cxValorTransferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txValorTransferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txSenhaTranferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pwSenhaTransferencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btTraferir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                      <Component id="btSair" min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -143,6 +280,148 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSairActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="Separador">
+    </Component>
+    <Component class="javax.swing.JLabel" name="txTituloDeposito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Deposito:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txTituloSaque">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Saque"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txTituloTranferencia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Transferencia"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txValorDeposito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor R$:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxNumeroContaDeposito">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cxNumeroContaDepositoMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxNumeroContaDepositoActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cxNumeroContaDepositoKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txNumeroContaDeposito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Numero da Conta:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxValorDeposito">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cxValorDepositoFocusLost"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxValorDepositoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btDepositar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Depositar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDepositarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txValorSaque">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor R$:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxNumeroContaSaque">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cxNumeroContaSaqueMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxNumeroContaSaqueActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cxNumeroContaSaqueKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txNumeroContaSaque">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Numero da Conta:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxValorSaque">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cxValorSaqueFocusLost"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxValorSaqueActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btSacar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sacar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSacarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txSenha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Senha:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txValorTransferencia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor R$:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxNumeroContaOrigem">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxNumeroContaOrigemActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cxNumeroContaOrigemKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txContaOrigem">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Numero da Conta Origem:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxValorTransferencia">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cxValorTransferenciaFocusLost"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxValorTransferenciaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btTraferir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tranferir"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btTraferirMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btTraferirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txSenhaTranferencia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Senha:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cxNumeroContaDestino">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cxNumeroContaDestinoActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cxNumeroContaDestinoKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txContaDestino">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Numero da Conta Destino:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pwSenhaTransferencia">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pwSenhaTransferenciaActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pwSenhaTransferenciaKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="pwSenhaSaque">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pwSenhaSaqueKeyTyped"/>
       </Events>
     </Component>
   </SubComponents>

@@ -141,7 +141,7 @@
           <Font name="Segoe UI" size="24" style="2"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="| Contas |"/>
+        <Property name="text" type="java.lang.String" value="| Consulta de Contas |"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btSair">

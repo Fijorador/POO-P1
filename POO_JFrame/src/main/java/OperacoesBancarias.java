@@ -9,7 +9,7 @@ public interface OperacoesBancarias {
     boolean sacar(double valor) throws InvalidaException;
 
     void consultarSaldo();
-
+    
     static boolean validarNumeroConta(String numero) {
         numero = numero.replace("-", "");
 
