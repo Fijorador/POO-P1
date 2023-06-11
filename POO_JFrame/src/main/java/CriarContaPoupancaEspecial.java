@@ -124,7 +124,7 @@ public class CriarContaPoupancaEspecial extends javax.swing.JFrame {
         });
 
         cxAgencia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        cxAgencia.setText("0000");
+        cxAgencia.setText("000X");
         cxAgencia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cxAgenciaMouseClicked(evt);
@@ -197,7 +197,7 @@ public class CriarContaPoupancaEspecial extends javax.swing.JFrame {
         });
 
         pwSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pwSenha.setText("000000");
+        pwSenha.setText("00000X");
         pwSenha.setToolTipText("");
         pwSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -214,7 +214,7 @@ public class CriarContaPoupancaEspecial extends javax.swing.JFrame {
         });
 
         pwConfirmeSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pwConfirmeSenha.setText("000000");
+        pwConfirmeSenha.setText("XXXXXX");
         pwConfirmeSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pwConfirmeSenhaMouseClicked(evt);
@@ -313,8 +313,7 @@ public class CriarContaPoupancaEspecial extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btLimpar)
-                        .addContainerGap())
+                        .addComponent(btLimpar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,8 +353,8 @@ public class CriarContaPoupancaEspecial extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btSair)
-                            .addComponent(btSalvarCPE))
-                        .addContainerGap())))
+                            .addComponent(btSalvarCPE))))
+                .addContainerGap())
         );
 
         pack();
@@ -505,17 +504,18 @@ public class CriarContaPoupancaEspecial extends javax.swing.JFrame {
 
     private void limpar() {
         String numeroContaPadrao = "00000-X";
-        String agenciaPadrao = "0000";
+        String agenciaPadrao = "000X";
         String saldoInicialPadrao = "0.00";
         String limiteCCPadrao = "300.00";
-        String senhaPadrao = "000000";
+        String senhaPadrao = "00000X";
          String taxaJurosPadrao = "5.12";
+         String confirmaSenhaPadrao = "00000X";
 
         cxNumeroConta.setText(numeroContaPadrao);
         cxAgencia.setText(agenciaPadrao);
         cxLimiteCPE.setText(limiteCCPadrao);
         cxSaldoInicial.setText(saldoInicialPadrao);
-        pwConfirmeSenha.setText(senhaPadrao);
+        pwConfirmeSenha.setText(confirmaSenhaPadrao);
         pwSenha.setText(senhaPadrao);
         cxTaxaJuros.setText(taxaJurosPadrao);
         btLimpar.requestFocusInWindow();

@@ -219,7 +219,7 @@
     <Component class="javax.swing.JTextField" name="cxAgencia">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="0000"/>
+        <Property name="text" type="java.lang.String" value="000X"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cxAgenciaMouseClicked"/>
@@ -276,7 +276,7 @@
     <Component class="javax.swing.JPasswordField" name="pwSenha">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="000000"/>
+        <Property name="text" type="java.lang.String" value="00000X"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
@@ -288,7 +288,7 @@
     <Component class="javax.swing.JPasswordField" name="pwConfirmeSenha">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="000000"/>
+        <Property name="text" type="java.lang.String" value="XXXXXX"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pwConfirmeSenhaMouseClicked"/>

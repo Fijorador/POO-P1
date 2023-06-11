@@ -18,7 +18,7 @@ import javax.swing.SwingUtilities;
 public class CriarContaPoupanca extends javax.swing.JFrame {
 
     private static CriarContaPoupanca instancia;
-    private JDialog confirmationDialog;
+  
 
     public CriarContaPoupanca() {
         initComponents();
@@ -120,7 +120,7 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
         });
 
         cxAgencia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        cxAgencia.setText("0000");
+        cxAgencia.setText("000X");
         cxAgencia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cxAgenciaMouseClicked(evt);
@@ -193,7 +193,7 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
         });
 
         pwSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pwSenha.setText("000000");
+        pwSenha.setText("00000X");
         pwSenha.setToolTipText("");
         pwSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,7 +210,7 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
         });
 
         pwConfirmeSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pwConfirmeSenha.setText("000000");
+        pwConfirmeSenha.setText("XXXXXX");
         pwConfirmeSenha.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pwConfirmeSenhaMouseClicked(evt);
@@ -455,16 +455,17 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
 
     private void limpar() {
         String numeroContaPadrao = "00000-X";
-        String agenciaPadrao = "0000";
+        String agenciaPadrao = "000X";
         String saldoInicialPadrao = "0.00";
         String taxaJurosPadrao = "4.18";
-        String senhaPadrao = "000000";
+        String senhaPadrao = "00000X";
+        String confirmaSenhaPadrao = "00000X";
 
         cxNumeroConta.setText(numeroContaPadrao);
         cxAgencia.setText(agenciaPadrao);
         cxTaxaJuros.setText(taxaJurosPadrao);
         cxSaldoInicial.setText(saldoInicialPadrao);
-        pwConfirmeSenha.setText(senhaPadrao);
+        pwConfirmeSenha.setText(confirmaSenhaPadrao);
         pwSenha.setText(senhaPadrao);
 
         btLimpar.requestFocusInWindow();

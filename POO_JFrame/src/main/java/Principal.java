@@ -980,74 +980,14 @@ public class Principal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        BancoContas banco = BancoContas.getBanco();
 
-        ContaPoupancaEspecial conta1 = new ContaPoupancaEspecial("123412", "001", "senha1", 1000.0, 0.05, 500.0, 480.0);
-        ContaPoupancaEspecial conta2 = new ContaPoupancaEspecial("567438", "002", "senha2", 2000.0, 0.04, 1000.0, 500.0);
-        ContaPoupancaEspecial conta3 = new ContaPoupancaEspecial("901632", "003", "senha3", 3000.0, 0.03, 1500.0, 500.0);
-        ContaPoupancaEspecial conta4 = new ContaPoupancaEspecial("318456", "004", "senha4", 4000.0, 0.02, 2000.0, 500.0);
-        ContaPoupancaEspecial conta5 = new ContaPoupancaEspecial("222222", "005", "senha5", 5000.0, 0.01, 2500.0, 500.0);
+        carregaEstilo();
 
-        banco.addContaPoupancaEspecial(conta1);
-        banco.addContaPoupancaEspecial(conta2);
-        banco.addContaPoupancaEspecial(conta3);
-        banco.addContaPoupancaEspecial(conta4);
-        banco.addContaPoupancaEspecial(conta5);
-
-        ContaCorrente contaCorrente1 = new ContaCorrente("111111", "001", "senha1", 1000.0, 500.0, 50.0);
-        ContaCorrente contaCorrente2 = new ContaCorrente("567908", "002", "senha2", 2000.0, 1000.0, 200.0);
-        ContaCorrente contaCorrente3 = new ContaCorrente("905102", "003", "senha3", 3000.0, 1500.0, 300.0);
-        ContaCorrente contaCorrente4 = new ContaCorrente("324546", "004", "senha4", 4000.0, 2000.0, 400.0);
-        ContaCorrente contaCorrente5 = new ContaCorrente("789073", "005", "senha5", 5000.0, 2500.0, 500.0);
-
-        ContaPoupanca contaPoupanca1 = new ContaPoupanca("000000", "001", "senha1", 1000.0, 0.05);
-        ContaPoupanca contaPoupanca2 = new ContaPoupanca("567278", "002", "senha2", 2000.0, 0.04);
-        ContaPoupanca contaPoupanca3 = new ContaPoupanca("901578", "003", "senha3", 3000.0, 0.03);
-        ContaPoupanca contaPoupanca4 = new ContaPoupanca("345645", "004", "senha4", 4000.0, 0.02);
-        ContaPoupanca contaPoupanca5 = new ContaPoupanca("789055", "005", "senha5", 5000.0, 0.01);
-
-        banco.addContaCorrente(contaCorrente1);
-        banco.addContaCorrente(contaCorrente2);
-        banco.addContaCorrente(contaCorrente3);
-        banco.addContaCorrente(contaCorrente4);
-        banco.addContaCorrente(contaCorrente5);
-
-        banco.addContaPoupanca(contaPoupanca1);
-        banco.addContaPoupanca(contaPoupanca2);
-        banco.addContaPoupanca(contaPoupanca3);
-        banco.addContaPoupanca(contaPoupanca4);
-        banco.addContaPoupanca(contaPoupanca5);
-
-
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new Principal().setVisible(true);
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraMenu;
@@ -1318,6 +1258,19 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Rendimentos da conta " + numeroConta + ": R$ " + rendimentos, "Aviso", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Conta não encontrada.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private static void carregaEstilo() {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
 

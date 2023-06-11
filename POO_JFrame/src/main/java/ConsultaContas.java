@@ -2,12 +2,12 @@
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import javax.swing.JDialog;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -321,37 +321,9 @@ public class ConsultaContas extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
 
-        int linhaSelecionada = tbContas.getSelectedRow();
-        String tipoConta = (String) tbContas.getValueAt(linhaSelecionada, 2);
-
-        if (linhaSelecionada >= 0) {
-            switch (tipoConta) {
-                case "Conta Corrente" -> {
-                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
-                    dispose();
-                    EditarContaCorrente editarContaCorrente = new EditarContaCorrente();
-                    editarContaCorrente.setVisible(true);
-                    editarContaCorrente.carregamentoEdicao(numeroConta);
-                }
-                case "Conta Poupança" -> {
-                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
-                    dispose();
-                    EditarContaPoupanca editarContaPoupanca = new EditarContaPoupanca();
-                    editarContaPoupanca.setVisible(true);
-                    editarContaPoupanca.carregamentoEdicao(numeroConta);
-                }
-                case "Conta Poupança Especial" -> {
-                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
-                    dispose();
-                    EditarContaPoupancaEspecial editarContaPoupancaEspecial = new EditarContaPoupancaEspecial();
-                    editarContaPoupancaEspecial.setVisible(true);
-                    editarContaPoupancaEspecial.carregamentoEdicao(numeroConta);
-                }
-                default -> {
-                }
-            }
-        }
+        editarRegistro();
     }//GEN-LAST:event_btEditarActionPerformed
+
 
     private void CorrenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorrenteActionPerformed
         // TODO add your handling code here:
@@ -432,15 +404,14 @@ public class ConsultaContas extends javax.swing.JFrame {
                 todasContas();
             } else if (Corrente.isSelected()) {
                 limparTabela();
-                preencheTabela();
+                preencheTabelaCorrente();
             } else if (Poupanca.isSelected()) {
 
                 limparTabela();
-                poupancaContas();
+                preencherTabelaPoupanca();
             } else if (PoupancaEspecial.isSelected()) {
-
                 limparTabela();
-                poupancaEspecialContas();
+                preeencherTabelaPoupancaEspecial();
             }
             return;
         }
@@ -633,7 +604,7 @@ public class ConsultaContas extends javax.swing.JFrame {
         }
     }
 
-    private void preencheTabela() {
+    private void preencheTabelaCorrente() {
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
         model.setRowCount(0);
         BancoContas banco = BancoContas.getBanco();
@@ -652,7 +623,7 @@ public class ConsultaContas extends javax.swing.JFrame {
         }
     }
 
-    private void poupancaContas() {
+    private void preencherTabelaPoupanca() {
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
         model.setRowCount(0);
 
@@ -672,9 +643,9 @@ public class ConsultaContas extends javax.swing.JFrame {
         }
     }
 
-    private void poupancaEspecialContas() {
+    private void preeencherTabelaPoupancaEspecial() {
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
-        model.setRowCount(0); 
+        model.setRowCount(0);
 
         BancoContas banco = BancoContas.getBanco();
         List<ContaPoupancaEspecial> contasPoupancaEspecial = banco.getBdContasPoupancaEspecial();
@@ -689,6 +660,39 @@ public class ConsultaContas extends javax.swing.JFrame {
 
         if (!contaEncontrada) {
             JOptionPane.showMessageDialog(this, "Nenhuma conta poupança especial encontrada.");
+        }
+    }
+
+    private void editarRegistro() {
+        int linhaSelecionada = tbContas.getSelectedRow();
+        String tipoConta = (String) tbContas.getValueAt(linhaSelecionada, 2);
+
+        if (linhaSelecionada >= 0) {
+            switch (tipoConta) {
+                case "Conta Corrente" -> {
+                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                    dispose();
+                    EditarContaCorrente editarContaCorrente = new EditarContaCorrente();
+                    editarContaCorrente.setVisible(true);
+                    editarContaCorrente.carregamentoEdicao(numeroConta);
+                }
+                case "Conta Poupança" -> {
+                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                    dispose();
+                    EditarContaPoupanca editarContaPoupanca = new EditarContaPoupanca();
+                    editarContaPoupanca.setVisible(true);
+                    editarContaPoupanca.carregamentoEdicao(numeroConta);
+                }
+                case "Conta Poupança Especial" -> {
+                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                    dispose();
+                    EditarContaPoupancaEspecial editarContaPoupancaEspecial = new EditarContaPoupancaEspecial();
+                    editarContaPoupancaEspecial.setVisible(true);
+                    editarContaPoupancaEspecial.carregamentoEdicao(numeroConta);
+                }
+                default -> {
+                }
+            }
         }
     }
 
