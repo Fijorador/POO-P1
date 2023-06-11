@@ -21,7 +21,6 @@ public class ConsultaContas extends javax.swing.JFrame {
 
     private static ConsultaContas instancia;
 
-    
     public ConsultaContas() {
         initComponents();
         cxNumeroConta.requestFocus();
@@ -326,24 +325,30 @@ public class ConsultaContas extends javax.swing.JFrame {
         String tipoConta = (String) tbContas.getValueAt(linhaSelecionada, 2);
 
         if (linhaSelecionada >= 0) {
-            if (tipoConta.equals("Conta Corrente")) {
-                String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
-                dispose();
-                EditarContaCorrente editarContaCorrente = new EditarContaCorrente();
-                editarContaCorrente.setVisible(true);
-                editarContaCorrente.carregamentoEdicao(numeroConta);
-            } else if (tipoConta.equals("Conta Poupança")) {
-                String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
-                dispose();
-                EditarContaPoupanca editarContaPoupanca = new EditarContaPoupanca();
-                editarContaPoupanca.setVisible(true);
-                editarContaPoupanca.carregamentoEdicao(numeroConta);
-            } else if (tipoConta.equals("Conta Poupança Especial")) {
-                String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
-                dispose();
-                EditarContaPoupancaEspecial editarContaPoupancaEspecial = new EditarContaPoupancaEspecial();
-                editarContaPoupancaEspecial.setVisible(true);
-                editarContaPoupancaEspecial.carregamentoEdicao(numeroConta);
+            switch (tipoConta) {
+                case "Conta Corrente" -> {
+                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                    dispose();
+                    EditarContaCorrente editarContaCorrente = new EditarContaCorrente();
+                    editarContaCorrente.setVisible(true);
+                    editarContaCorrente.carregamentoEdicao(numeroConta);
+                }
+                case "Conta Poupança" -> {
+                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                    dispose();
+                    EditarContaPoupanca editarContaPoupanca = new EditarContaPoupanca();
+                    editarContaPoupanca.setVisible(true);
+                    editarContaPoupanca.carregamentoEdicao(numeroConta);
+                }
+                case "Conta Poupança Especial" -> {
+                    String numeroConta = (String) tbContas.getValueAt(linhaSelecionada, 0);
+                    dispose();
+                    EditarContaPoupancaEspecial editarContaPoupancaEspecial = new EditarContaPoupancaEspecial();
+                    editarContaPoupancaEspecial.setVisible(true);
+                    editarContaPoupancaEspecial.carregamentoEdicao(numeroConta);
+                }
+                default -> {
+                }
             }
         }
     }//GEN-LAST:event_btEditarActionPerformed
@@ -510,7 +515,7 @@ public class ConsultaContas extends javax.swing.JFrame {
                 if (contaPoupancaEspecial.getNumero().equals(numeroContaPesquisada)) {
                     Object[] rowData = {contaPoupancaEspecial.getNumero(), contaPoupancaEspecial.getAgencia(), "Conta Poupança Especial"};
                     model.addRow(rowData);
-                    break; // interrompe o loop após encontrar a conta correspondente
+                    break;
                 }
             }
             if (model.getRowCount() == 0) {
@@ -547,17 +552,6 @@ public class ConsultaContas extends javax.swing.JFrame {
         }
     }
 
-    private void limitaCaracters(KeyEvent evt, JTextField componente, int tamanho) {
-        int k = evt.getKeyChar();
-        if (Character.isDigit(k)) {
-            if (componente.getText().length() == tamanho) {
-                evt.consume();
-            }
-        } else {
-            evt.consume();
-        }
-    }
-
     private void detalhes() {
         int selectedRow = tbContas.getSelectedRow();
 
@@ -574,26 +568,32 @@ public class ConsultaContas extends javax.swing.JFrame {
 
         String detalhesConta = "";
 
-        if (tipoConta.equals("Conta Corrente")) {
-            ContaCorrente contaCorrente = (ContaCorrente) conta;
-            detalhesConta = "Número da Conta: " + contaCorrente.getNumero() + "\n"
-                    + "Agência: " + contaCorrente.getAgencia() + "\n"
-                    + "Saldo: " + contaCorrente.getSaldo() + "\n"
-                    + "Limite: " + contaCorrente.getLimite() + "\n"
-                    + "Limite Disponível: " + contaCorrente.getLimiteDisponivel();
-        } else if (tipoConta.equals("Conta Poupança")) {
-            ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
-            detalhesConta = "Número da Conta: " + contaPoupanca.getNumero() + "\n"
-                    + "Agência: " + contaPoupanca.getAgencia() + "\n"
-                    + "Saldo: " + contaPoupanca.getSaldo() + "\n"
-                    + "Taxa de Juros: " + contaPoupanca.getJuros();
-        } else if (tipoConta.equals("Conta Poupança Especial")) {
-            ContaPoupancaEspecial contaPoupancaEspecial = (ContaPoupancaEspecial) conta;
-            detalhesConta = "Número da Conta: " + contaPoupancaEspecial.getNumero() + "\n"
-                    + "Agência: " + contaPoupancaEspecial.getAgencia() + "\n"
-                    + "Saldo: " + contaPoupancaEspecial.getSaldo() + "\n"
-                    + "Taxa de Juros: " + contaPoupancaEspecial.getJuros() + "\n"
-                    + "Limite de Crédito: " + contaPoupancaEspecial.getLimite();
+        switch (tipoConta) {
+            case "Conta Corrente" -> {
+                ContaCorrente contaCorrente = (ContaCorrente) conta;
+                detalhesConta = "Número da Conta: " + contaCorrente.getNumero() + "\n"
+                        + "Agência: " + contaCorrente.getAgencia() + "\n"
+                        + "Saldo: " + contaCorrente.getSaldo() + "\n"
+                        + "Limite: " + contaCorrente.getLimite() + "\n"
+                        + "Limite Disponível: " + contaCorrente.getLimiteDisponivel();
+            }
+            case "Conta Poupança" -> {
+                ContaPoupanca contaPoupanca = (ContaPoupanca) conta;
+                detalhesConta = "Número da Conta: " + contaPoupanca.getNumero() + "\n"
+                        + "Agência: " + contaPoupanca.getAgencia() + "\n"
+                        + "Saldo: " + contaPoupanca.getSaldo() + "\n"
+                        + "Taxa de Juros: " + contaPoupanca.getJuros();
+            }
+            case "Conta Poupança Especial" -> {
+                ContaPoupancaEspecial contaPoupancaEspecial = (ContaPoupancaEspecial) conta;
+                detalhesConta = "Número da Conta: " + contaPoupancaEspecial.getNumero() + "\n"
+                        + "Agência: " + contaPoupancaEspecial.getAgencia() + "\n"
+                        + "Saldo: " + contaPoupancaEspecial.getSaldo() + "\n"
+                        + "Taxa de Juros: " + contaPoupancaEspecial.getJuros() + "\n"
+                        + "Limite de Crédito: " + contaPoupancaEspecial.getLimite();
+            }
+            default -> {
+            }
         }
 
         JOptionPane.showMessageDialog(this, detalhesConta, "Detalhes da Conta", JOptionPane.INFORMATION_MESSAGE);
@@ -635,8 +635,7 @@ public class ConsultaContas extends javax.swing.JFrame {
 
     private void preencheTabela() {
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
-        model.setRowCount(0); // Limpa a tabela
-
+        model.setRowCount(0);
         BancoContas banco = BancoContas.getBanco();
         List<ContaCorrente> contasCorrente = banco.getBdContasCorrente();
 
@@ -655,7 +654,7 @@ public class ConsultaContas extends javax.swing.JFrame {
 
     private void poupancaContas() {
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
-        model.setRowCount(0); // Limpa a tabela
+        model.setRowCount(0);
 
         BancoContas banco = BancoContas.getBanco();
         List<ContaPoupanca> contasPoupanca = banco.getBdContasPoupanca();
@@ -675,7 +674,7 @@ public class ConsultaContas extends javax.swing.JFrame {
 
     private void poupancaEspecialContas() {
         DefaultTableModel model = (DefaultTableModel) tbContas.getModel();
-        model.setRowCount(0); // Limpa a tabela
+        model.setRowCount(0); 
 
         BancoContas banco = BancoContas.getBanco();
         List<ContaPoupancaEspecial> contasPoupancaEspecial = banco.getBdContasPoupancaEspecial();

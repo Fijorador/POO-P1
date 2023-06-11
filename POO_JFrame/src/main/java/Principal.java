@@ -668,7 +668,7 @@ public class Principal extends javax.swing.JFrame {
             pnSubMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSubMetodosLayout.createSequentialGroup()
                 .addComponent(Separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnSubMetodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSubMetodosLayout.createSequentialGroup()
@@ -1054,14 +1054,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSeparator Separador;
     private javax.swing.JButton btCalcularRendimento;
     private javax.swing.JButton btConsultarSaldo;
-    private javax.swing.JButton btConsultarSaldo1;
     private javax.swing.JButton btDepositar;
     private javax.swing.JButton btSacar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btTraferir;
     private javax.swing.JTextField cxNumeroContaConsultarRendimento;
     private javax.swing.JTextField cxNumeroContaConsultarSaldo;
-    private javax.swing.JTextField cxNumeroContaConsultarSaldo1;
     private javax.swing.JTextField cxNumeroContaDeposito;
     private javax.swing.JTextField cxNumeroContaDestino;
     private javax.swing.JTextField cxNumeroContaOrigem;
@@ -1076,7 +1074,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu mCriarConta;
     private javax.swing.JDesktopPane pnConsultaRendimento;
     private javax.swing.JDesktopPane pnConsultaSaldo;
-    private javax.swing.JDesktopPane pnConsultaSaldo1;
     private javax.swing.JDesktopPane pnDeposito;
     private javax.swing.JPanel pnMetodos;
     private javax.swing.JDesktopPane pnSaque;
@@ -1087,13 +1084,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel rotTituloPrinc;
     private javax.swing.JLabel txCalculoRendimento;
     private javax.swing.JLabel txConsultarSaldo;
-    private javax.swing.JLabel txConsultarSaldo1;
     private javax.swing.JLabel txContaDestino;
     private javax.swing.JLabel txContaOrigem;
     private javax.swing.JLabel txNumeroContaDeposito;
     private javax.swing.JLabel txNumeroContaRendimento;
     private javax.swing.JLabel txNumeroContaSaldo;
-    private javax.swing.JLabel txNumeroContaSaldo1;
     private javax.swing.JLabel txNumeroContaSaque;
     private javax.swing.JLabel txSenha;
     private javax.swing.JLabel txSenhaTranferencia;
