@@ -481,7 +481,7 @@ public class CriarContaPoupanca extends javax.swing.JFrame {
         }
     }
 
-    public void criarContaPoupanca() {
+    private void criarContaPoupanca() {
         String agencia = cxAgencia.getText();
         String numeroConta = cxNumeroConta.getText();
         String senha = new String(pwSenha.getPassword());

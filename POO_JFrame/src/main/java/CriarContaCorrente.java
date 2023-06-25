@@ -478,7 +478,7 @@ public class CriarContaCorrente extends javax.swing.JFrame {
         }
     }
 
-    public void criarContaCorrente() {
+    private void criarContaCorrente() {
         String agencia = cxAgencia.getText();
         String numeroConta = cxNumeroConta.getText();
         String senha = new String(pwSenha.getPassword());
